@@ -1,0 +1,22 @@
+.content-width {
+	width: 60vw;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (max-width: 660px) {
+	.content-width {
+		width: 100vw;
+	}
+}
+
+main {
+	border: 1px solid orange;
+	/* NOTE: /* TODO: set up a rhythm thing here */
+	margin-top: 1rem;
+}
+
+.small-bold-header {
+	font-weight: bolder;
+	text-decoration: underline;
+}
