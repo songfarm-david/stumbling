@@ -6,7 +6,7 @@ import "../style/header.css"
 
 const Header = ({ siteTitle }) => (
   <header>
-    <div>
+    <div className="header-inner">
       <Link to="/">
          <button>B</button>
       </Link>

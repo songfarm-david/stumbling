@@ -5,6 +5,7 @@ import React from "react"
 import "./default-reset.css"
 import "../style/layout.css"
 import Header from "./header"
+import Footer from "./footer"
 
 const Layout = ({ children }) => (
    <>
@@ -13,10 +14,8 @@ const Layout = ({ children }) => (
       <main className="content-width">
          {children}
       </main>
-      <footer>
-         © {new Date().getFullYear()}
-      </footer>
    </div>
+   <Footer />
    </>
 )
 // const Layout = ({ children }) => (
