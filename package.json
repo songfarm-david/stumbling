@@ -5,20 +5,25 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "emotion": "^10.0.7",
     "gatsby": "^2.0.115",
     "gatsby-image": "^2.0.29",
+    "gatsby-plugin-catch-links": "^2.0.11",
     "gatsby-plugin-google-analytics": "^2.0.14",
     "gatsby-plugin-manifest": "^2.0.17",
     "gatsby-plugin-offline": "^2.0.22",
     "gatsby-plugin-react-helmet": "^3.0.6",
     "gatsby-plugin-sharp": "^2.0.20",
+    "gatsby-remark-relative-links": "0.0.3",
     "gatsby-source-filesystem": "^2.0.20",
     "gatsby-source-wordpress": "^3.0.33",
     "gatsby-transformer-sharp": "^2.1.13",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
+    "react-custom-share": "^0.4.8",
     "react-dom": "^16.7.0",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "react-icons": "^3.4.0"
   },
   "keywords": [
     "gatsby"

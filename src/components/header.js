@@ -8,7 +8,7 @@ const Header = ({ siteTitle }) => (
   <header>
     <div className="header-inner">
       <Link to="/">
-         <button>B</button>
+         <button>Home</button>
       </Link>
       <h1>
         <Link to="/">

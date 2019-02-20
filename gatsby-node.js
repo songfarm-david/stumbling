@@ -42,3 +42,5 @@ exports.createPages = ({ graphql, actions }) => {
 		})
 	})
 }
+
+// NOTE: onCreatePages might be needed to replace internal links with Gatsby links
