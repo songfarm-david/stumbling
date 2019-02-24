@@ -1,2 +1,1 @@
-# stumbling
-Stumbling Towards Enlightenment
+# Stumbling Towards Enlightenment
