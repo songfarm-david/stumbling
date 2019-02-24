@@ -74,12 +74,18 @@ module.exports = {
         cookieDomain: "example.com",
       },
     },
-    `gatsby-plugin-catch-links`,
+    // `gatsby-plugin-catch-links`,
+    // {
+    //   resolve: "gatsby-remark-relative-links",
+    //   options: {
+    //     domainRegex: /http[s]*:\/\/[www.]*stumblingtowardsenlightenment\.com[/blog/]?/,
+    //   }
+    // }
     {
-      resolve: "gatsby-remark-relative-links",
-      options: {
-        domainRegex: /http[s]*:\/\/[www.]*stumblingtowardsenlightenment\.com[/blog/]?/,
-      }
-    }
+    resolve: 'gatsby-plugin-sw',
+    options: {
+      swPath: 'src/utils/service-worker.js', // Default to 'src/sw.js'
+    },
+  }
   ],
 }

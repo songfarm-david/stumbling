@@ -7,7 +7,7 @@ import Header from "./header"
 import Footer from "./footer"
 import ShareComponent from "./social-share"
 
-const Layout = ({ data, children }) => (
+const Layout = ({ children }) => (
    <>
    <Header />
    <div>
@@ -21,16 +21,3 @@ const Layout = ({ data, children }) => (
 )
 
 export default Layout
-
-export const query = graphql`
-   query {
-      site {
-         siteMetadata {
-            title
-            description
-            author
-            siteUrl
-         }
-      }
-   }
-`
