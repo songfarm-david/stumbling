@@ -4,9 +4,9 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import ShareComponent from "../components/social-share"
 
-export default ({ location, data }) => {
-   console.log(location);
-   console.log('Yeah!!!', data);
+export default ({location, data}) => {
+   console.log('inside post', location, data);
+   // console.log('Yeah!!!', data);
    const post = data.wordpressPost
    // console.log(JSON.stringify(location, null, 4))
    const props = {
@@ -24,9 +24,12 @@ export default ({ location, data }) => {
    )
 }
 
+
+
+
 export const query = graphql`
-   query{
-      wordpressPost {
+   query($id: String!) {
+      wordpressPost(id: {eq: $id}) {
         id
         title
         content

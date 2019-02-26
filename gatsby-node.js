@@ -28,7 +28,7 @@ exports.createPages = ({ graphql, actions }) => {
 	return new Promise((resolve, reject) => {
 		graphql(`
 			{
-				allWordpressPost(sort: { fields: [date], order: DESC}) {
+				allWordpressPost {
 					edges {
 			      	node {
 			        		title
@@ -39,17 +39,19 @@ exports.createPages = ({ graphql, actions }) => {
 			        		excerpt
 			        		wordpress_id
 							content
+							id
 			      	}
 					}
 				}
 			}
 		`).then(result => {
 			result.data.allWordpressPost.edges.forEach(({ node }) => {
-				// console.log(JSON.stringify(node, null, 4))
+				console.log('creating page', JSON.stringify(node, null, 4))
 				createPage({
 					path: node.slug,
 					component: path.resolve('./src/templates/post.js'),
 					context: {
+						id: node.id,
 						title: node.slug,
 						content: node.content
 					}

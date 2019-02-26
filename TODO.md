@@ -5,6 +5,9 @@
 - Add a 'popular articles' block at the end of posts (How to decide which posts?)
 - Adding comments flow: https://css-tricks.com/jamstack-comments/
 
+## Issues
+1. navigating to the "permalink" of a dynamically created page (createPages API) fails because location.state is not there anymore
+
 ## Website Notable Highlights
 - Website done with Gatsby, content hosted on WordPress
 - Pull in Post data from WP CMS and dynamically create pages
