@@ -8,13 +8,6 @@ import SEO from "../components/seo"
 export default ({ data }) => {
    console.log(data)
 
-   function htmlDecode(input){
-      var e = document.createElement('div');
-      e.innerHTML = input;
-      // handle case of empty input
-      return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-   }
-
    return (
       <Layout>
         <SEO title="Home" description="how are you?" keywords={[`gatsby`, `application`, `react`]} />
@@ -23,7 +16,7 @@ export default ({ data }) => {
            <div key={index}>
                <h3>
                   <Link to={node.slug} state={{ post: node }}>
-                     {htmlDecode(node.title)}
+                     {node.title}
                   </Link>
                </h3>
                <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
@@ -61,3 +54,10 @@ export const query = graphql`
       }
    }
 `
+
+function htmlDecode(input){
+   var e = document.createElement('div');
+   e.innerHTML = input;
+   // handle case of empty input
+   return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+}

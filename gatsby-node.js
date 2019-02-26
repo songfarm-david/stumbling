@@ -4,9 +4,26 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 const path = require('path')
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
+/**
+ * will be called by Gatsby whenever a new node is created (or updated)
+ */
+exports.onCreateNode = ({ node, getNode, actions }) => {
+	// console.log(node.internal.type)
+	// const fileNode = getNode(node.parent)
+	// console.log(`\n`, fileNode.relativePath)
+	// console.log(node.path);
+	const { createNodeField } = actions
+	if (node.internal.type === 'wordpress__POST') {
+		// console.log(node);
+		// console.log(createFilePath({ node, getNode }))
+	}
+}
 
 exports.createPages = ({ graphql, actions }) => {
-	const {createPage} = actions
+
+	const { createPage } = actions
 
 	return new Promise((resolve, reject) => {
 		graphql(`
@@ -28,17 +45,21 @@ exports.createPages = ({ graphql, actions }) => {
 			}
 		`).then(result => {
 			result.data.allWordpressPost.edges.forEach(({ node }) => {
+				// console.log(JSON.stringify(node, null, 4))
 				createPage({
 					path: node.slug,
 					component: path.resolve('./src/templates/post.js'),
 					context: {
-						slug: node.slug,
+						title: node.slug,
 						content: node.content
 					}
 				})
 			})
 			// console.log(JSON.stringify(result, null, 4))
 			resolve()
+		}).catch(error => {
+			console.log(error)
+			reject(error)
 		})
 	})
 }
