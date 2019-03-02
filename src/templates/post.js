@@ -24,9 +24,6 @@ export default ({location, data}) => {
    )
 }
 
-
-
-
 export const query = graphql`
    query($id: String!) {
       wordpressPost(id: {eq: $id}) {
@@ -40,9 +37,9 @@ export const query = graphql`
    }
 `
 
-// function htmlDecode(input){
-//    var e = document.createElement('div');
-//    e.innerHTML = input;
-//    // handle case of empty input
-//    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-// }
+function htmlDecode(input){
+   var e = document.createElement('div');
+   e.innerHTML = input;
+   // handle case of empty input
+   return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+}
