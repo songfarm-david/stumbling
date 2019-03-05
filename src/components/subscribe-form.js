@@ -1,7 +1,7 @@
 import React from "react"
 
 const SubscribeForm = (props) => (
-	<form name="contact" method="post" data-netlify="true">
+	<form name="contact" action="pages/index" method="post" data-netlify="true">
 
         <div className="field">
             <label htmlFor="name">Name</label>

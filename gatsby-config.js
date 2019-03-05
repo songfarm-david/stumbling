@@ -73,7 +73,7 @@ module.exports = {
         siteSpeedSampleRate: 10,
         cookieDomain: "example.com",
       },
-    },
+    }
     // `gatsby-plugin-catch-links`,
     // {
     //   resolve: "gatsby-remark-relative-links",
