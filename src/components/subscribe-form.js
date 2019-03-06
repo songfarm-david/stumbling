@@ -1,24 +1,26 @@
 import React from "react"
 
 const SubscribeForm = (props) => (
-	<form name="contact" action="/" method="post" data-netlify="true">
-	
+	<form name="contact" action="/" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+
 		<input type="hidden" name="form-name" value="contact" />
-		
+		{/* spam filtering hidden input field */}
+		<input type="hidden" name="bot-field" />
+
 		<div className="field">
 			<label htmlFor="name">Name</label>
-			<input type="text" name="name" id="name" value="dave"/>
+			<input type="text" name="name" id="name" required />
 		</div>
         <div className="field">
             <label htmlFor="email">Email</label>
-            <input type="text" name="email" id="email" value="email@email.com" />
+            <input type="text" name="email" id="email" required />
         </div>
         <div className="field">
             <label htmlFor="message">Message</label>
             <textarea name="message" id="message" rows="6"></textarea>
         </div>
 
-		  <input type="submit" value="Send Message" className="" />
+		  <input type="submit" value="Send Message" />
 
     </form>
 )
