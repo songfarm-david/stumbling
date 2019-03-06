@@ -2,11 +2,13 @@ import React from "react"
 
 const SubscribeForm = (props) => (
 	<form name="contact" action="/" method="post" data-netlify="true">
-
-        <div className="field">
-            <label htmlFor="name">Name</label>
-            <input type="text" name="name" id="name" value="dave"/>
-        </div>
+	
+		<input type="hidden" name="form-name" value="contact" />
+		
+		<div className="field">
+			<label htmlFor="name">Name</label>
+			<input type="text" name="name" id="name" value="dave"/>
+		</div>
         <div className="field">
             <label htmlFor="email">Email</label>
             <input type="text" name="email" id="email" value="email@email.com" />

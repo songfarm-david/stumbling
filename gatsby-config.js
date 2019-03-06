@@ -10,14 +10,14 @@ module.exports = {
     siteUrl: 'https://stumblingtowardsenlightenment.com'
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
+    // `gatsby-plugin-react-helmet`,
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `images`,
+    //     path: `${__dirname}/src/images`,
+    //   },
+    // },
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {
@@ -49,8 +49,8 @@ module.exports = {
             // replacementUrl: "https://wpheadless.indigotree.co.uk",
         // }
       }
-   },
-   {
+    },
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: "UA-134764207-1",
