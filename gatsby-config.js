@@ -39,8 +39,8 @@ module.exports = {
          verboseOutput: true,
          useACF: false,
          auth: {
-            htaccess_user: "bobo",
-            htaccess_pass: "mr?8(+JSx7z4",
+            htaccess_user: process.env.USERNAME,
+            htaccess_pass: process.env.PASSWORD,
             htaccess_sendImmediately: false
          },
          // NOTE: here is where you can search and replace content links?

@@ -1,10 +1,11 @@
 # Stumbling Towards Enlightment
 
 ## TODO
-- What is rhythm?
+- Use a function to insert login credentials to WordPress API.
 - Add a 'popular articles' block at the end of posts (How to decide which posts?)
 - Adding comments flow: https://css-tricks.com/jamstack-comments/
 - Add search capability
+
 
 ## Issues
 1. navigating to the "permalink" of a dynamically created page (createPages API) fails because location.state is not there anymore
@@ -24,7 +25,7 @@
 - gatsby-plugin-offline
 - gatsby-plugin-sw: https://www.gatsbyjs.org/packages/gatsby-plugin-sw/
 
-## Using Netlify to Deploy
+## Continuous Deployment
 - https://www.gatsbyjs.org/docs/deploying-to-netlify/
 
 ## Adding a 404 page
@@ -35,3 +36,7 @@
 
 ## Site design
 - https://mariohernandez.io/blog/adding-social-share-links-to-gatsby/
+### button styles: https://css-tricks.com/forms-auth-and-serverless-functions-on-gatsby-and-netlify/
+
+## Testing Lambda Functions
+bottom of this section: https://css-tricks.com/forms-auth-and-serverless-functions-on-gatsby-and-netlify/#article-header-id-8
