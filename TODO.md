@@ -40,3 +40,4 @@
 
 ## Testing Lambda Functions
 bottom of this section: https://css-tricks.com/forms-auth-and-serverless-functions-on-gatsby-and-netlify/#article-header-id-8
+More on lamdba functions:https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html#nodejs-prog-model-handler-callback
