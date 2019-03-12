@@ -6,7 +6,7 @@ const headers = {
 
 exports.handler = function(event, context, callback) {
 	// event is submission-created
-	console.log('context is', context, event)
+	console.log('context is', context)
 	// console.log(event, context)
 	//
 	// const { payload, site } = context
