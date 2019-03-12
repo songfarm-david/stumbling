@@ -10,14 +10,9 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
  * will be called by Gatsby whenever a new node is created (or updated)
  */
 exports.onCreateNode = ({ node, getNode, actions }) => {
-	// console.log(node.internal.type)
-	// const fileNode = getNode(node.parent)
-	// console.log(`\n`, fileNode.relativePath)
-	// console.log(node.path);
 	const { createNodeField } = actions
 	if (node.internal.type === 'wordpress__POST') {
-		// console.log(node);
-		// console.log(createFilePath({ node, getNode }))
+		// do something
 	}
 }
 
@@ -46,7 +41,7 @@ exports.createPages = ({ graphql, actions }) => {
 			}
 		`).then(result => {
 			result.data.allWordpressPost.edges.forEach(({ node }) => {
-				console.log('creating page', JSON.stringify(node, null, 4))
+				// console.log('creating page', JSON.stringify(node, null, 4))
 				createPage({
 					path: node.slug,
 					component: path.resolve('./src/templates/post.js'),
