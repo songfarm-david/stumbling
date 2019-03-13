@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ShareComponent from "../components/social-share"
 
-import htmlDecode from "../../functions/decode-html.js"
+import decodeHTML from "../../functions/decode-html.js"
 
 export default ({ data }) => {
    console.log(data.site.siteMetadata.siteUrl)
@@ -23,7 +23,7 @@ export default ({ data }) => {
            <div key={index}>
                <h3>
                   <Link to={node.slug} state={{ post: node }}>
-                     {node.title}
+                     {decodeHTML(node.title)}
                   </Link>
                </h3>
                <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />

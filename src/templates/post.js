@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
 
+import decodeHTML from "../../functions/decode-html.js"
+
 import Layout from "../components/layout"
 import ShareComponent from "../components/social-share"
 
@@ -14,7 +16,7 @@ export default ({ data }) => {
    return (
       <Layout title={props.title} postUrl={props.postUrl}>
          <ShareComponent {...props} />
-         <h2>{data.wordpressPost.title}</h2>
+         <h2>{decodeHTML(data.wordpressPost.title)}</h2>
          <div dangerouslySetInnerHTML={{ __html: data.wordpressPost.content}} />
          <ShareComponent {...props} />
       </Layout>
