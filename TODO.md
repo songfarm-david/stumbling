@@ -5,6 +5,9 @@
 - Adding comments flow: https://css-tricks.com/jamstack-comments/
 - Add search capability
 
+###comments
+WordPress comment hooks: https://developer.wordpress.org/rest-api/reference/comments/#list-comments
+
 ## Website Notable Highlights
 - Website done with Gatsby, content hosted on WordPress
 - Pull in Post data from WP CMS and dynamically create pages
