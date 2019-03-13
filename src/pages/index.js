@@ -4,13 +4,20 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ShareComponent from "../components/social-share"
+
+import htmlDecode from "../../functions/decode-html.js"
 
 export default ({ data }) => {
-   // console.log(data)
-
+   console.log(data.site.siteMetadata.siteUrl)
    return (
       <Layout>
-        <SEO title="Home" description="how are you?" keywords={[`gatsby`, `application`, `react`]} />
+        <SEO
+         title="Home"
+         description="how are you?"
+         keywords={[`gatsby`, `application`, `react`]}
+        />
+        <ShareComponent title={data.site.siteMetadata.title} postUrl={data.site.siteMetadata.siteUrl} />
         <h4 className="small-bold-header">All Posts</h4>
         {data.allWordpressPost.edges.map(({ node }, index) => (
            <div key={index}>
@@ -54,10 +61,3 @@ export const query = graphql`
       }
    }
 `
-
-function htmlDecode(input){
-   var e = document.createElement('div');
-   e.innerHTML = input;
-   // handle case of empty input
-   return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-}

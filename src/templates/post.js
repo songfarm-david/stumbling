@@ -4,21 +4,18 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import ShareComponent from "../components/social-share"
 
-export default ({location, data}) => {
-   console.log('inside post', location, data);
-   // console.log('Yeah!!!', data);
-   const post = data.wordpressPost
-   // console.log(JSON.stringify(location, null, 4))
+export default ({ data }) => {
+   console.log('Data!', data);
    const props = {
-      title: post.title,
-      content: post.content,
-      postUrl: post.link
+      title: data.wordpressPost.title,
+      content: data.wordpressPost.content,
+      postUrl: data.wordpressPost.link
    }
-
    return (
-      <Layout>
-         <h2>{props.title}</h2>
-         <div dangerouslySetInnerHTML={{ __html: props.content}} />
+      <Layout title={props.title} postUrl={props.postUrl}>
+         <ShareComponent {...props} />
+         <h2>{data.wordpressPost.title}</h2>
+         <div dangerouslySetInnerHTML={{ __html: data.wordpressPost.content}} />
          <ShareComponent {...props} />
       </Layout>
    )
@@ -33,6 +30,7 @@ export const query = graphql`
         date
         modified
         slug
+        link
       }
    }
 `
