@@ -9,7 +9,7 @@ import ShareComponent from "../components/social-share"
 export default ({ data }) => {
    console.log('Data!', data);
    const props = {
-      title: data.wordpressPost.title,
+      title: decodeHTML(data.wordpressPost.title),
       content: data.wordpressPost.content,
       postUrl: data.wordpressPost.link
    }
