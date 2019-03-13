@@ -6,18 +6,7 @@
 const path = require('path')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-/**
- * will be called by Gatsby whenever a new node is created (or updated)
- */
-exports.onCreateNode = ({ node, getNode, actions }) => {
-	const { createNodeField } = actions
-	if (node.internal.type === 'wordpress__POST') {
-		// do something
-	}
-}
-
 exports.createPages = ({ graphql, actions }) => {
-
 	const { createPage } = actions
 
 	return new Promise((resolve, reject) => {
@@ -41,7 +30,6 @@ exports.createPages = ({ graphql, actions }) => {
 			}
 		`).then(result => {
 			result.data.allWordpressPost.edges.forEach(({ node }) => {
-				// console.log('creating page', JSON.stringify(node, null, 4))
 				createPage({
 					path: node.slug,
 					component: path.resolve('./src/templates/post.js'),
@@ -52,7 +40,6 @@ exports.createPages = ({ graphql, actions }) => {
 					}
 				})
 			})
-			// console.log(JSON.stringify(result, null, 4))
 			resolve()
 		}).catch(error => {
 			console.log(error)
@@ -60,5 +47,3 @@ exports.createPages = ({ graphql, actions }) => {
 		})
 	})
 }
-
-// NOTE: onCreatePages might be needed to replace internal links with Gatsby links

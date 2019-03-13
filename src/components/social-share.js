@@ -11,7 +11,7 @@ import {
 
 const ShareComponent = props => {
   // create object with props for shareBlock
-  console.log('share component props?', props);
+  // console.log('share component props?', props);
   const shareBlockProps = {
     url: props.postUrl,
     button: ShareButtonIconOnly,

@@ -1,13 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-import decodeHTML from "../../functions/decode-html.js"
-
 import Layout from "../components/layout"
 import ShareComponent from "../components/social-share"
 
+import decodeHTML from "../../functions/decode-html.js"
+
 export default ({ data }) => {
-   console.log('Data!', data);
+   // console.log('Data!', data);
    const props = {
       title: decodeHTML(data.wordpressPost.title),
       content: data.wordpressPost.content,
@@ -36,10 +36,3 @@ export const query = graphql`
       }
    }
 `
-
-function htmlDecode(input){
-   var e = document.createElement('div');
-   e.innerHTML = input;
-   // handle case of empty input
-   return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-}

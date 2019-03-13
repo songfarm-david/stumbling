@@ -10,14 +10,67 @@ module.exports = {
     siteUrl: 'https://stumblingtowardsenlightenment.com'
   },
   plugins: [
-    // `gatsby-plugin-react-helmet`,
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `images`,
-    //     path: `${__dirname}/src/images`,
-    //   },
-    // },
+     {
+        resolve: `gatsby-plugin-feed`,
+        options: {
+           query: `
+               {
+                  site {
+                     siteMetadata {
+                        title
+                        siteUrl
+                        site_url: siteUrl
+                     }
+                  }
+               }
+           `,
+           feeds: [
+             {
+                serialize: ({ query: { site, allWordpressPost } }) => {
+                   console.log('inside serialize', allWordpressPost);
+                   return allWordpressPost.edges.map(edge => {
+                      var decodeHtmlEntity = function(str) {
+                        return str.replace(/&#(\d+);/g, function(match, dec) {
+                           return String.fromCharCode(dec);
+                        });
+                      };
+                      return Object.assign({}, {
+                        title: decodeHtmlEntity(edge.node.title),
+                        description: decodeHtmlEntity(edge.node.excerpt),
+                        url: edge.node.link,
+                        guid: edge.node.id,
+                        date: edge.node.date,
+                     })
+                   })
+                },
+                query: `
+                   {
+                      allWordpressPost(
+                        limit: 100,
+                        sort: { fields: [date], order: DESC }
+                     ) {
+                         edges {
+                           node {
+                              title
+                              date(formatString: "MMMM DD, YYYY")
+                              modified(formatString: "MMMM DD, YYYY")
+                              slug
+                              link
+                              excerpt
+                              wordpress_id
+                              content
+                              id
+                           }
+                         }
+                      }
+                   }
+                `,
+                output: "/rss.xml",
+                title: "Stumbling Towards Enlightenment Feed"
+             },
+           ],
+        },
+     },
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {
@@ -49,8 +102,7 @@ module.exports = {
             // replacementUrl: "https://wpheadless.indigotree.co.uk",
         // }
       }
-    },
-    {
+    }, {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: process.env.GA_TRACKING_CODE,
@@ -73,19 +125,12 @@ module.exports = {
         siteSpeedSampleRate: 10,
         cookieDomain: "stumblingtowardsenlightenment.com",
       },
-    }
-    // `gatsby-plugin-catch-links`,
-    // {
-    //   resolve: "gatsby-remark-relative-links",
-    //   options: {
-    //     domainRegex: /http[s]*:\/\/[www.]*stumblingtowardsenlightenment\.com[/blog/]?/,
-    //   }
-    // }
-    // {
-    // resolve: 'gatsby-plugin-sw',
-    // options: {
-    //   swPath: 'src/utils/service-worker.js', // Default to 'src/sw.js'
-    // },
-  // }
-  ],
+    },
+   // {
+   //    resolve: 'gatsby-plugin-sw',
+   //    options: {
+   //       swPath: 'src/utils/service-worker.js', // Default to 'src/sw.js'
+   //    },
+   // }
+   ],
 }

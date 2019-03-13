@@ -10,6 +10,7 @@
     "gatsby-cli": "^2.4.8",
     "gatsby-image": "^2.0.29",
     "gatsby-plugin-catch-links": "^2.0.11",
+    "gatsby-plugin-feed": "^2.0.15",
     "gatsby-plugin-google-analytics": "^2.0.14",
     "gatsby-plugin-manifest": "^2.0.17",
     "gatsby-plugin-offline": "^2.0.22",
@@ -29,14 +30,14 @@
     "react-icons": "^3.4.0"
   },
   "keywords": [
-    "gatsby"
+    ""
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "npm run start:lambda && gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "serve": "gatsby serve",
+    "serve": "npm run start:lambda && gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
     "start:lambda": "netlify-lambda serve ./src/lambda"
   },
