@@ -15,6 +15,6 @@ exports.handler = function(event, context, callback) {
 	callback(null, {
       statusCode,
       headers,
-      body: 'Let there be light!'
+      body: body
     });
 }
