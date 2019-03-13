@@ -3,17 +3,17 @@
 // 'gatsby-plugin-offline',
 
 module.exports = {
-  siteMetadata: {
-    title: `Stumbling Towards Enlightenment`,
-    description: `Spiritual writings on ...`,
-    author: `Mickey Mouse`,
-    siteUrl: 'https://stumblingtowardsenlightenment.com'
-  },
-  plugins: [
-     {
-        resolve: `gatsby-plugin-feed`,
-        options: {
-           query: `
+   siteMetadata: {
+      title: `Stumbling Towards Enlightenment`,
+      description: `Spiritual writings on ...`,
+      author: `Mickey Mouse`,
+      siteUrl: 'https://stumblingtowardsenlightenment.com'
+   },
+   plugins: [
+      {
+         resolve: `gatsby-plugin-feed`,
+         options: {
+            query: `
                {
                   site {
                      siteMetadata {
@@ -23,86 +23,85 @@ module.exports = {
                      }
                   }
                }
-           `,
-           feeds: [
-             {
-                serialize: ({ query: { site, allWordpressPost } }) => {
-                   console.log('inside serialize', allWordpressPost);
-                   return allWordpressPost.edges.map(edge => {
-                      var decodeHtmlEntity = function(str) {
-                        return str.replace(/&#(\d+);/g, function(match, dec) {
-                           return String.fromCharCode(dec);
-                        });
-                      };
-                      return Object.assign({}, {
-                        title: decodeHtmlEntity(edge.node.title),
-                        description: decodeHtmlEntity(edge.node.excerpt),
-                        url: edge.node.link,
-                        guid: edge.node.id,
-                        date: edge.node.date,
+            `,
+            feeds: [
+               {
+                  serialize: ({ query: { site, allWordpressPost } }) => {
+                     return allWordpressPost.edges.map(edge => {
+                        let decodeHtmlEntity = function(str) {
+                           return str.replace(/&#(\d+);/g, function(match, dec) {
+                              return String.fromCharCode(dec);
+                           });
+                        };
+                        return Object.assign({}, {
+                           title: decodeHtmlEntity(edge.node.title),
+                           description: decodeHtmlEntity(edge.node.excerpt),
+                           url: edge.node.link,
+                           guid: edge.node.id,
+                           date: edge.node.date,
+                        })
                      })
-                   })
-                },
-                query: `
-                   {
-                      allWordpressPost(
-                        limit: 100,
-                        sort: { fields: [date], order: DESC }
-                     ) {
-                         edges {
-                           node {
-                              title
-                              date(formatString: "MMMM DD, YYYY")
-                              modified(formatString: "MMMM DD, YYYY")
-                              slug
-                              link
-                              excerpt
-                              wordpress_id
-                              content
-                              id
+                  },
+                  query: `
+                     {
+                        allWordpressPost(
+                           limit: 100,
+                           sort: { fields: [date], order: DESC }
+                        ) {
+                           edges {
+                              node {
+                                 title
+                                 date(formatString: "MMMM DD, YYYY")
+                                 modified(formatString: "MMMM DD, YYYY")
+                                 slug
+                                 link
+                                 excerpt
+                                 wordpress_id
+                                 content
+                                 id
+                              }
                            }
-                         }
-                      }
-                   }
-                `,
-                output: "/rss.xml",
-                title: "Stumbling Towards Enlightenment Feed"
-             },
-           ],
+                        }
+                     }
+                  `,
+                  output: "/rss.xml",
+                  title: "Stumbling Towards Enlightenment Feed"
+               },
+            ],
         },
      },
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `gatsby-starter-default`,
-    //     short_name: `starter`,
-    //     start_url: `/`,
-    //     background_color: `#663399`,
-    //     theme_color: `#663399`,
-    //     display: `minimal-ui`,
-    //     icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-    //   },
-    // },
+     {
+        resolve: `gatsby-plugin-manifest`,
+        options: {
+           name: `Stumbling Towards Enlightenment`,
+           short_name: `Stumbling Towards Enlightenment`,
+           start_url: `/`,
+           background_color: `#663399`,
+           theme_color: `#663399`,
+           display: `minimal-ui`,
+        },
+     },
+     {
+        resolve: `gatsby-source-wordpress`,
+        options: {
+           baseUrl: `https://stumblingtowardenlightenment.com`,
+           protocol: `https`,
+           hostingWPCOM: false,
+           verboseOutput: true,
+           useACF: false,
+           auth: {
+             htaccess_user: process.env.USERNAME,
+             htaccess_pass: process.env.PASSWORD,
+             htaccess_sendImmediately: false
+          },
+          // NOTE: here is where you can search and replace content links?
+          // searchAndReplaceContentUrls: {
+             // sourceUrl: "https://wcldn2018talk.wpengine.com",
+             // replacementUrl: "https://wpheadless.indigotree.co.uk",
+          // }
+       }
+    },
     {
-      resolve: `gatsby-source-wordpress`,
-      options: {
-         baseUrl: `https://stumblingtowardenlightenment.com`,
-         protocol: `https`,
-         hostingWPCOM: false,
-         verboseOutput: true,
-         useACF: false,
-         auth: {
-            htaccess_user: process.env.USERNAME,
-            htaccess_pass: process.env.PASSWORD,
-            htaccess_sendImmediately: false
-         },
-         // NOTE: here is where you can search and replace content links?
-         // searchAndReplaceContentUrls: {
-            // sourceUrl: "https://wcldn2018talk.wpengine.com",
-            // replacementUrl: "https://wpheadless.indigotree.co.uk",
-        // }
-      }
-    }, {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: process.env.GA_TRACKING_CODE,
