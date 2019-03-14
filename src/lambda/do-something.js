@@ -1,7 +1,7 @@
 exports.handler = function(event, context, callback) {
 
    // var body = JSON.parse(event.body);
-   console.log('hello from \"do something\"');
+   return console.log('hello from \"do something\"');
 
 	// event is submission-created
    // const body = JSON.parse(event.body).payload
