@@ -11,6 +11,7 @@ exports.handler = function(event, context, callback) {
    console.log(event.path);
    console.log(event.httpMethod);
    console.log(event.queryStringParameters);
+   console.log(event.body);
 
 	// event is submission-created
    // const body = JSON.parse(event.body).payload
