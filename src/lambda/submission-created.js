@@ -8,6 +8,9 @@ exports.handler = function(event, context, callback) {
 
    // var body = JSON.parse(event.body);
    console.log("Smush");
+   console.log(event.path);
+   console.log(event.httpMethod);
+   console.log(event.queryStringParameters);
 
 	// event is submission-created
    // const body = JSON.parse(event.body).payload
