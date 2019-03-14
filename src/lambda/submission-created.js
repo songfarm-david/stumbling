@@ -13,17 +13,14 @@ exports.handler = function(event, context, callback) {
    console.log(JSON.parse(event.body).payload);
 
    let body = JSON.parse(event.body).payload
-   let formName = body.data.form_name
-   let name, comment
+   let data = body.data
 
-   if (formName === 'subscription-form') {
-      callback(null, {
-         body: "Joy to the world!"
-      });
-      return console.log('Returning because this is for the subscription form.');
-   } else {
-      name = body.data.name
-      comment = body.data.comment
+   if (data.form_name === 'comment-form') {
+      const name = data.name
+      const comment = data.comment
+      const postTitle = data.post
+      const postSlug = data.slug
+      return console.log('We are the Champions', name, comment, postTitle, postSlug);
    }
 
 

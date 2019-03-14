@@ -20,7 +20,7 @@ export default ({ data }) => {
          <h2>{decodeHTML(data.wordpressPost.title)}</h2>
          <div dangerouslySetInnerHTML={{ __html: data.wordpressPost.content}} />
          <ShareComponent {...props} />
-         <CommentForm title={data.wordpressPost.title} />
+         <CommentForm title={data.wordpressPost.title} slug={data.wordpressPost.slug} />
       </Layout>
    )
 }
