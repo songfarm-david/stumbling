@@ -21,7 +21,6 @@
     "gatsby-source-filesystem": "^2.0.20",
     "gatsby-source-wordpress": "^3.0.33",
     "gatsby-transformer-sharp": "^2.1.13",
-    "netlify-lambda": "^1.4.2",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-custom-share": "^0.4.8",
@@ -35,7 +34,6 @@
   "license": "MIT",
   "scripts": {
     "build": "npm run start:lambda && gatsby build",
-    "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "npm run start:lambda && gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
@@ -47,5 +45,8 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "devDependencies": {
+    "netlify-lambda": "^1.4.2"
   }
 }

@@ -10,7 +10,7 @@ module.exports = {
       siteUrl: 'https://stumblingtowardsenlightenment.com'
    },
    plugins: [
-      {
+     {
          resolve: `gatsby-plugin-feed`,
          options: {
             query: `
@@ -101,7 +101,7 @@ module.exports = {
           // }
        }
     },
-    {
+     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: process.env.GA_TRACKING_CODE,
@@ -132,4 +132,6 @@ module.exports = {
    //    },
    // }
    ],
+   
+   // https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
 }

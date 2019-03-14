@@ -1,13 +1,7 @@
-const statusCode = 200
-const headers = {
-  "Access-Control-Allow-Origin" : "*",
-  "Access-Control-Allow-Headers": "Content-Type"
-}
-
 exports.handler = function(event, context, callback) {
 
    // var body = JSON.parse(event.body);
-   console.log("Smush");
+   console.log('hello from \"do something\"');
 
 	// event is submission-created
    // const body = JSON.parse(event.body).payload
