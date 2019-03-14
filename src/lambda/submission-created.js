@@ -12,7 +12,7 @@ exports.handler = function(event, context, callback) {
    let data = body.data
 
    console.log('form name?', data.form_name);
-   if (data.form_name == 'comment-form') {
+   if (body.form_name == 'comment-form') {
 
       let payload = {
          "text": "New Comment from " + process.env.URL,
