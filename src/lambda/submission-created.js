@@ -3,15 +3,16 @@ var request = require("request");
 exports.handler = function(event, context, callback) {
 
    // var body = JSON.parse(event.body);
-   console.log('path', event.path);
-   console.log('method', event.httpMethod);
-   console.log('queryStringParameters', event.queryStringParameters);
-   console.log(JSON.parse(event.body).payload);
+   // console.log('path', event.path);
+   // console.log('method', event.httpMethod);
+   // console.log('queryStringParameters', event.queryStringParameters);
+   // console.log(JSON.parse(event.body).payload);
 
    let body = JSON.parse(event.body).payload
    let data = body.data
 
-   if (data.form_name === 'comment-form') {
+   console.log('form name?', data.form_name);
+   if (data.form_name == 'comment-form') {
 
       let payload = {
          "text": "New Comment from " + process.env.URL,
