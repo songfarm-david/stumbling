@@ -17,12 +17,21 @@ export default ({ data }) => {
 
    console.log(data);
 
-   const Comment = (comment, i) => (
-      <div key={i}>
-         <p>{comment.author_name}</p>
-         <p dangerouslySetInnerHTML={{ __html: comment.content}} />
-      </div>
-   )
+   const Comment = (comments, id) => {
+      console.log(comments);
+      return comments.map((comment, i) => {
+         console.log(comment.node);
+         if (comment.node.post === id) {
+            return (
+               <div key={i}>
+                  <p>{comment.node.author_name}</p>
+                  <p>{comment.node.date}</p>
+                  <p dangerouslySetInnerHTML={{ __html: comment.node.content}} />
+               </div>
+            )
+         }
+      })
+   }
 
    return (
       <Layout title={props.title} postUrl={props.postUrl}>
@@ -31,11 +40,7 @@ export default ({ data }) => {
          <div dangerouslySetInnerHTML={{ __html: data.wordpressPost.content}} />
          <ShareComponent {...props} />
          <h3>Comments:</h3>
-         {data.allWordpressWpComments.edges.forEach((edge, i) => {
-            if (data.wordpressPost.wordpress_id === edge.node.post) {
-               return Comment(edge.node, i)
-            }
-         })}
+         {Comment(data.allWordpressWpComments.edges, data.wordpressPost.wordpress_id)}
          <CommentForm title={data.wordpressPost.title} slug={data.wordpressPost.slug} />
       </Layout>
    )
@@ -44,25 +49,25 @@ export default ({ data }) => {
 export const query = graphql`
    query($id: String!) {
       wordpressPost(id: {eq: $id}) {
-        id
-        title
-        content
-        date
-        modified
-        slug
-        link
-        wordpress_id
+         id
+         title
+         content
+         date
+         modified
+         slug
+         link
+         wordpress_id
       }
       allWordpressWpComments(sort: { fields: [date], order: ASC }) {
-          edges {
+         edges {
             node {
-              author
-              author_name
-              content
-              post
-              date
+               author
+               author_name
+               content
+               post
+               date
             }
-          }
-        }
+         }
+       }
    }
 `
