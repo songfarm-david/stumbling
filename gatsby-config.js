@@ -84,7 +84,7 @@ module.exports = {
      {
         resolve: `gatsby-source-wordpress`,
         options: {
-           baseUrl: `https://stumblingtowardenlightenment.com`,
+           baseUrl: `stumblingtowardenlightenment.com`,
            protocol: `https`,
            hostingWPCOM: false,
            verboseOutput: true,
@@ -132,6 +132,6 @@ module.exports = {
    //    },
    // }
    ],
-   
+
    // https://www.gatsbyjs.org/docs/api-proxy/#advanced-proxying
 }

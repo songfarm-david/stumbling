@@ -27,6 +27,15 @@ exports.createPages = ({ graphql, actions }) => {
 			      	}
 					}
 				}
+            allWordpressWpComments {
+               edges {
+                  node {
+                     author
+                     content
+                     post
+                  }
+               }
+            }
 			}
 		`).then(result => {
 			result.data.allWordpressPost.edges.forEach(({ node }) => {
@@ -36,7 +45,8 @@ exports.createPages = ({ graphql, actions }) => {
 					context: {
 						id: node.id,
 						title: node.slug,
-						content: node.content
+						content: node.content,
+                  comments: result.data.allWordpressWpComments
 					}
 				})
 			})

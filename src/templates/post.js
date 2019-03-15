@@ -14,12 +14,28 @@ export default ({ data }) => {
       content: data.wordpressPost.content,
       postUrl: data.wordpressPost.link
    }
+
+   console.log(data);
+
+   const Comment = (comment, i) => (
+      <div key={i}>
+         <p>{comment.author_name}</p>
+         <p dangerouslySetInnerHTML={{ __html: comment.content}} />
+      </div>
+   )
+
    return (
       <Layout title={props.title} postUrl={props.postUrl}>
          <ShareComponent {...props} />
          <h2>{decodeHTML(data.wordpressPost.title)}</h2>
          <div dangerouslySetInnerHTML={{ __html: data.wordpressPost.content}} />
          <ShareComponent {...props} />
+         <h3>Comments:</h3>
+         {data.allWordpressWpComments.edges.forEach((edge, i) => {
+            if (data.wordpressPost.wordpress_id === edge.node.post) {
+               return Comment(edge.node, i)
+            }
+         })}
          <CommentForm title={data.wordpressPost.title} slug={data.wordpressPost.slug} />
       </Layout>
    )
@@ -35,6 +51,18 @@ export const query = graphql`
         modified
         slug
         link
+        wordpress_id
       }
+      allWordpressWpComments(sort: { fields: [date], order: ASC }) {
+          edges {
+            node {
+              author
+              author_name
+              content
+              post
+              date
+            }
+          }
+        }
    }
 `
