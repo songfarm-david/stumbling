@@ -57,7 +57,8 @@ exports.handler = async (event, context, callback) => {
          request.post(
             {
                url: url,
-               body: JSON.stringify({comment})
+               body: comment,
+               json: true
             },
             function callback(err, httpResponse, body) {
                if (err) {
