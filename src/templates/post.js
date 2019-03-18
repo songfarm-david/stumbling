@@ -15,7 +15,8 @@ export default ({ data }) => {
       postUrl: data.wordpressPost.link
    }
 
-   console.log(data);
+   // print all query data
+   // console.log(data);
 
    const Comment = (comments, id) => {
       // console.log(comments);
