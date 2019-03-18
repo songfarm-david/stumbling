@@ -46,14 +46,14 @@ exports.handler = async (event, context, callback) => {
          //    }
          // };
 
-         let author_name = body.data.name
-         let author_comment = body.data.comment
-         let id = body.data.postId
+         let author_name = encodeURI(body.data.name)
+         let author_comment = encodeURI(body.data.comment)
+         let id = encodeURI(body.data.postId)
 
          // TODO: encode the URL here
          let commentStr = `author_name=${author_name}&content=${author_comment}&post=${id}`
 
-         console.log('logging now:', url, commentStr);
+         console.log('logging now:', url + commentStr);
 
          request.post({ url, body: commentStr },
             function callback(err, httpResponse, body) {
@@ -65,9 +65,6 @@ exports.handler = async (event, context, callback) => {
                return console.log('hello?', err, httpResponse, body)
             }
          );
-
-
-         return;
 
       }
 
