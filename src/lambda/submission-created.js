@@ -46,16 +46,21 @@ exports.handler = async (event, context, callback) => {
                "slug": body.data.slug
             }
          };
-
+         console.log('type of comment?', typeof comment);
          console.log('comment:', comment);
 
          // postComment(url, comment);
 
          // send comment to wordpress api
          // make a post request
-         request.post({url: url, body: comment}, function(error, response, body){
-           console.log(body)
-         });
+         request.post({
+            url: url,
+            body: { comment: comment }},
+            function(err, httpResponse, body) {
+               console.log('hello?', error, response, body)
+            }
+         );
+
 
          return;
 
