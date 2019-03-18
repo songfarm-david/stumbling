@@ -23,9 +23,9 @@ exports.handler = async (event, context, callback) => {
    //    }
    //
    //    console.log('Made it past the condition!');
-   //
-   //    let body = JSON.parse(event.body).payload;
-   //
+   
+      let body = JSON.parse(event.body).payload;
+
       // if from comment form
       // TODO: comment-form here and in form actions should be put in env var
       if (body.form_name == 'comment-form') {

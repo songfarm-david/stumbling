@@ -18,9 +18,9 @@ export default ({ data }) => {
    console.log(data);
 
    const Comment = (comments, id) => {
-      console.log(comments);
+      // console.log(comments);
       return comments.map((comment, i) => {
-         console.log(comment.node);
+         // console.log(comment.node);
          if (comment.node.post === id) {
             return (
                <div key={i}>
