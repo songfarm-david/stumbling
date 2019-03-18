@@ -1,37 +1,69 @@
 var request = require("request");
 
-exports.handler = function(event, context, callback) {
+console.log(request.post);
+// function postComment() {
+//    console.log('postComment called');
+// }
 
-   // var body = JSON.parse(event.body);
-   // console.log('path', event.path);
-   // console.log('method', event.httpMethod);
-   // console.log('queryStringParameters', event.queryStringParameters);
-   // console.log(JSON.parse(event.body).payload);
+exports.handler = async (event, context, callback) => {
 
-   let body = JSON.parse(event.body).payload
+   // try {
+   //
+   //    console.log('About to "TRY"');
+   //
+   //    // Do not handle requests if the request
+   //    // type is something other than `POST` or
+   //    // if the request body is empty.
+   //    if (event.httpMethod !== 'POST' || !event.body) {
+   //       callback(null, {
+   //         statusCode: 400,
+   //         body: JSON.stringify({ status: 'Bad Request' }),
+   //       });
+   //       return;
+   //    }
+   //
+   //    console.log('Made it past the condition!');
+   //
+   //    let body = JSON.parse(event.body).payload;
+   //
+      // if from comment form
+      // TODO: comment-form here and in form actions should be put in env var
+      if (body.form_name == 'comment-form') {
+         console.log('Submission passed as a comment-form comment');
 
-   // checks the
-   if (body.form_name == 'comment-form') {
+         let {URL, WP_COMMENTS} = process.env;
+         let url = URL + WP_COMMENTS;
 
-      let payload = {
-         "name": body.data.name,
-         "comment": body.data.comment
-         "postTitle": body.data.post,
-         "postSlug": body.data.slug
+         console.log('url to send:', url);
+
+         let comment = {
+            "author_name": body.data.name,
+            "content": body.data.comment,
+            "data": body.data.date,
+            "post": body.data.post,
+            "url": url + body.data.slug,
+            "meta": {
+               "slug": body.data.slug
+            }
+         };
+
+         console.log('comment:', comment);
+
+         // postComment(url, comment);
+
+         // send comment to wordpress api
+         // make a post request
+         request.post({url: url, body: comment});
+
+         return;
+
       }
 
-      console.log(payload);
-
-      // send comment to wordpress api
-      // make a post request
-      let url = process.env.URL + "/wp-json/wp/v2/comments"
-      request.post({url: url, body: payload}, callback(err, http, response){
-         console.log(err);
-         console.log(http);
-         console.log(response);
-      })
-   }
-
-
+   // } catch (error) {
+   //    callback(null, {
+   //    statusCode: 500,
+   //    body: JSON.stringify({ status: 'error' }),
+   //  });
+   // }
 
 }
