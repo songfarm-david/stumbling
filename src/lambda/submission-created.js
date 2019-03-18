@@ -51,7 +51,7 @@ exports.handler = async (event, context, callback) => {
          // postComment(url, comment);
 
          // NOTE: Comment API: https://developer.wordpress.org/rest-api/reference/comments/#create-a-comment
-         request.post({ url, qs: JSON.stringify(comment) },
+         request.post({ url, qsParseOptions: qs.parse(comment) },
             function callback(err, httpResponse, body) {
                console.log('anything')
                // if (err) {
