@@ -46,10 +46,11 @@ exports.handler = async (event, context, callback) => {
          //    }
          // };
 
-         let author_name = urlencode('utf8', body.data.name)
-         let author_comment = urlencode('utf8', body.data.comment)
+         let author_name = body.data.name
+         let author_comment = body.data.comment
          let id = body.data.postId
 
+         // TODO: encode the URL here
          let commentStr = `author_name=${author_name}&content=${author_comment}&post=${id}`
 
          console.log('logging now:', url, commentStr);
