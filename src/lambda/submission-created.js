@@ -39,7 +39,7 @@ exports.handler = async (event, context, callback) => {
          let comment = {
             "author_name": body.data.name,
             "content": body.data.comment,
-            "date": body.data.date,
+            "date": body.created_at,
             "post": body.data.post,
             "url": url + '/' + body.data.slug,
             "meta": {
@@ -53,7 +53,9 @@ exports.handler = async (event, context, callback) => {
 
          // send comment to wordpress api
          // make a post request
-         request.post({url: url, body: comment});
+         request.post({url: url, body: comment}, function(error, response, body){
+           console.log(body)
+         });
 
          return;
 
