@@ -56,7 +56,7 @@ exports.handler = async (event, context, callback) => {
          // NOTE: Comment API: https://developer.wordpress.org/rest-api/reference/comments/#create-a-comment
          request.post({
             url: url,
-            body: {comment}},
+            body: JSON.stringify({comment})},
             function(err, httpResponse, body) {
                if (err) {
                   console.error('upload failed:', err)
