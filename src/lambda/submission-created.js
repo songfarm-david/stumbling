@@ -32,7 +32,7 @@ exports.handler = async (event, context, callback) => {
          console.log('Submission passed as a comment-form comment');
 
          let {URL, WP_COMMENTS} = process.env;
-         let url = URL + '/' + WP_COMMENTS;
+         let url = URL + '/' + WP_COMMENTS + "/?";
 
          console.log('url to send:', url);
 
