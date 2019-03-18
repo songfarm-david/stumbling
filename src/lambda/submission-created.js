@@ -50,7 +50,7 @@ exports.handler = async (event, context, callback) => {
          // postComment(url, comment);
 
          // NOTE: Comment API: https://developer.wordpress.org/rest-api/reference/comments/#create-a-comment
-         request.post({ url: url, body: comment },
+         request.post({ url: url, body: comment, json: true },
             function callback(err, httpResponse, body) {
                console.log('anything')
                // if (err) {
