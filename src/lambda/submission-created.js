@@ -1,4 +1,5 @@
 var request = require("request");
+var urlencode = require('urlencode');
 
 console.log(request.post);
 // function postComment() {
@@ -31,11 +32,9 @@ exports.handler = async (event, context, callback) => {
       if (body.form_name == 'comment-form') {
          console.log('Submission passed as a comment-form comment');
 
-         let {WP_COMMENTS} = process.env;
-         let url = WP_COMMENTS;
-
+         let url = process.env.WP_COMMENTS + "?";
          console.log('url to send:', url);
-
+         console.log('body:', body);
          // let comment = {
          //    "author_name": body.data.name,
          //    "content": body.data.comment,
@@ -47,11 +46,11 @@ exports.handler = async (event, context, callback) => {
          //    }
          // };
 
-         let commentStr = `
-            author_name=${body.data.name}&
-            content=${body.data.comment}&
-            post=${body.data.postId}
-         `
+         let author_name = urlencode('utf8', body.data.name)
+         let author_comment = urlencode('utf8', body.data.comment)
+         let id = body.data.postId
+
+         let commentStr = `author_name=${author_name}&content=${author_comment}&post=${id}`
 
          console.log(url, commentStr);
 
