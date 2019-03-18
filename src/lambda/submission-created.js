@@ -31,8 +31,8 @@ exports.handler = async (event, context, callback) => {
       if (body.form_name == 'comment-form') {
          console.log('Submission passed as a comment-form comment');
 
-         let {URL, WP_COMMENTS} = process.env;
-         let url = URL + '/' + WP_COMMENTS + "/?";
+         let {WP_COMMENTS} = process.env;
+         let url = WP_COMMENTS;
 
          console.log('url to send:', url);
 
@@ -46,24 +46,17 @@ exports.handler = async (event, context, callback) => {
                "slug": body.data.slug
             }
          };
-         console.log('type of comment?', typeof comment);
-         console.log('comment:', comment);
 
          // postComment(url, comment);
 
-         // send comment to wordpress api
-         // make a post request
          // NOTE: Comment API: https://developer.wordpress.org/rest-api/reference/comments/#create-a-comment
-         request.post(
-            {
-               url: url,
-               body: comment,
-               json: true
-            },
+         request.post({ url: url, body: comment },
             function callback(err, httpResponse, body) {
-               if (err) {
-                  return console.error('upload failed:', err)
-               }
+               console.log('anything')
+               // if (err) {
+               //    return console.error('upload failed:', err)
+               // }
+               console.log('hello?', err, httpResponse, body)
                return console.log('hello?', err, httpResponse, body)
             }
          );
