@@ -52,7 +52,7 @@ exports.handler = async (event, context, callback) => {
 
          let commentStr = `author_name=${author_name}&content=${author_comment}&post=${id}`
 
-         console.log(url, commentStr);
+         console.log('logging now:', url, commentStr);
 
          request.post({ url, body: commentStr },
             function callback(err, httpResponse, body) {
