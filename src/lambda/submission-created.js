@@ -36,22 +36,26 @@ exports.handler = async (event, context, callback) => {
 
          console.log('url to send:', url);
 
-         let comment = {
-            "author_name": body.data.name,
-            "content": body.data.comment,
-            "date": body.created_at,
-            "post": body.data.post,
-            "url": url + '/' + body.data.slug,
-            "meta": {
-               "slug": body.data.slug
-            }
-         };
+         // let comment = {
+         //    "author_name": body.data.name,
+         //    "content": body.data.comment,
+         //    "date": body.created_at,
+         //    "post": body.data.postId,
+         //    "url": url + '/' + body.data.slug,
+         //    "meta": {
+         //       "slug": body.data.slug
+         //    }
+         // };
 
-         console.log(JSON.stringify({comment}));
-         // postComment(url, comment);
+         let commentStr = `
+            author_name=${body.data.name}&
+            content=${body.data.comment}&
+            post=${body.data.postId}
+         `
 
-         // NOTE: Comment API: https://developer.wordpress.org/rest-api/reference/comments/#create-a-comment
-         request.post({ url, json: true, body: JSON.stringify(comment) },
+         console.log(url, commentStr);
+
+         request.post({ url, body: commentStr },
             function callback(err, httpResponse, body) {
                console.log('anything')
                // if (err) {

@@ -42,7 +42,7 @@ export default ({ data }) => {
          <ShareComponent {...props} />
          <h3>Comments:</h3>
          {Comment(data.allWordpressWpComments.edges, data.wordpressPost.wordpress_id)}
-         <CommentForm title={data.wordpressPost.title} slug={data.wordpressPost.slug} />
+         <CommentForm title={data.wordpressPost.title} postId={data.wordpressPost.wordpress_id} />
       </Layout>
    )
 }

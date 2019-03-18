@@ -7,8 +7,8 @@ const CommentForm = (props) => (
 			<input type="hidden" name="bot-field" />
 			<input type="hidden" name="form-name" value="comment-form" />
 
-			<input name="post" type="hidden" value={props.title} />
-			<input name="slug" type="hidden" value={props.slug} />
+			<input name="postId" type="hidden" value={props.postId} />
+
 			<div>
 				<label htmlFor="name">Name</label>
 				<input type="text" name="name" id="name" required />
