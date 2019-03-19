@@ -9,9 +9,7 @@ exports.handler = async (event, context, callback) => {
    if (body.form_name == 'comment-form') {
 
       var wp = new WPAPI({
-         endpoint: 'https://stumblingtowardsenlightenment.com/wp-json',
-         username: 'bobo',
-         password: 'mr?8(+JSx7z4'
+         endpoint: 'https://stumblingtowardsenlightenment.com/wp-json'
       });
 
       // let author_name = encodeURI(body.data.name)
@@ -27,12 +25,12 @@ exports.handler = async (event, context, callback) => {
          post: body.data.postId
       }
 
-      wp.comments().create({
-         author_name: bra,
-         content: bro,
-         post: id
-      }, function(args) { console.log(args) }).then(function( response ) {
+      wp.comments().create(comment, function(args) {
+         console.log(args) }
+      ).then(function( response ) {
          console.log( response );
+      }).catch(function (err) {
+         console.log(err);
       });
 
    }
