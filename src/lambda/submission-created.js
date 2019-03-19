@@ -1,5 +1,6 @@
 var request = require("request");
 var urlencode = require('urlencode');
+var WP_API = require( 'wpapi' );
 
 console.log(request.post);
 // function postComment() {
@@ -27,14 +28,17 @@ exports.handler = async (event, context, callback) => {
 
       let body = JSON.parse(event.body).payload;
       console.log(body);
+
       // if from comment form
       // TODO: comment-form here and in form actions should be put in env var
       if (body.form_name == 'comment-form') {
-         console.log('Submission passed as a comment-form comment');
+         // console.log('Submission passed as a comment-form comment');
 
-         let url = process.env.WP_COMMENTS + "?";
-         console.log('url to send:', url);
+         // let url = process.env.WP_COMMENTS + "?";
+         // console.log('url to send:', url);
+
          console.log('body:', body);
+
          // let comment = {
          //    "author_name": body.data.name,
          //    "content": body.data.comment,
@@ -55,16 +59,31 @@ exports.handler = async (event, context, callback) => {
 
          console.log('logging now:', url + commentStr);
 
-         request.post({ url, body: commentStr },
-            function callback(err, httpResponse, body) {
-               console.log('anything')
-               // if (err) {
-               //    return console.error('upload failed:', err)
-               // }
-               console.log('hello?', err, httpResponse, body)
-               return console.log('hello?', err, httpResponse, body)
-            }
-         );
+         var wp = new WPAPI({
+            endpoint: 'https://stumblingtowardsenlightenment.com/wp-json',
+            username: 'bobo',
+            password: 'mr?8(+JSx7z4'
+         });
+
+         wp.comments().create({
+            author_name: author_name,
+            content: author_comment,
+            post: id
+         }).then(function( response ) {
+            console.log( response );
+         });
+
+
+         // request.post({ url, body: commentStr },
+         //    function callback(err, httpResponse, body) {
+         //       console.log('anything')
+         //       // if (err) {
+         //       //    return console.error('upload failed:', err)
+         //       // }
+         //       console.log('hello?', err, httpResponse, body)
+         //       return console.log('hello?', err, httpResponse, body)
+         //    }
+         // );
 
       }
 
