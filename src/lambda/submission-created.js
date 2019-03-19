@@ -1,5 +1,6 @@
 var WPAPI = require( 'wpapi' );
 
+
 exports.handler = async (event, context, callback) => {
 
    let body = JSON.parse(event.body).payload;
@@ -8,9 +9,11 @@ exports.handler = async (event, context, callback) => {
    // TODO: comment-form here and in form actions should be put in env var
    if (body.form_name == 'comment-form') {
 
-      var wp = new WPAPI({
-         endpoint: 'https://stumblingtowardsenlightenment.com/wp-json'
-      });
+      // var wp = new WPAPI({
+      //    endpoint: 'https://stumblingtowardsenlightenment.com/wp-json',
+      //    username: 'bobo',
+      //    password: 'mr?8(+JSx7z4'
+      // });
 
       // let author_name = encodeURI(body.data.name)
       // let author_comment = encodeURI(body.data.comment)
@@ -25,13 +28,25 @@ exports.handler = async (event, context, callback) => {
          post: body.data.postId
       }
 
-      wp.comments().create(comment, function(args) {
-         console.log(args) }
-      ).then(function( response ) {
-         console.log( response );
-      }).catch(function (err) {
-         console.log(err);
-      });
+      var apiPromise = WPAPI.discover( 'https://stumblingtowardsenlightenment.com' )
+      apiPromise.then(function(site) {
+         site.comments().create(comment, function(err, data) {
+            console.log(err, data)
+         }).then(function( response ) {
+            console.log( response );
+         }).catch(function( err ) {
+            console.log(err);
+         });
+      })
+
+
+      // wp.comments().create(comment, function(err, data) {
+      //    console.log(err, data)
+      // }).then(function( response ) {
+      //    console.log( response );
+      // }).catch(function( err ) {
+      //    console.log(err);
+      // });
 
    }
 
