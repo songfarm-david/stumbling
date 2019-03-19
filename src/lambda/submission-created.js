@@ -8,8 +8,8 @@ exports.handler = async (event, context, callback) => {
    // TODO: comment-form here and in form actions should be put in env var
    if (body.form_name == 'comment-form') {
 
-      let bra = encodeURI(body.data.name)
-      let bro = encodeURI(body.data.comment)
+      let author_name = encodeURI(body.data.name)
+      let author_comment = encodeURI(body.data.comment)
       let id = encodeURI(body.data.postId)
 
       // TODO: encode the URL here
