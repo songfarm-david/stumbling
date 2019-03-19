@@ -1,8 +1,8 @@
-var request = require("request");
-var urlencode = require('urlencode');
+// var request = require("request");
+// var urlencode = require('urlencode');
 var WP_API = require( 'wpapi' );
 
-console.log(request.post);
+// console.log(request.post);
 // function postComment() {
 //    console.log('postComment called');
 // }
@@ -27,7 +27,8 @@ exports.handler = async (event, context, callback) => {
    //    console.log('Made it past the condition!');
 
       let body = JSON.parse(event.body).payload;
-      console.log(body);
+      // console.log(body);
+      console.log('body:', body);
 
       // if from comment form
       // TODO: comment-form here and in form actions should be put in env var
@@ -37,7 +38,6 @@ exports.handler = async (event, context, callback) => {
          // let url = process.env.WP_COMMENTS + "?";
          // console.log('url to send:', url);
 
-         console.log('body:', body);
 
          // let comment = {
          //    "author_name": body.data.name,
@@ -55,11 +55,10 @@ exports.handler = async (event, context, callback) => {
          let id = encodeURI(body.data.postId)
 
          // TODO: encode the URL here
-         let commentStr = `author_name=${author_name}&content=${author_comment}&post=${id}`
+         // let commentStr = `author_name=${author_name}&content=${author_comment}&post=${id}`
+         console.log('vars:', author_name, author_comment, id);
 
-         console.log('logging now:', url + commentStr);
-
-         var wp = new WPAPI({
+         var wp = new WP_API({
             endpoint: 'https://stumblingtowardsenlightenment.com/wp-json',
             username: 'bobo',
             password: 'mr?8(+JSx7z4'

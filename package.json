@@ -37,7 +37,7 @@
   "scripts": {
     "build": "netlify-lambda build src/lambda && gatsby build",
     "start": "npm run develop",
-    "serve": "npm run start:lambda && gatsby serve",
+    "serve": "netlify-lambda serve src/lambda",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
     "start:lambda": "netlify-lambda serve ./src/lambda",
     "run functions": "netlify-lambda build src/lambda && netlify lambda serve src/lambda"
