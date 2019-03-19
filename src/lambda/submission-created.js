@@ -1,4 +1,4 @@
-var WP_API = require( 'wpapi' );
+var WPAPI = require( 'wpapi' );
 
 exports.handler = async (event, context, callback) => {
 
@@ -15,7 +15,7 @@ exports.handler = async (event, context, callback) => {
       // TODO: encode the URL here
       console.log('vars:', author_name, author_comment, id);
 
-      var wp = new WP_API({
+      var wp = new WPAPI({
          endpoint: 'https://stumblingtowardsenlightenment.com/wp-json',
          username: 'bobo',
          password: 'mr?8(+JSx7z4'
