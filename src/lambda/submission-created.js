@@ -1,4 +1,4 @@
-var WPAPI = require( 'wpapi' );
+// var WPAPI = require( 'wpapi' );
 
 exports.handler = async (event, context, callback) => {
 
@@ -15,19 +15,19 @@ exports.handler = async (event, context, callback) => {
       // TODO: encode the URL here
       console.log('vars:', author_name, author_comment, id);
 
-      var wp = new WPAPI({
-         endpoint: 'https://stumblingtowardsenlightenment.com/wp-json',
-         username: 'bobo',
-         password: 'mr?8(+JSx7z4'
-      });
-
-      wp.comments().create({
-         author_name: bra,
-         content: bro,
-         post: id
-      }).then(function( response ) {
-         console.log( response );
-      });
+      // var wp = new WPAPI({
+      //    endpoint: 'https://stumblingtowardsenlightenment.com/wp-json',
+      //    username: 'bobo',
+      //    password: 'mr?8(+JSx7z4'
+      // });
+      //
+      // wp.comments().create({
+      //    author_name: bra,
+      //    content: bro,
+      //    post: id
+      // }).then(function( response ) {
+      //    console.log( response );
+      // });
 
    }
 
