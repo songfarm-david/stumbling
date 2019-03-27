@@ -7,10 +7,9 @@
 
 ##comments
 WordPress comment hooks: https://developer.wordpress.org/rest-api/reference/comments/#list-comments
-
+npm request: https://www.npmjs.com/package/request
 ###function examples
 Yay! https://github.com/netlify/functions
-
 ###troubleshooting comments
 - could post question to gatsby-source-wordpress: https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-wordpress
 - could post issue to gatsby repo: https://github.com/gatsbyjs/gatsby/issues

@@ -1,5 +1,7 @@
 // var WPAPI = require( 'wpapi' );
 
+// can use npm request: https://www.npmjs.com/package/request
+
 // form submission event triggered from Netlify
 exports.handler = async (event, context, callback) => {
 
