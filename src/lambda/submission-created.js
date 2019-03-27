@@ -1,13 +1,20 @@
-var WPAPI = require( 'wpapi' );
+// var WPAPI = require( 'wpapi' );
 
 // form submission event triggered from Netlify
 exports.handler = async (event, context, callback) => {
 
-   let body = JSON.parse(event.body).payload;
-   console.log('body:', body);
+   let body
+   if (event.body.payload !== '') {
+      // body = JSON.parse(event.body).payload;
+      console.log('body:', body);
+      callback(null, {
+         statusCode: 200,
+         body: JSON.stringify(event.body).payload
+      })
+   }
 
    // TODO: comment-form here and in form actions should be put in env var
-   if (body.form_name == 'comment-form') {
+   // if (body && body.form_name == 'comment-form') {
 
       // var wp = new WPAPI({
       //    endpoint: 'https://stumblingtowardsenlightenment.com/wp-json',
@@ -15,25 +22,25 @@ exports.handler = async (event, context, callback) => {
       //    password: 'mr?8(+JSx7z4'
       // });
 
-      let author_name = encodeURI(body.data.name)
-      let author_comment = encodeURI(body.data.comment)
-      let id = encodeURI(body.data.postId)
+      // let author_name = encodeURI(body.data.name)
+      // let author_comment = encodeURI(body.data.comment)
+      // let id = encodeURI(body.data.postId)
 
       // TODO: encode the URL here
       // console.log('vars:', author_name, author_comment, id);
 
-      let comment = {
-         author_name: encodeURI(author_name),
-         author_comment: encodeURI(author_name),
-         post: body.data.postId
-      }
+      // let comment = {
+      //    author_name: encodeURI(author_name),
+      //    author_comment: encodeURI(author_name),
+      //    // post: body.data.postId
+      // }
 
-      callback(null, {
-         statusCode: 200,
-         body: "End of comment form condition"
-      })
+      // callback(null, {
+      //    statusCode: 200,
+      //    body: "End of comment form condition"
+      // })
 
-      return
+      // return
 
       // var apiPromise = WPAPI.discover( 'https://stumblingtowardsenlightenment.com' )
       // apiPromise.then(function(site) {
@@ -52,32 +59,32 @@ exports.handler = async (event, context, callback) => {
       //    console.log( response );
       // }).catch(function( err ) {
       //    console.log(err);
-      // });      
+      // });
 
-   }
+   // }
 
-   if (body.form_name == 'subscription-form') {
+   // if (body && body.form_name == 'subscription-form') {
+   //
+   //    // get name and email from form body
+   //    let subscribe_name = encodeURI(body.data.name)
+   //    let subscribe_email = encodeURI(body.data.email)
+   //
+   //    // setup POST request to Mailchimp
+   //    // in what format does mailChimp require?
+   //    // what is API endpoint URI?
+   //
+   //    callback(null, {
+   //       statusCode: 200,
+   //       body: "End of subscription form condition"
+   //    })
+   //
+   //    return
+   //
+   // }
 
-      // get name and email from form body
-      let subscribe_name = encodeURI(body.data.name)
-      let subscribe_email = encodeURI(body.data.email)
-
-      // setup POST request to Mailchimp
-      // in what format does mailChimp require?
-      // what is API endpoint URI?
-
-      callback(null, {
-         statusCode: 200,
-         body: "End of subscription form condition"
-      })
-
-      return
-
-   }
-
-   callback(null, {
-      statusCode: 200,
-      body: "Made it to the end of submission-created.js"
-   })
+   // callback(null, {
+   //    statusCode: 200,
+   //    body: JSON.stringify(event)
+   // })
 
 }
