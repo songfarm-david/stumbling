@@ -8,6 +8,11 @@
 ##comments
 WordPress comment hooks: https://developer.wordpress.org/rest-api/reference/comments/#list-comments
 npm request: https://www.npmjs.com/package/request
+fetch API: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Supplying_request_options
+
+***todo***
+make a function (not using the netlify export module) that sets up and then does a post request to the WordPress REST API. The point is to successfully add a comment with or without needing to authenticate the request.
+
 ###function examples
 Yay! https://github.com/netlify/functions
 ###troubleshooting comments
