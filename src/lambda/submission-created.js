@@ -1,4 +1,4 @@
-import postData from 'fetchUrl'
+import postData from './fetchUrl'
 // var WPAPI = require( 'wpapi' );
 // can use npm request: https://www.npmjs.com/package/request
 
@@ -17,11 +17,20 @@ exports.handler = async (event, context, callback) => {
 
    // NOTE: what is URL endpoint exactly?
    const url = 'https://stumblingtowardsenlightenment.com/wp-json'
-   let data = JSON.parse(event.body)
+   let data, reply
+
+   if (event.body) {
+      console.log("Yes there is an event:", event);
+      reply = "Yes there is an event.body: " + event
+      // data = JSON.parse(event.body)
+   } else {
+      console.log("There is not an event body");
+      reply = "There is not an event body"
+   }
 
    callback(null, {
       statusCode: 200,
-      body: "Hello, Monkey. Here is some data: " + data + ". And here is the URL: " + url
+      body: "Hello, Monkey. Here is the reply: " + reply
    })
 
 }
