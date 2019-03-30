@@ -21,7 +21,7 @@ exports.handler = async (event, context, callback) => {
 
    if (event.body) {
       console.log("Yes there is an event:", event);
-      reply = "Yes there is an event.body: " + event
+      reply = "Yes there is an event: " + event
       // data = JSON.parse(event.body)
    } else {
       console.log("There is not an event body");
@@ -30,7 +30,7 @@ exports.handler = async (event, context, callback) => {
 
    callback(null, {
       statusCode: 200,
-      body: "Hello, Monkey. Here is the reply: " + reply
+      body: "Hello, Monkey. Here is the event: " + JSON.stringify(event, null, 4)
    })
 
 }
