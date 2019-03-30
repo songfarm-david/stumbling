@@ -19,8 +19,10 @@ exports.handler = async (event, context, callback) => {
    const url = 'https://stumblingtowardsenlightenment.com/wp-json'
    let data, reply
 
+   let fuckMe = JSON.stringify(event.body).payload
+
    if (event.body) {
-      console.log("Yes there is an event:", JSON.stringify(event.body, null, 4));
+      console.log("Yes there is an event:", fuckMe
       // reply = "Yes there is an event: " + event
       // data = JSON.parse(event.body)
    } else {
