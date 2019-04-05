@@ -33,7 +33,7 @@ exports.handler = async (event, context, callback) => {
 
       if (payload.form_name == 'comment-form') {
          console.log('this is a comment');
-         url = 'https://stumblingtowardsenlightenment.com/wp/v2/comments' // /comments
+         url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
          data = {
             postId: payload.data.postId,
             name: payload.data.name,
@@ -42,17 +42,18 @@ exports.handler = async (event, context, callback) => {
          console.log(url, data);
       }
 
-      let y = postData(url, data)
-      .then((val) => console.log('This is what postData returned: ', val))
-      .catch((e) => console.log(e))
-      console.log(y);
-      // let dataObj = {
-      //    name: (payload.data.name ? payload.data.name : ''),
-      //    email: (payload.data.email ? payload.data.email : ''),
-      //    comment: (payload.data.comment ? payload.data.comment : '')
-      // }
-      // console.log("this is my payload:", payload);
-      // console.log('This is my data object: ', dataObj);
+      // TODO: Psuedo Code
+      // fetch JWT token creation url and get return value (token)
+      // then use that token in a call to the WP-REST API to authenticate
+      // and add new comment to post ID
+      fetch('//stumblingtowardsenlightenment.com/wp-json/jwt-auth/v1/token')
+      .then(response => {
+         console.log("Did we get a response? ", response);
+      })
+      .catch(error => {
+         console.log("error: ", error);
+         throw new Error('Something bad happened.', error)
+      })
 
    } catch (e) {
       callback(null, {

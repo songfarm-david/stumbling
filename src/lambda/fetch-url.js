@@ -24,7 +24,10 @@ function postData(url = '', data = {}) {
 		console.log("Success:", JSON.stringify(response))
 		return JSON.stringify(response)
 	})
-	.catch(error => console.log("Error:", error, error.message))
+	.catch(error => {
+		console.log("Error:", error, error.message)
+		throw new Error('In the catch.', error)
+	})
 }
 
 

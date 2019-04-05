@@ -84,16 +84,16 @@ module.exports = {
      {
         resolve: `gatsby-source-wordpress`,
         options: {
-           baseUrl: `stumblingtowardenlightenment.com`,
+           baseUrl: `stumblingtowardsenlightenment.com`,
            protocol: `https`,
            hostingWPCOM: false,
            verboseOutput: true,
            useACF: false,
-           auth: {
-             htaccess_user: process.env.USERNAME,
-             htaccess_pass: process.env.PASSWORD,
-             htaccess_sendImmediately: false
-          },
+          //  auth: {
+          //    htaccess_user: process.env.USERNAME,
+          //    htaccess_pass: process.env.PASSWORD,
+          //    htaccess_sendImmediately: false
+          // },
           // NOTE: here is where you can search and replace content links?
           // searchAndReplaceContentUrls: {
              // sourceUrl: "https://wcldn2018talk.wpengine.com",
