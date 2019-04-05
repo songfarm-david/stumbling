@@ -17,7 +17,7 @@ exports.handler = async (event, context, callback) => {
    // const url = 'https://stumblingtowardsenlightenment.com/wp-json'
    // let data, reply
 
-   let payload = JSON.stringify(event.body)
+   let payload = JSON.stringify(event.body).payload
 
    console.log("this is my payload:", payload);
 
