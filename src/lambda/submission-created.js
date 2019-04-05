@@ -17,16 +17,39 @@ exports.handler = async (event, context, callback) => {
    //    });
    // }
 
+   let url, data
+
    try {
+
       const payload = JSON.parse(event.body).payload
-      let data = payload.data;
-      let dataObj = {
-         name: (data.name ? data.name : ''),
-         email: (data.email ? data.email : ''),
-         comment: (data.comment ? data.comment : '')
+
+      if (payload.form_name == 'subscription-form') {
+         // set url (use ENV VAR)
+         url = 'mailchimp endpoint'
+         data = {
+            // ...
+         }
       }
-      console.log("this is my payload:", payload);
-      console.log('This is my data object: ', dataObj);
+
+      if (payload.form_name == 'comment-form') {
+         url = 'https://stumblingtowardsenlightenment.com/wp-json' // /comments
+         data = {
+            postId: payload.data.postId,
+            name: payload.data.name,
+            comment: payload.data.comment
+         }
+      }
+
+      postData(url, data).then((val) => console.log('This is what postData returned: ', val))
+
+      // let dataObj = {
+      //    name: (payload.data.name ? payload.data.name : ''),
+      //    email: (payload.data.email ? payload.data.email : ''),
+      //    comment: (payload.data.comment ? payload.data.comment : '')
+      // }
+      // console.log("this is my payload:", payload);
+      // console.log('This is my data object: ', dataObj);
+
    } catch (e) {
       callback(null, {
          statusCode: 500,

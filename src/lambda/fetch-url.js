@@ -20,7 +20,10 @@ function postData(url = '', data = {}) {
 		}
 		throw new Error('Network response was not ok.', response)
 	}) // parses JSON response into native Javascript objects
-	.then(response => console.log("Success:", JSON.stringify(response)))
+	.then(response => {
+		console.log("Success:", JSON.stringify(response))
+		return JSON.stringify(response)
+	})
 	.catch(error => console.log("Error:", error, error.message))
 }
 
