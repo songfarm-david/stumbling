@@ -1,5 +1,7 @@
 import postData from './fetch-url'
 
+// NOTE: article with good example fetch request: https://www.netlify.com/blog/2018/03/29/jamstack-architecture-on-netlify-how-identity-and-functions-work-together/
+
 // form submission event triggered from Netlify
 exports.handler = async (event, context, callback) => {
 
@@ -17,7 +19,7 @@ exports.handler = async (event, context, callback) => {
    // const url = 'https://stumblingtowardsenlightenment.com/wp-json'
    // let data, reply
 
-   let payload = JSON.parse(event.body)
+   let payload = JSON.parse(event.body).payload
 
    console.log("this is my payload:", payload);
 
