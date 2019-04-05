@@ -19,13 +19,14 @@ exports.handler = async (event, context, callback) => {
 
    try {
       const payload = JSON.parse(event.body).payload
-      let data = {
+      let data = payload.data;
+      let dataObj = {
          name: (data.name ? data.name : ''),
          email: (data.email ? data.email : ''),
          comment: (data.comment ? data.comment : '')
       }
       console.log("this is my payload:", payload);
-      console.log('This is my data object: ', data);
+      console.log('This is my data object: ', dataObj);
    } catch (e) {
       callback(null, {
          statusCode: 500,
