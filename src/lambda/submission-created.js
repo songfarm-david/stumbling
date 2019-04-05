@@ -1,6 +1,4 @@
-import postData from './fetchUrl'
-// var WPAPI = require( 'wpapi' );
-// can use npm request: https://www.npmjs.com/package/request
+import postData from './fetch-url'
 
 // form submission event triggered from Netlify
 exports.handler = async (event, context, callback) => {
@@ -16,23 +14,25 @@ exports.handler = async (event, context, callback) => {
    // }
 
    // NOTE: what is URL endpoint exactly?
-   const url = 'https://stumblingtowardsenlightenment.com/wp-json'
-   let data, reply
+   // const url = 'https://stumblingtowardsenlightenment.com/wp-json'
+   // let data, reply
 
-   let fuckMe = JSON.stringify(event.body).payload
+   let payload = JSON.stringify(event.body).payload
 
-   if (event.body) {
-      console.log("Yes there is an event:")
-      // reply = "Yes there is an event: " + event
-      // data = JSON.parse(event.body)
-   } else {
-      console.log("There is not an event body");
-      // reply = "There is not an event body"
-   }
+   console.log(payload);
+
+   // if (event.body) {
+   //    console.log("Yes there is an event:")
+   //    // reply = "Yes there is an event: " + event
+   //    // data = JSON.parse(event.body)
+   // } else {
+   //    console.log("There is not an event body");
+   //    // reply = "There is not an event body"
+   // }
 
    callback(null, {
       statusCode: 200,
-      body: "Hello, Monkey. Here is the event: " + JSON.stringify(event.body, null, 4)
+      body: "Hello, Monkey. Here is the event: " + payload
    })
 
 }
