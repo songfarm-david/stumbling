@@ -33,7 +33,7 @@ exports.handler = async (event, context, callback) => {
 
       if (payload.form_name == 'comment-form') {
          console.log('this is a comment');
-         url = 'https://stumblingtowardsenlightenment.com/wp-json' // /comments
+         url = 'https://stumblingtowardsenlightenment.com/wp/v2/comments' // /comments
          data = {
             postId: payload.data.postId,
             name: payload.data.name,
