@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import ShareComponent from "../components/social-share"
 import CommentForm from "../components/comment-form"
 
-import decodeHTML from "../../functions/decode-html.js"
+import decodeHTML from "../functions/decode-html.js"
 
 export default ({ data }) => {
    // console.log('Data!', data);

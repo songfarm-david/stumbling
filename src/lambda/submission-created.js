@@ -22,7 +22,7 @@ exports.handler = async (event, context, callback) => {
    let fuckMe = JSON.stringify(event.body).payload
 
    if (event.body) {
-      console.log("Yes there is an event:", fuckMe
+      console.log("Yes there is an event:")
       // reply = "Yes there is an event: " + event
       // data = JSON.parse(event.body)
    } else {
