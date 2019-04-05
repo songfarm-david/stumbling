@@ -1,9 +1,37 @@
 import postData from './fetch-url'
 
+// WP-JSON endpoint for comment submission/creation
+const url = 'https://stumblingtowardsenlightenment.com/wp-json'
 // NOTE: article with good example fetch request: https://www.netlify.com/blog/2018/03/29/jamstack-architecture-on-netlify-how-identity-and-functions-work-together/
 
 // form submission event triggered from Netlify
 exports.handler = async (event, context, callback) => {
+
+   console.log('httpMethod: ', event.httpMethod);
+
+   // NOTE: is this necessary?
+   // if (event.httpMethod !== "POST") {
+   //    return callback(null, {
+   //       statusCode: 410,
+   //       body: "Unsupported Request Method"
+   //    });
+   // }
+
+   try {
+      const payload = JSON.parse(event.body).payload
+      let data = {
+         name: (data.name ? data.name : ''),
+         email: (data.email ? data.email : ''),
+         comment: (data.comment ? data.comment : '')
+      }
+      console.log("this is my payload:", payload);
+      console.log('This is my data object: ', data);
+   } catch (e) {
+      callback(null, {
+         statusCode: 500,
+         body: "Internal Server Error: " + e
+      });
+   }
 
    // the event object:
    // {
@@ -16,12 +44,10 @@ exports.handler = async (event, context, callback) => {
    // }
 
    // NOTE: what is URL endpoint exactly?
-   // const url = 'https://stumblingtowardsenlightenment.com/wp-json'
+   //
    // let data, reply
 
-   let payload = JSON.parse(event.body).payload
 
-   console.log("this is my payload:", payload);
 
    // if (event.body) {
    //    console.log("Yes there is an event:")
