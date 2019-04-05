@@ -32,16 +32,20 @@ exports.handler = async (event, context, callback) => {
       }
 
       if (payload.form_name == 'comment-form') {
+         console.log('this is a comment');
          url = 'https://stumblingtowardsenlightenment.com/wp-json' // /comments
          data = {
             postId: payload.data.postId,
             name: payload.data.name,
             comment: payload.data.comment
          }
+         console.log(url, data);
       }
 
-      postData(url, data).then((val) => console.log('This is what postData returned: ', val))
-
+      let y = postData(url, data)
+      .then((val) => console.log('This is what postData returned: ', val))
+      .catch((e) => console.log(e))
+      console.log(y);
       // let dataObj = {
       //    name: (payload.data.name ? payload.data.name : ''),
       //    email: (payload.data.email ? payload.data.email : ''),
