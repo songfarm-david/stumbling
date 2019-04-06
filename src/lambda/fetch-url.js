@@ -1,5 +1,5 @@
 
-function postData(url = '', data = {}) {
+function postData(url = '', data = {}, token = null) {
 	// ref: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Supplying_request_options
 	return fetch(url, {
 		method: "POST",
@@ -8,7 +8,7 @@ function postData(url = '', data = {}) {
 		credentials: "same-origin", // include, *same-origin, omit
 		headers: {
 			"Content-Type": "application/json",
-			// "Content-Type": "application/x-www-form-urlencoded",
+			'Authorization': ('Bearer ' + token)
 		},
 		redirect: "follow", // manual, *follow, error
 		referrer: "no-referrer", // no-referrer, *client

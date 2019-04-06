@@ -9,14 +9,6 @@ exports.handler = async (event, context, callback) => {
 
    console.log('httpMethod: ', event.httpMethod);
 
-   // NOTE: is this necessary?
-   // if (event.httpMethod !== "POST") {
-   //    return callback(null, {
-   //       statusCode: 410,
-   //       body: "Unsupported Request Method"
-   //    });
-   // }
-
    let url, data
 
    try {
@@ -46,9 +38,17 @@ exports.handler = async (event, context, callback) => {
       // fetch JWT token creation url and get return value (token)
       // then use that token in a call to the WP-REST API to authenticate
       // and add new comment to post ID
-      fetch('//stumblingtowardsenlightenment.com/wp-json/jwt-auth/v1/token')
+      return fetch('https://stumblingtowardsenlightenment.com/wp-json/jwt-auth/v1/token', {
+         credentials: 'include'
+         // username: 'bobo',
+         // password: 'mr?8(+JSx7z4'
+      })
       .then(response => {
-         console.log("Did we get a response? ", response);
+         console.log("Did we get a response? ", response)
+         return response.json()
+      })
+      .then(myJson => {
+         console.log(JSON.stringify(myJson))
       })
       .catch(error => {
          console.log("error: ", error);
