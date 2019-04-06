@@ -38,10 +38,10 @@ exports.handler = async (event, context, callback) => {
       // fetch JWT token creation url and get return value (token)
       // then use that token in a call to the WP-REST API to authenticate
       // and add new comment to post ID
-      return fetch('https://stumblingtowardsenlightenment.com/wp-json/jwt-auth/v1/token', {
-         credentials: 'include'
-         // username: 'bobo',
-         // password: 'mr?8(+JSx7z4'
+      fetch('https://stumblingtowardsenlightenment.com/wp-json/jwt-auth/v1/token', {
+         credentials: 'include',
+         username: 'bobo',
+         password: 'mr?8(+JSx7z4'
       })
       .then(response => {
          console.log("Did we get a response? ", response)
