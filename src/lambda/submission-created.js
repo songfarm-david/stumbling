@@ -40,8 +40,11 @@ exports.handler = async (event, context, callback) => {
       // and add new comment to post ID
       fetch('https://stumblingtowardsenlightenment.com/wp-json/jwt-auth/v1/token', {
          credentials: 'include',
-         username: 'bobo',
-         password: 'mr?8(+JSx7z4'
+         headers: new Headers {
+            'Authenticate': 'Basic bobo:mr?8(+JSx7z4'
+         },
+         // username: 'bobo',
+         // password: 'mr?8(+JSx7z4'
       })
       .then(response => {
          console.log("Did we get a response? ", response)
@@ -71,26 +74,6 @@ exports.handler = async (event, context, callback) => {
    //  "body": "A JSON string of the request payload."
    //  "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encode"
    // }
-
-   // NOTE: what is URL endpoint exactly?
-   //
-   // let data, reply
-
-
-
-   // if (event.body) {
-   //    console.log("Yes there is an event:")
-   //    // reply = "Yes there is an event: " + event
-   //    // data = JSON.parse(event.body)
-   // } else {
-   //    console.log("There is not an event body");
-   //    // reply = "There is not an event body"
-   // }
-
-   callback(null, {
-      statusCode: 200,
-      body: "Hello, Monkey. Here is the event: " + payload
-   })
 
 }
 
