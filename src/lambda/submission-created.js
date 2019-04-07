@@ -1,5 +1,9 @@
 import postData from './fetch-url'
 
+// https://www.npmjs.com/package/jsonwebtoken
+// https://medium.com/@maison.moa/using-jwt-json-web-tokens-to-authorize-users-and-protect-api-routes-3e04a1453c3e
+// https://medium.com/@rajaraodv/securing-react-redux-apps-with-jwt-tokens-fcfe81356ea0
+
 // WP-JSON endpoint for comment submission/creation
 const url = 'https://stumblingtowardsenlightenment.com/wp-json'
 // NOTE: article with good example fetch request: https://www.netlify.com/blog/2018/03/29/jamstack-architecture-on-netlify-how-identity-and-functions-work-together/
@@ -38,13 +42,12 @@ exports.handler = async (event, context, callback) => {
       // fetch JWT token creation url and get return value (token)
       // then use that token in a call to the WP-REST API to authenticate
       // and add new comment to post ID
+      console.log("about to post fetch");
       fetch('https://stumblingtowardsenlightenment.com/wp-json/jwt-auth/v1/token', {
-         credentials: 'include',
-         headers: new Headers {
+         // credentials: 'include',
+         headers: new Headers({
             'Authenticate': 'Basic bobo:mr?8(+JSx7z4'
-         },
-         // username: 'bobo',
-         // password: 'mr?8(+JSx7z4'
+         })
       })
       .then(response => {
          console.log("Did we get a response? ", response)
