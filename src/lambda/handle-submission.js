@@ -45,10 +45,23 @@ exports.handler = async (event, context, callback) => {
       console.log("about to post fetch");
       fetch('https://stumblingtowardsenlightenment.com/wp-json/jwt-auth/v1/token', {
          // credentials: 'include',
-         headers: new Headers({
-            'Authenticate': 'Basic bobo:mr?8(+JSx7z4'
-         })
+         // headers: new Headers({
+         //    'Authenticate': 'Basic bobo:mr?8(+JSx7z4'
+         // })
       })
+      .then(response => {
+         console.log("Did we get a response? ", response)
+         return response.json()
+      })
+      .then(myJson => {
+         console.log(JSON.stringify(myJson))
+      })
+      .catch(error => {
+         console.log("error: ", error);
+         throw new Error('Something bad happened.', error)
+      })
+
+      fetch('urlToApi')
       .then(response => {
          console.log("Did we get a response? ", response)
          return response.json()
