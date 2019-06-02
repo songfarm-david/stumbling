@@ -35,12 +35,10 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "netlify-lambda build src/lambda && gatsby build",
-    "start": "npm run develop",
-    "serve": "netlify-lambda serve src/lambda",
+    "build funcs": "netlify-lambda build src/lambda",
+    "serve funcs": "netlify-lambda serve src/lambda",
+    "run functions": "netlify-lambda build src/lambda && netlify-lambda serve src/lambda",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
-    "start:lambda": "netlify-lambda serve ./src/lambda",
-    "run functions": "netlify-lambda build src/lambda && netlify-lambda serve src/lambda"
   },
   "repository": {
     "type": "git",
