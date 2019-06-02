@@ -38,7 +38,7 @@
     "build funcs": "netlify-lambda build src/lambda",
     "serve funcs": "netlify-lambda serve src/lambda",
     "run functions": "netlify-lambda build src/lambda && netlify-lambda serve src/lambda",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "repository": {
     "type": "git",
