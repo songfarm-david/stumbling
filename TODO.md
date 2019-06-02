@@ -4,21 +4,8 @@
 - Add a 'popular articles' block at the end of posts (How to decide which posts?)
 - Adding comments flow: https://css-tricks.com/jamstack-comments/
 - Add search capability
+	* plugin: https://github.com/angeloashmore/gatsby-plugin-local-search
 
-##comments
-WordPress comment hooks: https://developer.wordpress.org/rest-api/reference/comments/#list-comments
-npm request: https://www.npmjs.com/package/request
-fetch API: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#Supplying_request_options
-
-***todo***
-make a function (not using the netlify export module) that sets up and then does a post request to the WordPress REST API. The point is to successfully add a comment with or without needing to authenticate the request.
-
-###function examples
-Yay! https://github.com/netlify/functions
-###troubleshooting comments
-- could post question to gatsby-source-wordpress: https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-wordpress
-- could post issue to gatsby repo: https://github.com/gatsbyjs/gatsby/issues
-- email this guy (Adam) who managed to post requests to the wordpress api: https://adam-mould.co.uk/building-deploying-gatsby-wordpress-api-netlify/
 
 ## Website Notable Highlights
 - Website done with Gatsby, content hosted on WordPress
@@ -47,6 +34,7 @@ Yay! https://github.com/netlify/functions
 ## Site design
 - https://mariohernandez.io/blog/adding-social-share-links-to-gatsby/
 ### button styles: https://css-tricks.com/forms-auth-and-serverless-functions-on-gatsby-and-netlify/
+* a really great approach for a landing page: https://rachelandrew.co.uk/archives/2017/07/04/is-it-really-safe-to-start-using-css-grid-layout/
 
 ## Testing Lambda Functions
 bottom of this section: https://css-tricks.com/forms-auth-and-serverless-functions-on-gatsby-and-netlify/#article-header-id-8
