@@ -1,11 +1,5 @@
-import postData from './fetch-url'
+// import postData from './fetch-url'
 
-// https://www.npmjs.com/package/jsonwebtoken
-// https://medium.com/@maison.moa/using-jwt-json-web-tokens-to-authorize-users-and-protect-api-routes-3e04a1453c3e
-// https://medium.com/@rajaraodv/securing-react-redux-apps-with-jwt-tokens-fcfe81356ea0
-
-// WP-JSON endpoint for comment submission/creation
-const url = 'https://stumblingtowardsenlightenment.com/wp-json'
 // NOTE: article with good example fetch request: https://www.netlify.com/blog/2018/03/29/jamstack-architecture-on-netlify-how-identity-and-functions-work-together/
 
 // form submission event triggered from Netlify
@@ -19,60 +13,37 @@ exports.handler = async (event, context, callback) => {
 
       const payload = JSON.parse(event.body).payload
 
-      if (payload.form_name == 'subscription-form') {
-         // set url (use ENV VAR)
-         url = 'mailchimp endpoint'
-         data = {
-            // ...
-         }
-      }
+      // if (payload.form_name == 'subscription-form') {
+      //    // set url (use ENV VAR)
+      //    url = 'mailchimp endpoint'
+      //    data = {
+      //       // ...
+      //    }
+      // }
 
-      if (payload.form_name == 'comment-form') {
-         console.log('this is a comment');
-         url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
-         data = {
-            postId: payload.data.postId,
-            name: payload.data.name,
-            comment: payload.data.comment
-         }
-         console.log(url, data);
-      }
+      // if (payload.form_name == 'comment-form') {
+      //    console.log('this is a comment');
+      //    url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
+      //    data = {
+      //       postId: payload.data.postId,
+      //       name: payload.data.name,
+      //       comment: payload.data.comment
+      //    }
+      //    console.log(url, data);
+      // }
 
-      // TODO: Psuedo Code
-      // fetch JWT token creation url and get return value (token)
-      // then use that token in a call to the WP-REST API to authenticate
-      // and add new comment to post ID
-      console.log("about to post fetch");
-      fetch('https://stumblingtowardsenlightenment.com/wp-json/jwt-auth/v1/token', {
-         // credentials: 'include',
-         // headers: new Headers({
-         //    'Authenticate': 'Basic bobo:mr?8(+JSx7z4'
-         // })
-      })
-      .then(response => {
-         console.log("Did we get a response? ", response)
-         return response.json()
-      })
-      .then(myJson => {
-         console.log(JSON.stringify(myJson))
-      })
-      .catch(error => {
-         console.log("error: ", error);
-         throw new Error('Something bad happened.', error)
-      })
-
-      fetch('urlToApi')
-      .then(response => {
-         console.log("Did we get a response? ", response)
-         return response.json()
-      })
-      .then(myJson => {
-         console.log(JSON.stringify(myJson))
-      })
-      .catch(error => {
-         console.log("error: ", error);
-         throw new Error('Something bad happened.', error)
-      })
+      // fetch('urlToApi')
+      // .then(response => {
+      //    console.log("Did we get a response? ", response)
+      //    return response.json()
+      // })
+      // .then(myJson => {
+      //    console.log(JSON.stringify(myJson))
+      // })
+      // .catch(error => {
+      //    console.log("error: ", error);
+      //    throw new Error('Something bad happened.', error)
+      // })
 
    } catch (e) {
       callback(null, {
