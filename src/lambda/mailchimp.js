@@ -21,8 +21,8 @@
 
 // const APIRoot = "https://us20.api.mailchimp.com/3.0"
 // const User    = "steBobo"
-// const APIKey  = "6b2eee0c149301f0bf8e0bfee5fa85df-us20"
-// const ListID  = "684872185b" // (List/Audience ID)
+const APIKey  = process.env.MAILCHIMP_API_KEY
+const ListID  = process.env.MAILCHIMP_LIST_ID // (List/Audience ID)
 
 exports.handler = async (event, context, callback) => {
 

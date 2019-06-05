@@ -12,7 +12,7 @@ exports.handler = async (event, context, callback) => {
    try {
 
       const payload = JSON.parse(event.body).payload
-
+      console.log(payload)
       // if (payload.form_name == 'subscription-form') {
       //    // set url (use ENV VAR)
       //    url = 'mailchimp endpoint'
