@@ -5,6 +5,7 @@
 // form submission event triggered from Netlify
 exports.handler = async (event, context, callback) => {
 
+   console.log('Hello, Dave');
    const Endpoints = {
       lists: "lists"
    }
