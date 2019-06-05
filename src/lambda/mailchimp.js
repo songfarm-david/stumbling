@@ -8,8 +8,13 @@
  */
 
  /*
+  * Resources:
+  *
   * Troubleshooting: https://www.raymondcamden.com/2019/01/15/customized-form-handling-on-netlify-with-serverless-functions
   * MailChimp API Resource: https://developer.mailchimp.com/documentation/mailchimp/guides/get-started-with-mailchimp-api-3/
+  * Managing Contacts with Mailchimp: https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/
+  * List Schema: https://api.mailchimp.com/schema/3.0/Lists/Members/Instance.json?_ga=2.12525744.504634568.1559680393-1547731669.1550175669
+  * API Reference for Lists: https://developer.mailchimp.com/documentation/mailchimp/reference/lists/#create-post_lists_list_id
   */
 
 /*

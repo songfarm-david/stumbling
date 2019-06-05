@@ -21,6 +21,7 @@
     "gatsby-source-filesystem": "^2.0.20",
     "gatsby-source-wordpress": "^3.0.33",
     "gatsby-transformer-sharp": "^2.1.13",
+    "node-fetch": "^2.6.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-custom-share": "^0.4.8",

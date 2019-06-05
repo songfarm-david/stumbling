@@ -2,87 +2,104 @@
 
 // NOTE: article with good example fetch request: https://www.netlify.com/blog/2018/03/29/jamstack-architecture-on-netlify-how-identity-and-functions-work-together/
 
+const fetch = require("node-fetch");
+
+const {
+  MAILCHIMP_API_KEY,
+  MAILCHIMP_DATA_NO,
+  MAILCHIMP_LIST_ID,
+  MAILCHIMP_USERNAME
+} = process.env
+
 // form submission event triggered from Netlify
-exports.handler = async (event, context, callback) => {
+exports.handler = (event, context, callback) => {
 
-   console.log('Hello, Dave');
-   const Endpoints = {
-      lists: "lists"
+   console.log('Hello, Dave')
+
+   let testRequest = {
+      "email_address": "urist.mcvankab@freddiesjokes.com",
+      "status": "subscribed",
+      "merge_fields": {
+         "FNAME": "Urist",
+         "LNAME": "McVankab"
+      }
    }
-
-   let request = {
-    "email_address": "urist.mcvankab@freddiesjokes.com",
-    "status": "subscribed",
-    "merge_fields": {
-        "FNAME": "Urist",
-        "LNAME": "McVankab"
-    }
-}
 
    // console.log('httpMethod: ', event.httpMethod);
-   const MailchimpAPIUrl = 'https://' +
-      process.env.MAILCHIMP_DATA_NO + '.api.mailchimp.com/3.0/'
-      + Endpoints.lists + "/" + process.env.MAILCHIMP_LIST_ID + '/members/'
+   const MailchimpAPIUrl = 'https://' + MAILCHIMP_DATA_NO + '.api.mailchimp.com/3.0/lists/' + MAILCHIMP_LIST_ID + '/members/'
 
-   const Username = process.env.MAILCHIMP_USERNAME + ':' + process.env.MAILCHIMP_API_KEY
+   const TestAPIURL = 'https://.us20.api.mailchimp.com/3.0/lists/684872185b/members/'
 
-   console.log(MailchimpAPIUrl, request);
+   const Username = MAILCHIMP_USERNAME + ':' + MAILCHIMP_API_KEY
 
-   // const payload = JSON.parse(event.body).payload
+   console.log(TestAPIURL, testRequest);
 
    try {
-
-      console.log('say try?', payload)
-      // if (payload.form_name == 'subscription-form') {
-      //    // set url (use ENV VAR)
-      //    url = 'mailchimp endpoint'
-      //    data = {
-      //       // ...
-      //    }
-      // }
-
-      // if (payload.form_name == 'comment-form') {
-      //    console.log('this is a comment');
-      //    url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
-      //    data = {
-      //       postId: payload.data.postId,
-      //       name: payload.data.name,
-      //       comment: payload.data.comment
-      //    }
-      //    console.log(url, data);
-      // }
-
-      // fetch('urlToApi')
-      // .then(response => {
-      //    console.log("Did we get a response? ", response)
-      //    return response.json()
-      // })
-      // .then(myJson => {
-      //    console.log(JSON.stringify(myJson))
-      // })
-      // .catch(error => {
-      //    console.log("error: ", error);
-      //    throw new Error('Something bad happened.', error)
-      // })
-
+      // const payload = JSON.parse(event.body).payload
+      fetch(TestAPIURL)
+      .then(() => callback(null, { statusCode: 200, body: 'Created' }))
+      .catch(e => {
+         console.log(e);
+         callback(e);
+      })
    } catch (e) {
-      callback(null, {
-         statusCode: 500,
-         body: "Internal Server Error: " + e
-      });
+      console.log(e);
+      callback(null, { statusCode: 500, body: "Internal Server Errorsss: " + e })
    }
 
-   // the event object:
-   // {
-   //  "path": "Path parameter",
-   //  "httpMethod": "Incoming request's method name"
-   //  "headers": {Incoming request headers}
-   //  "queryStringParameters": {query string parameters }
-   //  "body": "A JSON string of the request payload."
-   //  "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encode"
-   // }
-
 }
+
+// try {
+//
+//    console.log('say try?', payload)
+//    // if (payload.form_name == 'subscription-form') {
+//    //    // set url (use ENV VAR)
+//    //    url = 'mailchimp endpoint'
+//    //    data = {
+//    //       // ...
+//    //    }
+//    // }
+//
+//    // if (payload.form_name == 'comment-form') {
+//    //    console.log('this is a comment');
+//    //    url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
+//    //    data = {
+//    //       postId: payload.data.postId,
+//    //       name: payload.data.name,
+//    //       comment: payload.data.comment
+//    //    }
+//    //    console.log(url, data);
+//    // }
+//
+//    // fetch('urlToApi')
+//    // .then(response => {
+//    //    console.log("Did we get a response? ", response)
+//    //    return response.json()
+//    // })
+//    // .then(myJson => {
+//    //    console.log(JSON.stringify(myJson))
+//    // })
+//    // .catch(error => {
+//    //    console.log("error: ", error);
+//    //    throw new Error('Something bad happened.', error)
+//    // })
+//
+// } catch (e) {
+//    callback(null, {
+//       statusCode: 500,
+//       body: "Internal Server Error: " + e
+//    });
+// }
+
+// the event object:
+// {
+//  "path": "Path parameter",
+//  "httpMethod": "Incoming request's method name"
+//  "headers": {Incoming request headers}
+//  "queryStringParameters": {query string parameters }
+//  "body": "A JSON string of the request payload."
+//  "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encode"
+// }
 
 // var apiPromise = WPAPI.discover( 'https://stumblingtowardsenlightenment.com' )
 // apiPromise.then(function(site) {
