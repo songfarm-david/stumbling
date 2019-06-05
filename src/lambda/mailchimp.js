@@ -16,7 +16,8 @@
  * curl --request GET \
 	--url 'https://<dc>.api.mailchimp.com/3.0/' \
 	--user 'anystring:<your_apikey>'
- * // curl --request GET \ --url 'https://us20.api.mailchimp.com/3.0' \ --user 'steBobo:6b2eee0c149301f0bf8e0bfee5fa85df-us20'
+ * // curl --request GET \ --url 'https://us20.api.mailchimp.com/3.0/' \ --user 'steBobo:4569d5b1e159dd9e1697142499bd6d1f-us20'
+ * This one works: curl -X GET 'https://us20.api.mailchimp.com/3.0/' -u 'steBobo:4569d5b1e159dd9e1697142499bd6d1f-us20'
  */
 
 // const APIRoot = "https://us20.api.mailchimp.com/3.0"

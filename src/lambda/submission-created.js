@@ -5,14 +5,33 @@
 // form submission event triggered from Netlify
 exports.handler = async (event, context, callback) => {
 
-   console.log('httpMethod: ', event.httpMethod);
+   const Endpoints = {
+      lists: "lists"
+   }
 
-   let url, data
+   let request = {
+    "email_address": "urist.mcvankab@freddiesjokes.com",
+    "status": "subscribed",
+    "merge_fields": {
+        "FNAME": "Urist",
+        "LNAME": "McVankab"
+    }
+}
+
+   // console.log('httpMethod: ', event.httpMethod);
+   const MailchimpAPIUrl = 'https://' +
+      process.env.MAILCHIMP_DATA_NO + '.api.mailchimp.com/3.0/'
+      + Endpoints.lists + "/" + process.env.MAILCHIMP_LIST_ID + '/members/'
+
+   const Username = process.env.MAILCHIMP_USERNAME + ':' + process.env.MAILCHIMP_API_KEY
+
+   console.log(MailchimpAPIUrl, request);
+
+   // const payload = JSON.parse(event.body).payload
 
    try {
 
-      const payload = JSON.parse(event.body).payload
-      console.log(payload)
+      console.log('say try?', payload)
       // if (payload.form_name == 'subscription-form') {
       //    // set url (use ENV VAR)
       //    url = 'mailchimp endpoint'
