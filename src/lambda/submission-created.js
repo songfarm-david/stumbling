@@ -31,32 +31,33 @@ exports.handler = (event, context, callback) => {
    // const MailchimpAPIUrl = 'https://' + MAILCHIMP_DATA_NO + '.api.mailchimp.com/3.0/lists/' + MAILCHIMP_LIST_ID + '/members/'
    // const Username = MAILCHIMP_USERNAME + ':' + MAILCHIMP_API_KEY
 
-   console.log(TestAPIURL, testRequest);
+   // console.log(TestAPIURL, testRequest);
 
    try {
       let payload = JSON.parse(event.body).payload
+      console.log('payload:', payload);
       fetch(TestAPIURL)
-      .then(res => {
-         console.log('what is res?', res);
-         if (payload.form_name == 'subscription-form') {
-            console.log('form name was subscription');
-         } else if (payload.form_name == 'comment-form') {
-            console.log('form name was a comment');
-            // url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
-            // data = {
-            //    postId: payload.data.postId,
-            //    name: payload.data.name,
-            //    comment: payload.data.comment
-            // }
-            // console.log(url, data);
-         }
-         return callback(null, {
-            statusCode: 200,
-            body: JSON.stringify(res.data)
-         })
-      })
+      // .then(res => {
+      //    console.log('what is res?', res);
+      //    if (payload.form_name == 'subscription-form') {
+      //       console.log('form name was subscription');
+      //    } else if (payload.form_name == 'comment-form') {
+      //       console.log('form name was a comment');
+      //       // url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
+      //       // data = {
+      //       //    postId: payload.data.postId,
+      //       //    name: payload.data.name,
+      //       //    comment: payload.data.comment
+      //       // }
+      //       // console.log(url, data);
+      //    }
+      //    return callback(null, {
+      //       statusCode: 200,
+      //       body: JSON.stringify(res.data)
+      //    })
+      // })
       .catch(e => {
-         console.log(e);
+         console.log('in the fetch catch', e);
          callback(e);
       })
    } catch (e) {
