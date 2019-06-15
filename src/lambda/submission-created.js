@@ -4,6 +4,8 @@
 
 const fetch = require("node-fetch");
 
+const TestAPIURL = 'https://.us20.api.mailchimp.com/3.0/lists/684872185b/members/'
+
 const {
   MAILCHIMP_API_KEY,
   MAILCHIMP_DATA_NO,
@@ -11,40 +13,55 @@ const {
   MAILCHIMP_USERNAME
 } = process.env
 
+let testRequest = {
+   "email_address": "urist.mcvankab@freddiesjokes.com",
+   "status": "subscribed",
+   "merge_fields": {
+      "FNAME": "Urist",
+      "LNAME": "McVankab"
+   }
+}
+
 // form submission event triggered from Netlify
 exports.handler = (event, context, callback) => {
 
-   console.log('Hello, Dave')
-
-   let testRequest = {
-      "email_address": "urist.mcvankab@freddiesjokes.com",
-      "status": "subscribed",
-      "merge_fields": {
-         "FNAME": "Urist",
-         "LNAME": "McVankab"
-      }
-   }
+   console.log('Hello, Dave. You are fun. You are confident.')
 
    // console.log('httpMethod: ', event.httpMethod);
-   const MailchimpAPIUrl = 'https://' + MAILCHIMP_DATA_NO + '.api.mailchimp.com/3.0/lists/' + MAILCHIMP_LIST_ID + '/members/'
-
-   const TestAPIURL = 'https://.us20.api.mailchimp.com/3.0/lists/684872185b/members/'
-
-   const Username = MAILCHIMP_USERNAME + ':' + MAILCHIMP_API_KEY
+   // const MailchimpAPIUrl = 'https://' + MAILCHIMP_DATA_NO + '.api.mailchimp.com/3.0/lists/' + MAILCHIMP_LIST_ID + '/members/'
+   // const Username = MAILCHIMP_USERNAME + ':' + MAILCHIMP_API_KEY
 
    console.log(TestAPIURL, testRequest);
 
    try {
-      // const payload = JSON.parse(event.body).payload
+      let payload = JSON.parse(event.body).payload
       fetch(TestAPIURL)
-      .then(() => callback(null, { statusCode: 200, body: 'Created' }))
+      .then(res => {
+         console.log('what is res?', res);
+         if (payload.form_name == 'subscription-form') {
+            console.log('form name was subscription');
+         } else if (payload.form_name == 'comment-form') {
+            console.log('form name was a comment');
+            // url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
+            // data = {
+            //    postId: payload.data.postId,
+            //    name: payload.data.name,
+            //    comment: payload.data.comment
+            // }
+            // console.log(url, data);
+         }
+         return callback(null, {
+            statusCode: 200,
+            body: JSON.stringify(res.data)
+         })
+      })
       .catch(e => {
          console.log(e);
          callback(e);
       })
    } catch (e) {
       console.log(e);
-      callback(null, { statusCode: 500, body: "Internal Server Errorsss: " + e })
+      callback(e, { statusCode: 500, body: "Internal Server Errors: " + e })
    }
 
 }
@@ -52,24 +69,24 @@ exports.handler = (event, context, callback) => {
 // try {
 //
 //    console.log('say try?', payload)
-//    // if (payload.form_name == 'subscription-form') {
-//    //    // set url (use ENV VAR)
-//    //    url = 'mailchimp endpoint'
-//    //    data = {
-//    //       // ...
-//    //    }
-//    // }
+   // if (payload.form_name == 'subscription-form') {
+   //    // set url (use ENV VAR)
+   //    url = 'mailchimp endpoint'
+   //    data = {
+   //       // ...
+   //    }
+   // }
 //
-//    // if (payload.form_name == 'comment-form') {
-//    //    console.log('this is a comment');
-//    //    url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
-//    //    data = {
-//    //       postId: payload.data.postId,
-//    //       name: payload.data.name,
-//    //       comment: payload.data.comment
-//    //    }
-//    //    console.log(url, data);
-//    // }
+   // if (payload.form_name == 'comment-form') {
+   //    console.log('this is a comment');
+   //    url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
+   //    data = {
+   //       postId: payload.data.postId,
+   //       name: payload.data.name,
+   //       comment: payload.data.comment
+   //    }
+   //    console.log(url, data);
+   // }
 //
 //    // fetch('urlToApi')
 //    // .then(response => {
