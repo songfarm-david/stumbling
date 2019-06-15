@@ -68,7 +68,7 @@ exports.handler = (event, context, callback) => {
 }
 
 // try {
-//
+
 //    console.log('say try?', payload)
    // if (payload.form_name == 'subscription-form') {
    //    // set url (use ENV VAR)
@@ -77,7 +77,7 @@ exports.handler = (event, context, callback) => {
    //       // ...
    //    }
    // }
-//
+
    // if (payload.form_name == 'comment-form') {
    //    console.log('this is a comment');
    //    url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
@@ -88,20 +88,20 @@ exports.handler = (event, context, callback) => {
    //    }
    //    console.log(url, data);
    // }
-//
-//    // fetch('urlToApi')
-//    // .then(response => {
-//    //    console.log("Did we get a response? ", response)
-//    //    return response.json()
-//    // })
-//    // .then(myJson => {
-//    //    console.log(JSON.stringify(myJson))
-//    // })
-//    // .catch(error => {
-//    //    console.log("error: ", error);
-//    //    throw new Error('Something bad happened.', error)
-//    // })
-//
+
+   // fetch('urlToApi')
+   // .then(response => {
+   //    console.log("Did we get a response? ", response)
+   //    return response.json()
+   // })
+   // .then(myJson => {
+   //    console.log(JSON.stringify(myJson))
+   // })
+   // .catch(error => {
+   //    console.log("error: ", error);
+   //    throw new Error('Something bad happened.', error)
+   // })
+
 // } catch (e) {
 //    callback(null, {
 //       statusCode: 500,
@@ -138,7 +138,6 @@ exports.handler = (event, context, callback) => {
 //    console.log(err);
 // });
 
-
 // let body
 // if (event.body.payload !== '') {
 //    // body = JSON.parse(event.body).payload;
@@ -157,49 +156,3 @@ exports.handler = (event, context, callback) => {
    //    username: 'bobo',
    //    password: 'mr?8(+JSx7z4'
    // });
-
-   // let author_name = encodeURI(body.data.name)
-   // let author_comment = encodeURI(body.data.comment)
-   // let id = encodeURI(body.data.postId)
-
-   // TODO: encode the URL here
-   // console.log('vars:', author_name, author_comment, id);
-
-   // let comment = {
-   //    author_name: encodeURI(author_name),
-   //    author_comment: encodeURI(author_name),
-   //    // post: body.data.postId
-   // }
-
-   // callback(null, {
-   //    statusCode: 200,
-   //    body: "End of comment form condition"
-   // })
-
-   // return
-
-// }
-
-// if (body && body.form_name == 'subscription-form') {
-//
-//    // get name and email from form body
-//    let subscribe_name = encodeURI(body.data.name)
-//    let subscribe_email = encodeURI(body.data.email)
-//
-//    // setup POST request to Mailchimp
-//    // in what format does mailChimp require?
-//    // what is API endpoint URI?
-//
-//    callback(null, {
-//       statusCode: 200,
-//       body: "End of subscription form condition"
-//    })
-//
-//    return
-//
-// }
-
-// callback(null, {
-//    statusCode: 200,
-//    body: JSON.stringify(event)
-// })
