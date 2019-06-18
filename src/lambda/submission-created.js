@@ -4,7 +4,7 @@
 
 const fetch = require("node-fetch");
 
-const TestAPIURL = 'https://.us20.api.mailchimp.com/3.0/lists/684872185b/members/'
+const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/lists/684872185b/members/'
 
 const {
   MAILCHIMP_API_KEY,
@@ -17,8 +17,8 @@ let testRequest = {
    "email_address": "urist.mcvankab@freddiesjokes.com",
    "status": "subscribed",
    "merge_fields": {
-      "FNAME": "Urist",
-      "LNAME": "McVankab"
+      "FNAME": "Donnie",
+      "LNAME": "Brasco"
    }
 }
 
@@ -49,10 +49,11 @@ exports.handler = (event, context, callback) => {
             // }
             // console.log(url, data);
          }
-         return callback(null, {
-            statusCode: 200,
-            body: JSON.stringify(res.data)
-         })
+         // callback(null, {
+         //    statusCode: 200,
+         //    body: JSON.stringify(res.data)
+         // })
+         return res
       })
       .catch(e => {
          console.log('in the fetch catch', e);
