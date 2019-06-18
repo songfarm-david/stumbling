@@ -49,10 +49,11 @@ exports.handler = (event, context, callback) => {
             // }
             // console.log(url, data);
          }
-         return callback(null, {
-            statusCode: 200,
-            body: JSON.stringify(res.data)
-         })
+         // callback(null, {
+         //    statusCode: 200,
+         //    body: JSON.stringify(res.data)
+         // })
+         return res
       })
       .catch(e => {
          console.log('in the fetch catch', e);
