@@ -11,7 +11,7 @@ const {
 const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/'
 const Credentials = MAILCHIMP_USERNAME+':'+ MAILCHIMP_API_KEY
 
-console.log(TestAPIURL\nCredentials);
+console.log(TestAPIURL, Credentials);
 
 let testRequest = {
    "email_address": "urist.mcvankab@freddiesjokes.com",
