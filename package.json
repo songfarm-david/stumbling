@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Dave G <david@peakwebsites.ca>",
   "dependencies": {
+    "axios": "^0.19.0",
     "emotion": "^10.0.7",
     "gatsby": "^2.0.115",
     "gatsby-cli": "^2.4.8",
@@ -49,6 +50,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "devDependencies": {
+    "dotenv": "^8.0.0",
     "netlify-lambda": "^1.4.2"
   }
 }

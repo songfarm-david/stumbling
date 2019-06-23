@@ -58,6 +58,7 @@ typings/
 .cache/
 public
 src/functions/
+sandbox/
 
 # Mac files
 .DS_Store
