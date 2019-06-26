@@ -31,24 +31,29 @@ let testRequest = {
    }
 }
 
-exports.handler = async (event, context, callback) => {
-	axios({
-		method: 'post',
-		url: TestAPIURL,
-		data: testRequest,
+exports.handler = (event, context, callback) => {
+	return axios.post(TestAPIURL, testRequest, {
 		headers: {
 			'Authorization': 'Basic ' + Credentials
 		}
 	})
-	.then(res => {
-		console.log(res);
-	})
-	.catch(err => {
-		console.log(err);
-	})
-	.finally(() => {
-		console.log('Finally. Hello, world');
-	})
+	// axios({
+	// 	method: 'post',
+	// 	url: TestAPIURL,
+	// 	data: testRequest,
+	// 	headers: {
+	// 		'Authorization': 'Basic ' + Credentials
+	// 	}
+	// })
+	// .then(res => {
+	// 	console.log(res);
+	// })
+	// .catch(err => {
+	// 	console.log(err);
+	// })
+	// .finally(() => {
+	// 	console.log('Finally. Hello, world');
+	// })
 }
 
 // Want to use async/await? Add the `async` keyword to your outer function/method.
