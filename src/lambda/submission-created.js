@@ -32,11 +32,20 @@ let testRequest = {
 }
 
 exports.handler = (event, context, callback) => {
-	return axios.post(TestAPIURL, testRequest, {
-		headers: {
-			'Authorization': 'Basic ' + Credentials
-		}
-	})
+
+
+	try {
+		axios.post(TestAPIURL, testRequest, {
+			headers: { 'Authorization': 'Basic ' + Credentials }
+		}).
+		then(res => {
+			console.log('response: ', res);
+			return res
+		})
+	} catch (e) {
+		console.log('error: ', e);
+	}
+
 	// axios({
 	// 	method: 'post',
 	// 	url: TestAPIURL,
