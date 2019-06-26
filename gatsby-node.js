@@ -30,7 +30,9 @@ exports.createPages = ({ graphql, actions }) => {
             allWordpressWpComments {
                edges {
                   node {
-                     author
+                     author {
+                        name
+                     }
                      content
                      post
                   }
@@ -38,6 +40,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
 			}
 		`).then(result => {
+         console.log('logging result: ', result);
 			result.data.allWordpressPost.edges.forEach(({ node }) => {
 				createPage({
 					path: node.slug,

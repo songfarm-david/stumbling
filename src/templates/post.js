@@ -62,7 +62,9 @@ export const query = graphql`
       allWordpressWpComments(sort: { fields: [date], order: ASC }) {
          edges {
             node {
-               author
+               author {
+                  name
+               }
                author_name
                content
                post
