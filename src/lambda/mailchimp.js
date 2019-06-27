@@ -1,4 +1,15 @@
-const axios = require('axios')
+exports.handler = async (event, context, callback) => {
+
+   const Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
+   console.log('logging credentials', Credentials);
+   callback(null, {
+      statusCode: 200,
+      body: 'logging credentials ' + Credentials
+   })
+
+}
+
+// const axios = require('axios')
 
 // const {
 //   MAILCHIMP_USERNAME,
@@ -13,39 +24,33 @@ const axios = require('axios')
 // 	MAILCHIMP_DATA_NO,
 // 	MAILCHIMP_LIST_ID
 // );
-const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/'
-const Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
 
-console.log('logging credentials', Credentials);
+// const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/'
 
-let testRequest = {
-   "email_address": "urist.mcvankab@freddurst.com",
-   "status": "subscribed",
-   "merge_fields": {
-      "FNAME": "Donnie",
-      "LNAME": "Brasco"
-   }
-}
+// let testRequest = {
+//    "email_address": "urist.mcvankab@freddurst.com",
+//    "status": "subscribed",
+//    "merge_fields": {
+//       "FNAME": "Donnie",
+//       "LNAME": "Brasco"
+//    }
+// }
 
-// exports.handler = async (event, context, callback) => {
-//
-// 	try {
-// 		await axios.post(TestAPIURL, testRequest, {
-// 			headers: { 'Authorization': 'Basic ' + Credentials }
-// 		}).
-// 		then(res => {
-// 			console.log('response: ', res);
-//          callback(null, {
-//             statusCode: 200,
-//             body: 'You did it ' + res
-//          })
-// 			// return res
-// 		})
-// 	} catch (e) {
-//       console.log('logging error: ', e);
-//       callback(e)
-// 	}
-//
+// try {
+// 	await axios.post(TestAPIURL, testRequest, {
+// 		headers: { 'Authorization': 'Basic ' + Credentials }
+// 	}).
+// 	then(res => {
+// 		console.log('response: ', res);
+//       callback(null, {
+//          statusCode: 200,
+//          body: 'You did it ' + res
+//       })
+// 		// return res
+// 	})
+// } catch (e) {
+//    console.log('logging error: ', e);
+//    callback(e)
 // }
 
 // axios({
