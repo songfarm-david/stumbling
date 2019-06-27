@@ -1,25 +1,22 @@
 const axios = require('axios')
 
-const {
-  MAILCHIMP_USERNAME,
-  MAILCHIMP_API_KEY,
-  MAILCHIMP_DATA_NO,
-  MAILCHIMP_LIST_ID
-} = process.env
-
-console.log('logging constants: \n',
-	MAILCHIMP_USERNAME,
-	MAILCHIMP_API_KEY,
-	MAILCHIMP_DATA_NO,
-	MAILCHIMP_LIST_ID
-);
+// const {
+//   MAILCHIMP_USERNAME,
+//   MAILCHIMP_API_KEY,
+//   MAILCHIMP_DATA_NO,
+//   MAILCHIMP_LIST_ID
+// } = process.env
+//
+// console.log('logging constants: \n',
+// 	MAILCHIMP_USERNAME,
+// 	MAILCHIMP_API_KEY,
+// 	MAILCHIMP_DATA_NO,
+// 	MAILCHIMP_LIST_ID
+// );
 const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/'
-const Credentials = MAILCHIMP_USERNAME+':'+ MAILCHIMP_API_KEY
+const Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
 
-console.log('logging endpoint and credentials string: \n',
-	TestAPIURL,
-	Credentials
-);
+console.log('logging credentials', Credentials);
 
 let testRequest = {
    "email_address": "urist.mcvankab@freddurst.com",
@@ -30,26 +27,26 @@ let testRequest = {
    }
 }
 
-exports.handler = async (event, context, callback) => {
-
-	try {
-		await axios.post(TestAPIURL, testRequest, {
-			headers: { 'Authorization': 'Basic ' + Credentials }
-		}).
-		then(res => {
-			console.log('response: ', res);
-         callback(null, {
-            statusCode: 200,
-            body: 'You did it ' + res
-         })
-			// return res
-		})
-	} catch (e) {
-      console.log('logging error: ', e);
-      callback(e)
-	}
-
-}
+// exports.handler = async (event, context, callback) => {
+//
+// 	try {
+// 		await axios.post(TestAPIURL, testRequest, {
+// 			headers: { 'Authorization': 'Basic ' + Credentials }
+// 		}).
+// 		then(res => {
+// 			console.log('response: ', res);
+//          callback(null, {
+//             statusCode: 200,
+//             body: 'You did it ' + res
+//          })
+// 			// return res
+// 		})
+// 	} catch (e) {
+//       console.log('logging error: ', e);
+//       callback(e)
+// 	}
+//
+// }
 
 // axios({
 // 	method: 'post',
