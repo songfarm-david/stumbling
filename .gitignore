@@ -58,7 +58,6 @@ typings/
 # gatsby files
 .cache/
 public
-src/functions/
 sandbox/
 
 # Mac files
