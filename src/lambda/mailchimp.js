@@ -1,15 +1,33 @@
+const axios = require('axios')
+
+const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/list'
+'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
+const Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
+
+let testRequest = {
+   "email_address": "urist.mcvankab@freddurst.com",
+   "status": "subscribed",
+   "merge_fields": {
+      "FNAME": "Donnie",
+      "LNAME": "Brasco"
+   }
+}
+
 exports.handler = async (event, context, callback) => {
 
-   const Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
-   console.log('logging credentials', Credentials);
-   callback(null, {
-      statusCode: 200,
-      body: 'logging credentials ' + Credentials
-   })
+   axios.post(TestAPIURL, testRequest, {
+		headers: { 'Authorization': 'Basic ' + Credentials }
+	})
+   .then(res => {
+      callback(null, {
+         statusCode: 200,
+         body: 'You did it! ' + res
+      })
+	})
+   .catch(err => callback(err))
 
 }
 
-// const axios = require('axios')
 
 // const {
 //   MAILCHIMP_USERNAME,
@@ -27,14 +45,7 @@ exports.handler = async (event, context, callback) => {
 
 // const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/'
 
-// let testRequest = {
-//    "email_address": "urist.mcvankab@freddurst.com",
-//    "status": "subscribed",
-//    "merge_fields": {
-//       "FNAME": "Donnie",
-//       "LNAME": "Brasco"
-//    }
-// }
+
 
 // try {
 // 	await axios.post(TestAPIURL, testRequest, {
