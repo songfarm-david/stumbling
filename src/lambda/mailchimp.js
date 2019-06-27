@@ -38,10 +38,15 @@ exports.handler = async (event, context, callback) => {
 		}).
 		then(res => {
 			console.log('response: ', res);
-			return res
+         callback(null, {
+            statusCode: 200,
+            body: 'You did it ' + res
+         })
+			// return res
 		})
 	} catch (e) {
-		return console.log('error: ', e);
+      console.log('logging error: ', e);
+      callback(e)
 	}
 
 }
