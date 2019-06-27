@@ -1,5 +1,4 @@
 const axios = require('axios')
-// require("dotenv").config()
 
 const {
   MAILCHIMP_USERNAME,
@@ -33,9 +32,8 @@ let testRequest = {
 
 exports.handler = (event, context, callback) => {
 
-
 	try {
-		axios.post(TestAPIURL, testRequest, {
+		return axios.post(TestAPIURL, testRequest, {
 			headers: { 'Authorization': 'Basic ' + Credentials }
 		}).
 		then(res => {
@@ -46,24 +44,25 @@ exports.handler = (event, context, callback) => {
 		console.log('error: ', e);
 	}
 
-	// axios({
-	// 	method: 'post',
-	// 	url: TestAPIURL,
-	// 	data: testRequest,
-	// 	headers: {
-	// 		'Authorization': 'Basic ' + Credentials
-	// 	}
-	// })
-	// .then(res => {
-	// 	console.log(res);
-	// })
-	// .catch(err => {
-	// 	console.log(err);
-	// })
-	// .finally(() => {
-	// 	console.log('Finally. Hello, world');
-	// })
 }
+
+// axios({
+// 	method: 'post',
+// 	url: TestAPIURL,
+// 	data: testRequest,
+// 	headers: {
+// 		'Authorization': 'Basic ' + Credentials
+// 	}
+// })
+// .then(res => {
+// 	console.log(res);
+// })
+// .catch(err => {
+// 	console.log(err);
+// })
+// .finally(() => {
+// 	console.log('Finally. Hello, world');
+// })
 
 // Want to use async/await? Add the `async` keyword to your outer function/method.
 // async function getUser() {
