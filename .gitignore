@@ -59,6 +59,7 @@ typings/
 .cache/
 public
 sandbox/
+functions/
 
 # Mac files
 .DS_Store
