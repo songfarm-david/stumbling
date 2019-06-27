@@ -15,7 +15,7 @@ const Header = ({ siteTitle }) => (
           STE
         </Link>
       </h1>
-      <Link to="/page-2">About</Link>
+      <Link to="/about">About</Link>
       <Link to="/rss.xml">RSS</Link>
     </div>
   </header>

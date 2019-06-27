@@ -30,10 +30,10 @@ let testRequest = {
    }
 }
 
-exports.handler = (event, context, callback) => {
+exports.handler = async (event, context, callback) => {
 
 	try {
-		return axios.post(TestAPIURL, testRequest, {
+		await axios.post(TestAPIURL, testRequest, {
 			headers: { 'Authorization': 'Basic ' + Credentials }
 		}).
 		then(res => {
@@ -41,7 +41,7 @@ exports.handler = (event, context, callback) => {
 			return res
 		})
 	} catch (e) {
-		console.log('error: ', e);
+		return console.log('error: ', e);
 	}
 
 }
@@ -251,25 +251,25 @@ exports.handler = (event, context, callback) => {
 //    // });
 
 
-exports.handler = (event, context, callback) => {
-	axios({
-		method: 'post',
-		url: TestAPIURL,
-		data: testRequest,
-		headers: {
-			'Authorization': 'Basic ' + Credentials
-		}
-	})
-	.then(res => {
-		console.log(res);
-	})
-	.catch(err => {
-		console.log(err);
-	})
-	.finally(() => {
-		console.log('Finally. Hello, world');
-	})
-}
+// exports.handler = (event, context, callback) => {
+// 	axios({
+// 		method: 'post',
+// 		url: TestAPIURL,
+// 		data: testRequest,
+// 		headers: {
+// 			'Authorization': 'Basic ' + Credentials
+// 		}
+// 	})
+// 	.then(res => {
+// 		console.log(res);
+// 	})
+// 	.catch(err => {
+// 		console.log(err);
+// 	})
+// 	.finally(() => {
+// 		console.log('Finally. Hello, world');
+// 	})
+// }
 
 // Want to use async/await? Add the `async` keyword to your outer function/method.
 // async function getUser() {
