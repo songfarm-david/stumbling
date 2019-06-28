@@ -5,10 +5,10 @@ const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAI
 const Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
 
 let testRequest = {
-   "email_address": "secret@email.com",
+   "email_address": "secrets@email.com",
    "status": "subscribed",
    "merge_fields": {
-      "FNAME": "New",
+      "FNAME": "Newer",
       "LNAME": "Guy"
    }
 }
@@ -21,6 +21,7 @@ exports.handler = (event, context, callback) => {
    	}
    )
    .then(res => {
+      console.log(res);
       callback(null, {
          statusCode: 200,
          body: 'You did it! ' + res
