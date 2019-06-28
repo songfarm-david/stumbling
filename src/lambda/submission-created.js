@@ -1,25 +1,8 @@
 const axios = require('axios')
 
-const {
-  MAILCHIMP_USERNAME,
-  MAILCHIMP_API_KEY,
-  MAILCHIMP_DATA_NO,
-  MAILCHIMP_LIST_ID
-} = process.env
-
-console.log('logging constants: \n',
-	MAILCHIMP_USERNAME,
-	MAILCHIMP_API_KEY,
-	MAILCHIMP_DATA_NO,
-	MAILCHIMP_LIST_ID
-);
-const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/'
-const Credentials = MAILCHIMP_USERNAME+':'+ MAILCHIMP_API_KEY
-
-console.log('logging endpoint and credentials string: \n',
-	TestAPIURL,
-	Credentials
-);
+const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/list'
+'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
+const Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
 
 let testRequest = {
    "email_address": "urist.mcvankab@freddurst.com",
@@ -30,21 +13,72 @@ let testRequest = {
    }
 }
 
-exports.handler = (event, context, callback) => {
+exports.handler = async (event, context, callback) => {
 
-	try {
-		return axios.post(TestAPIURL, testRequest, {
-			headers: { 'Authorization': 'Basic ' + Credentials }
-		}).
-		then(res => {
-			console.log('response: ', res);
-			return res
-		})
-	} catch (e) {
-		console.log('error: ', e);
-	}
+   return axios.post(TestAPIURL, testRequest, {
+		headers: { 'Authorization': 'Basic ' + Credentials }
+	})
+   .then(res => {
+      console.log('the response is: ', res);
+      callback(null, {
+         statusCode: 200,
+         body: 'You did it! ' + res
+      })
+	})
+   .catch(err => {
+      console.log('logging error', err);
+      callback(err)
+   })
 
 }
+
+// const axios = require('axios')
+//
+// const {
+//   MAILCHIMP_USERNAME,
+//   MAILCHIMP_API_KEY,
+//   MAILCHIMP_DATA_NO,
+//   MAILCHIMP_LIST_ID
+// } = process.env
+//
+// console.log('logging constants: \n',
+// 	MAILCHIMP_USERNAME,
+// 	MAILCHIMP_API_KEY,
+// 	MAILCHIMP_DATA_NO,
+// 	MAILCHIMP_LIST_ID
+// );
+// const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/'
+// const Credentials = MAILCHIMP_USERNAME+':'+ MAILCHIMP_API_KEY
+//
+// console.log('logging endpoint and credentials string: \n',
+// 	TestAPIURL,
+// 	Credentials
+// );
+//
+// let testRequest = {
+//    "email_address": "urist.mcvankab@freddurst.com",
+//    "status": "subscribed",
+//    "merge_fields": {
+//       "FNAME": "Donnie",
+//       "LNAME": "Brasco"
+//    }
+// }
+//
+// exports.handler = (event, context, callback) => {
+//
+// 	try {
+// 		return axios.post(TestAPIURL, testRequest, {
+// 			headers: { 'Authorization': 'Basic ' + Credentials }
+// 		}).
+// 		then(res => {
+// 			console.log('response: ', res);
+// 			return res
+// 		})
+// 	} catch (e) {
+// 		console.log('error: ', e);
+// 	}
+//
+// }
 
 // axios({
 // 	method: 'post',

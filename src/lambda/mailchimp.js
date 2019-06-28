@@ -15,16 +15,20 @@ let testRequest = {
 
 exports.handler = async (event, context, callback) => {
 
-   axios.post(TestAPIURL, testRequest, {
+   return axios.post(TestAPIURL, testRequest, {
 		headers: { 'Authorization': 'Basic ' + Credentials }
 	})
    .then(res => {
+      console.log('the response is: ', res);
       callback(null, {
          statusCode: 200,
          body: 'You did it! ' + res
       })
 	})
-   .catch(err => callback(err))
+   .catch(err => {
+      console.log('logging error', err);
+      callback(err)
+   })
 
 }
 
