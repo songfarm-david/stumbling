@@ -1,35 +1,32 @@
+// HELP: apihelp@mailchimp.com to contact about 500 server error
 const axios = require('axios')
 
 const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
 const Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
 
 let testRequest = {
-   "email_address": "urist.mcvankab@freddurst.com",
+   "email_address": "joke.mail@freddurst.com",
    "status": "subscribed",
    "merge_fields": {
-      "FNAME": "Donnie",
-      "LNAME": "Brasco"
+      "FNAME": "Pootie",
+      "LNAME": "Blowfish"
    }
 }
 
-exports.handler = async (event, context) => {
-
-   return axios
-   .post(TestAPIURL, testRequest, {
+exports.handler = (event, context, callback) => {
+   axios.post(TestAPIURL, testRequest, {
    		headers: {
-            'Authorization': 'Basic ' + Credentials
+            'Authorization': 'Basic ' + Buffer.from(Credentials).toString('base64')
          }
    	}
    )
-   .then(res =>
-      ({
+   .then(res => {
+      callback(null, {
          statusCode: 200,
          body: 'You did it! ' + res
       })
-   )
-   .catch(err => ({
-      statusCode: 422, body: String(error)
-   }))
+   })
+   .catch(err => callback(err))
 
 }
 
