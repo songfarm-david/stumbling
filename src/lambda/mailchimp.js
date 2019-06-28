@@ -5,11 +5,11 @@ const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAI
 const Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
 
 let testRequest = {
-   "email_address": "joke.mail@freddurst.com",
+   "email_address": "secret@email.com",
    "status": "subscribed",
    "merge_fields": {
-      "FNAME": "Pootie",
-      "LNAME": "Blowfish"
+      "FNAME": "New",
+      "LNAME": "Guy"
    }
 }
 
