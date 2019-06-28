@@ -1,7 +1,6 @@
 const axios = require('axios')
 
-const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/list'
-'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
+const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
 const Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
 
 let testRequest = {
@@ -13,22 +12,24 @@ let testRequest = {
    }
 }
 
-exports.handler = async (event, context, callback) => {
+exports.handler = async (event, context) => {
 
-   return axios.post(TestAPIURL, testRequest, {
-		headers: { 'Authorization': 'Basic ' + Credentials }
-	})
-   .then(res => {
-      console.log('the response is: ', res);
-      callback(null, {
+   return axios
+   .post(TestAPIURL, testRequest, {
+   		headers: {
+            'Authorization': 'Basic ' + Credentials
+         }
+   	}
+   )
+   .then(res =>
+      ({
          statusCode: 200,
          body: 'You did it! ' + res
       })
-	})
-   .catch(err => {
-      console.log('logging error', err);
-      callback(err)
-   })
+   )
+   .catch(err => ({
+      statusCode: 422, body: String(error)
+   }))
 
 }
 
