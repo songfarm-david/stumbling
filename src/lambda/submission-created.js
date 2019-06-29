@@ -22,6 +22,7 @@ exports.handler = (event, context, callback) => {
 
    if (payload.form_name == 'subscription-form') {
       console.log('form name was subscription')
+      console.log('payload', payload);
       API_Endpoint = 'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
       Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
       callback(null, {
