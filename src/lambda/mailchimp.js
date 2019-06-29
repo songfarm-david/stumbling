@@ -1,7 +1,7 @@
 // HELP: apihelp@mailchimp.com to contact about 500 server error
 const axios = require('axios')
 
-const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
+const TestAPIURL = 'https://' + process.env.MAILCHIMP_DATA_NO + '.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
 const Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
 
 let testRequest = {
@@ -24,7 +24,7 @@ exports.handler = (event, context, callback) => {
       console.log(res);
       callback(null, {
          statusCode: 200,
-         body: 'You did it! ' + res
+         body: 'You did it! ' + JSON.stringify(res)
       })
    })
    .catch(err => callback(err))
@@ -45,9 +45,6 @@ exports.handler = (event, context, callback) => {
 // 	MAILCHIMP_DATA_NO,
 // 	MAILCHIMP_LIST_ID
 // );
-
-// const TestAPIURL = 'https://us20.api.mailchimp.com/3.0/'
-
 
 
 // try {
