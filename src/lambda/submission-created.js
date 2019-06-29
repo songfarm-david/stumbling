@@ -1,13 +1,12 @@
 
-
-let testRequest = {
-   "email_address": "joke.mail@freddurst.com",
-   "status": "subscribed",
-   "merge_fields": {
-      "FNAME": "Pootie",
-      "LNAME": "Blowfish"
-   }
-}
+// let testRequest = {
+//    "email_address": "joke.mail@freddurst.com",
+//    "status": "subscribed",
+//    "merge_fields": {
+//       "FNAME": "Pootie",
+//       "LNAME": "Blowfish"
+//    }
+// }
 
 // endpoint: 'https://stumblingtowardsenlightenment.com/wp-json',
 // username: 'bobo',
@@ -18,22 +17,51 @@ const axios = require('axios')
 exports.handler = (event, context, callback) => {
 
    let API_Endpoint, Credentials, Request_Payload
+
    let payload = JSON.parse(event.body).payload
 
+   // parse form and build data
    if (payload.form_name == 'subscription-form') {
-      console.log('form name was subscription')
+      console.log('form name:', payload.form_name)
       console.log('payload', payload);
+
       API_Endpoint = 'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
       Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
+
+      Request_Payload = {
+         'email_address': payload.email,
+         'status': 'subscribed',
+         'merge_fields': {
+            'FNAME': payload.name
+         }
+      }
+
+   } else if (payload.form_name == 'comment-form') {
+      console.log('form name:', payload.form_name)
+   } else {
+      return
+   }
+
+   // make axios request here
+   // if not API_Endpoint && Credentials && Data
+   if (!API_Endpoint || !Credentials) {
+      return callback('No API Endpoint or Credentials supplied!')
+   }
+
+   axios.post(API_Endpoint, Request_Payload, {
+   		headers: {
+            'Authorization': 'Basic ' + Buffer.from(Credentials).toString('base64')
+         }
+   	}
+   )
+   .then(res => {
+      console.log(res);
       callback(null, {
          statusCode: 200,
-         body: 'Payload is: ' + payload
+         body: 'You did it! ' + JSON.stringify(res)
       })
-   }
-
-   if (payload.form_name == 'comment-form') {
-
-   }
+   })
+   .catch(err => callback(err))
 
 }
 
