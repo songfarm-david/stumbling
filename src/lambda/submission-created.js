@@ -6,7 +6,7 @@ const axios = require('axios')
 
 exports.handler = (event, context, callback) => {
 
-   let API_Endpoint, Credentials, Request_Payload
+   let Request_Payload
 
    let payload = JSON.parse(event.body).payload
 
@@ -31,7 +31,7 @@ exports.handler = (event, context, callback) => {
          '.api.mailchimp.com/3.0/lists/' + MAILCHIMP_LIST_ID + '/members/',
          Credentials = MAILCHIMP_USERNAME + ':' + MAILCHIMP_API_KEY
 
-      const Request_Payload = {
+      Request_Payload = {
          'email_address': payload.email,
          'status': 'subscribed',
          'merge_fields': {
@@ -63,7 +63,7 @@ exports.handler = (event, context, callback) => {
          WP_PASS
       } = process.env
 
-      const Request_Payload = {
+      Request_Payload = {
          'post': payload.data.postId,
          'author': (payload.data.author ? payload.data.author : null),
          'author_name': payload.name,
@@ -76,6 +76,7 @@ exports.handler = (event, context, callback) => {
    		password: WP_PASS
    	})
    	.then(res => {
+         console.log('logging res', res);
    		let token = res.data.token
    		axios.post(WP_COMMENTS_ENDPOINT, Request_Payload, {
    			headers: {
