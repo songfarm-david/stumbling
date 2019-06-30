@@ -6,6 +6,7 @@
 - Add search capability
 	* plugin: https://github.com/angeloashmore/gatsby-plugin-local-search
 - Create new build when new comment
+- Set up a Spam bot using Netlify
 
 ## Website Notable Highlights
 - Website done with Gatsby, content hosted on WordPress

@@ -32,7 +32,20 @@ exports.handler = (event, context, callback) => {
          }
       }
 
+      axios.post(API_Endpoint, Request_Payload, {
+      		headers: {
+               'Authorization': 'Basic ' + Buffer.from(Credentials).toString('base64')
+            }
+      	}
+      )
+      .then(res => {
+         console.log('in the then. Did it work?', res);
+         return
+      })
+      .catch(err => callback(err))
+
    } else if (payload.form_name == 'comment-form') {
+
       console.log('form name:', payload.form_name)
       console.log('payload', payload);
 
@@ -74,45 +87,9 @@ exports.handler = (event, context, callback) => {
    	})
    	.catch(err => callback(err))
 
-   } else {
-      return
    }
 
-   // make axios request here
-   // if not API_Endpoint && Credentials && Data
-   if (!API_Endpoint || !Credentials) {
-      return callback('No API Endpoint or Credentials supplied!')
-   }
-
-   axios.post(API_Endpoint, Request_Payload, {
-   		headers: {
-            'Authorization': 'Basic ' + Buffer.from(Credentials).toString('base64')
-         }
-   	}
-   )
-   .then(res => {
-      console.log('in the then. Did it work?', res);
-   })
-   .catch(err => callback(err))
+   // TODO: Program the submission creation to tell commenters that their comment is pending approval.
+   // TODO: Set up a Spam bot using Netlify
 
 }
-
-// Want to use async/await? Add the `async` keyword to your outer function/method.
-// async function getUser() {
-//   try {
-//     const response = await axios.get('/user?ID=12345');
-//     console.log(response);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-// the event object:
-// {
-//  "path": "Path parameter",
-//  "httpMethod": "Incoming request's method name"
-//  "headers": {Incoming request headers}
-//  "queryStringParameters": {query string parameters }
-//  "body": "A JSON string of the request payload."
-//  "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encode"
-// }
