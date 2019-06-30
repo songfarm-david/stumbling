@@ -78,7 +78,7 @@ exports.handler = (event, context, callback) => {
    		password: WP_PASS
    	})
    	.then(res => {
-         console.log('logging res', res);
+         console.log('logging res', res.data);
    		let token = res.data.token
          console.log('what is token?', token);
    		axios.post(WP_COMMENTS_ENDPOINT, requestPayload, {
