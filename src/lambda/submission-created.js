@@ -19,12 +19,19 @@ exports.handler = (event, context, callback) => {
       console.log('form name:', payload.form_name)
       console.log('payload', payload);
 
-      API_Endpoint = 'https://' + process.env.MAILCHIMP_DATA_NO +
-      '.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
-      Credentials =
-         process.env.MAILCHIMP_USERNAME + ':' + process.env.MAILCHIMP_API_KEY
+      const {
+         MAILCHIMP_DATA_NO,
+         MAILCHIMP_LIST_ID,
+         MAILCHIMP_USERNAME,
+         MAILCHIMP_API_KEY
+      } = process.env
 
-      Request_Payload = {
+      const
+         API_Endpoint = 'https://' + MAILCHIMP_DATA_NO +
+         '.api.mailchimp.com/3.0/lists/' + MAILCHIMP_LIST_ID + '/members/',
+         Credentials = MAILCHIMP_USERNAME + ':' + MAILCHIMP_API_KEY
+
+      const Request_Payload = {
          'email_address': payload.email,
          'status': 'subscribed',
          'merge_fields': {
@@ -82,7 +89,7 @@ exports.handler = (event, context, callback) => {
    				body: 'You did it! ' + res
    			})
    		})
-   		.catch(err => callback('in the second error', err))
+   		.catch(err => callback('in the second error ' + err))
 
    	})
    	.catch(err => callback(err))
