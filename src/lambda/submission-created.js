@@ -1,10 +1,6 @@
 /**
  * Description
  * Date: June 30, 2019
- *
- * potential reasons for error:
- * * http vs https
- * * malformed request payload
  */
 const axios = require('axios')
 
@@ -20,8 +16,6 @@ exports.handler = (event, context, callback) => {
 
    // parse form and build data
    if (payload.form_name == 'subscription-form') {
-      console.log('form name:', payload.form_name)
-      console.log('payload', payload);
 
       const {
          MAILCHIMP_DATA_NO,
@@ -50,15 +44,11 @@ exports.handler = (event, context, callback) => {
       	}
       )
       .then(res => {
-         console.log('in the then. Did it work?', res);
          return
       })
       .catch(err => callback(err))
 
    } else if (payload.form_name == 'comment-form') {
-
-      console.log('form name:', payload.form_name)
-      console.log('payload', payload);
 
       const {
          WP_AUTH_ENDPOINT,
@@ -74,23 +64,17 @@ exports.handler = (event, context, callback) => {
          'content': payload.body
       }
 
-      console.log('examine requestPayload', requestPayload);
-
       axios.post(WP_AUTH_ENDPOINT, {
    		username: WP_USER,
    		password: WP_PASS
    	})
    	.then(res => {
-         console.log('logging res', res.data);
    		let token = res.data.token
-         console.log('what is token?', token);
 
    		axios.post(WP_COMMENTS_ENDPOINT, requestPayload, {
    			headers: {
-               'Authorization': 'Bearer ' + token,
-               'Content-Type': 'application/json'
+               'Authorization': 'Bearer ' + token
             }
-
    		})
    		.then(res => {
    			console.log('Yes!', res);
@@ -99,7 +83,7 @@ exports.handler = (event, context, callback) => {
    				body: 'You did it! ' + res
    			})
    		})
-   		.catch(err => callback('in the second error ' + err))
+   		.catch(err => callback(err))
 
    	})
    	.catch(err => callback(err))
