@@ -67,7 +67,7 @@ exports.handler = (event, context, callback) => {
          'post': payload.data.postId,
          'author': (payload.data.author ? payload.data.author : null),
          'author_name': payload.name,
-         'author_email': (payload.data.email ? payload.data.email : null),
+         'author_email': (payload.data.email ? payload.data.email : 'fakeemail@email.com'),
          'content': payload.comment
       }
 
