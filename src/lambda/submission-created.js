@@ -71,6 +71,8 @@ exports.handler = (event, context, callback) => {
          'content': payload.comment
       }
 
+      console.log('examine requestPayload', requestPayload);
+
       axios.post(WP_AUTH_ENDPOINT, {
    		username: WP_USER,
    		password: WP_PASS
