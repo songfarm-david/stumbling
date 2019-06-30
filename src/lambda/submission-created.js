@@ -1,6 +1,10 @@
 /**
  * Description
  * Date: June 30, 2019
+ *
+ * potential reasons for error:
+ * * http vs https
+ * * malformed request payload
  */
 const axios = require('axios')
 
@@ -67,8 +71,8 @@ exports.handler = (event, context, callback) => {
          'post': payload.data.postId,
          'author': (payload.data.author ? payload.data.author : null),
          'author_name': payload.name,
-         'author_email': (payload.data.email ? payload.data.email : 'fakeemail@email.com'),
-         'content': payload.comment
+         'author_email': (payload.email ? payload.email : null),
+         'content': payload.body
       }
 
       console.log('examine requestPayload', requestPayload);
