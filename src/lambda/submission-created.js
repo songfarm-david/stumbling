@@ -1,17 +1,7 @@
-
-// let testRequest = {
-//    "email_address": "joke.mail@freddurst.com",
-//    "status": "subscribed",
-//    "merge_fields": {
-//       "FNAME": "Pootie",
-//       "LNAME": "Blowfish"
-//    }
-// }
-
-// endpoint: 'https://stumblingtowardsenlightenment.com/wp-json',
-// username: 'bobo',
-// password: 'mr?8(+JSx7z4'
-
+/**
+ * Description
+ * Date: June 30, 2019
+ */
 const axios = require('axios')
 
 exports.handler = (event, context, callback) => {
@@ -46,17 +36,43 @@ exports.handler = (event, context, callback) => {
       console.log('form name:', payload.form_name)
       console.log('payload', payload);
 
-      API_Endpoint = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments'
-      Credentials =
-         process.env.WP_USERNAME + ':' + process.env.WP_PASSWORD
+      const {
+         WP_AUTH_ENDPOINT,
+         WP_COMMENTS_ENDPOINT,
+         WP_USER,
+         WP_PASS
+      } = process.env
 
-      Request_Payload = {
-         'email_address': payload.email,
-         'status': 'subscribed',
-         'merge_fields': {
-            'FNAME': payload.name
-         }
+      const Request_Payload = {
+         'post': payload.data.postId,
+         'author': (payload.data.author ? payload.data.author : null),
+         'author_name': payload.name,
+         'author_email': (payload.data.email ? payload.data.email : null),
+         'content': payload.comment
       }
+
+      axios.post(WP_AUTH_ENDPOINT, {
+   		username: WP_USER,
+   		password: WP_PASS
+   	})
+   	.then(res => {
+   		let token = res.data.token
+   		axios.post(WP_COMMENTS_ENDPOINT, Request_Payload, {
+   			headers: {
+               'Authorization': 'Bearer ' + token
+            }
+   		})
+   		.then(res => {
+   			console.log('Yes!', res);
+   			return callback(null, {
+   				statusCode: 200,
+   				body: 'You did it! ' + res
+   			})
+   		})
+   		.catch(err => callback('in the second error', err))
+
+   	})
+   	.catch(err => callback(err))
 
    } else {
       return
