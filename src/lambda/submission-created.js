@@ -20,13 +20,19 @@ exports.handler = (event, context, callback) => {
 
    let payload = JSON.parse(event.body).payload
 
+   if (!payload) {
+      return callback('No payload!')
+   }
+
    // parse form and build data
    if (payload.form_name == 'subscription-form') {
       console.log('form name:', payload.form_name)
       console.log('payload', payload);
 
-      API_Endpoint = 'https://us20.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
-      Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
+      API_Endpoint = 'https://' + process.env.MAILCHIMP_DATA_NO +
+      '.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
+      Credentials =
+         process.env.MAILCHIMP_USERNAME + ':' + process.env.MAILCHIMP_API_KEY
 
       Request_Payload = {
          'email_address': payload.email,
@@ -38,6 +44,20 @@ exports.handler = (event, context, callback) => {
 
    } else if (payload.form_name == 'comment-form') {
       console.log('form name:', payload.form_name)
+      console.log('payload', payload);
+
+      API_Endpoint = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments'
+      Credentials =
+         process.env.WP_USERNAME + ':' + process.env.WP_PASSWORD
+
+      Request_Payload = {
+         'email_address': payload.email,
+         'status': 'subscribed',
+         'merge_fields': {
+            'FNAME': payload.name
+         }
+      }
+
    } else {
       return
    }
@@ -55,11 +75,7 @@ exports.handler = (event, context, callback) => {
    	}
    )
    .then(res => {
-      console.log(res);
-      callback(null, {
-         statusCode: 200,
-         body: 'You did it! ' + JSON.stringify(res)
-      })
+      console.log('in the then. Did it work?', res);
    })
    .catch(err => callback(err))
 
@@ -75,122 +91,12 @@ exports.handler = (event, context, callback) => {
 //   }
 // }
 
-// let payload = JSON.parse(event.body).payload
-// console.log('payload:', payload)
-// console.log(TestAPIURL, testRequest)
-
-// fetch(TestAPIURL, {
-//    method: 'POST',
-//    headers: new Headers({
-//       'Authorization':
-//    }),
-//    // credentials: 'include'
-// })
-// .then(res => {
-//       console.log('what is res?', res)
-//       return JSON.stringify(res)
-//       // if (payload.form_name == 'subscription-form') {
-//          // console.log('form name was subscription');
-//       // } else if (payload.form_name == 'comment-form') {
-//          // console.log('form name was a comment');
-         // url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
-//          // data = {
-//          //    postId: payload.data.postId,
-//          //    name: payload.data.name,
-//          //    comment: payload.data.comment
-//          // }
-//          // console.log(url, data);
-//       // }
-//       // callback(null, {
-//       //    statusCode: 200,
-//       //    body: JSON.stringify(res.data)
-//       // })
-//    })
-//    .catch(e => {
-//       console.log('in the fetch catch', e);
-//       callback(e);
-//    })
-
+// the event object:
+// {
+//  "path": "Path parameter",
+//  "httpMethod": "Incoming request's method name"
+//  "headers": {Incoming request headers}
+//  "queryStringParameters": {query string parameters }
+//  "body": "A JSON string of the request payload."
+//  "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encode"
 // }
-
-
-// // try {
-//
-// //    console.log('say try?', payload)
-//    // if (payload.form_name == 'subscription-form') {
-//    //    // set url (use ENV VAR)
-//    //    url = 'mailchimp endpoint'
-//    //    data = {
-//    //       // ...
-//    //    }
-//    // }
-//
-//    // if (payload.form_name == 'comment-form') {
-//    //    console.log('this is a comment');
-//    //    url = 'https://stumblingtowardsenlightenment.com/wp-json/wp/v2/comments' // /comments
-//    //    data = {
-//    //       postId: payload.data.postId,
-//    //       name: payload.data.name,
-//    //       comment: payload.data.comment
-//    //    }
-//    //    console.log(url, data);
-//    // }
-//
-//    // fetch('urlToApi')
-//    // .then(response => {
-//    //    console.log("Did we get a response? ", response)
-//    //    return response.json()
-//    // })
-//    // .then(myJson => {
-//    //    console.log(JSON.stringify(myJson))
-//    // })
-//    // .catch(error => {
-//    //    console.log("error: ", error);
-//    //    throw new Error('Something bad happened.', error)
-//    // })
-//
-// // } catch (e) {
-// //    callback(null, {
-// //       statusCode: 500,
-// //       body: "Internal Server Error: " + e
-// //    });
-// // }
-//
-// // the event object:
-// // {
-// //  "path": "Path parameter",
-// //  "httpMethod": "Incoming request's method name"
-// //  "headers": {Incoming request headers}
-// //  "queryStringParameters": {query string parameters }
-// //  "body": "A JSON string of the request payload."
-// //  "isBase64Encoded": "A boolean flag to indicate if the applicable request payload is Base64-encode"
-// // }
-//
-// // var apiPromise = WPAPI.discover( 'https://stumblingtowardsenlightenment.com' )
-// // apiPromise.then(function(site) {
-// //    site.comments().create(comment, function(err, data) {
-// //       console.log(err, data)
-// //    }).then(function( response ) {
-// //       console.log( response );
-// //    }).catch(function( err ) {
-// //       console.log(err);
-// //    });
-// // })
-//
-// // wp.comments().create(comment, function(err, data) {
-// //    console.log(err, data)
-// // }).then(function( response ) {
-// //    console.log( response );
-// // }).catch(function( err ) {
-// //    console.log(err);
-// // });
-//
-// // let body
-// // if (event.body.payload !== '') {
-// //    // body = JSON.parse(event.body).payload;
-// //    console.log('body:', body);
-// //    callback(null, {
-// //       statusCode: 200,
-// //       body: JSON.stringify(event.body).payload
-// //    })
-// // }
