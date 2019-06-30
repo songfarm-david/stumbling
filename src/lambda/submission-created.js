@@ -69,7 +69,6 @@ exports.handler = (event, context, callback) => {
 
       requestPayload = {
          'post': payload.data.postId,
-         'author': (payload.data.author ? payload.data.author : null),
          'author_name': payload.name,
          'author_email': (payload.email ? payload.email : 'fakeemail@email.com'),
          'content': payload.body
@@ -85,11 +84,13 @@ exports.handler = (event, context, callback) => {
          console.log('logging res', res.data);
    		let token = res.data.token
          console.log('what is token?', token);
+
    		axios.post(WP_COMMENTS_ENDPOINT, requestPayload, {
    			headers: {
                'Authorization': 'Bearer ' + token,
                'Content-Type': 'application/json'
             }
+
    		})
    		.then(res => {
    			console.log('Yes!', res);
