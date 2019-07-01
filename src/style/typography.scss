@@ -1,0 +1,9 @@
+@import './breakpoints';
+
+:root {
+	--body-font: 'Anton', sans-serif;
+}
+
+html {
+	font-family: var(--body-font);
+}

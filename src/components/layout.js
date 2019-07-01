@@ -1,22 +1,25 @@
 import React from "react"
 
-import "./default-reset.css"
-import "../style/layout.css"
+// import "./default-reset.css"
+// import "../style/layout.css"
+
+import '../style/styles.scss'
 
 import Header from "./header"
 import Footer from "./footer"
 
 // NOTE: uses a StaticQuery because components cannot query graphql normally: https://www.gatsbyjs.org/tutorial/part-four/#use-a-staticquery
 
-export default ({ children }) => (
-   <>
-      <Header />
-      <div>
-         <main className="content-width">
-            {children}
-         </main>
-      </div>
-      <Footer />
-   </>
-
-)
+export default props => {
+   return (
+      <>
+         <Header />
+         <div>
+            <main className={props.className}>
+               {props.children}
+            </main>
+         </div>
+         <Footer />
+      </>
+   )
+}

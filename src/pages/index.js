@@ -11,7 +11,7 @@ import decodeHTML from "../functions/decode-html.js"
 export default ({ data }) => {
    console.log(data.site.siteMetadata.siteUrl)
    return (
-      <Layout>
+      <Layout className="page">
         <SEO
          title="Home"
          description="how are you?"

@@ -4,14 +4,14 @@ const axios = require('axios')
 const TestAPIURL = 'https://' + process.env.MAILCHIMP_DATA_NO + '.api.mailchimp.com/3.0/lists/' + process.env.MAILCHIMP_LIST_ID + '/members/'
 const Credentials = process.env.MAILCHIMP_USERNAME+':'+ process.env.MAILCHIMP_API_KEY
 
-let testRequest = {
-   "email_address": "secrets@email.com",
-   "status": "subscribed",
-   "merge_fields": {
-      "FNAME": "Newer",
-      "LNAME": "Guy"
-   }
-}
+// let testRequest = {
+//    "email_address": "secrets@email.com",
+//    "status": "subscribed",
+//    "merge_fields": {
+//       "FNAME": "Newer",
+//       "LNAME": "Guy"
+//    }
+// }
 
 exports.handler = (event, context, callback) => {
    axios.post(TestAPIURL, testRequest, {

@@ -1,6 +1,9 @@
-# Stumbling Towards Enlightment
+# TODO: Stumbling Towards Enlightment
 
-## TODO
+##Styles
+- define site breakpoints
+
+##Todo Items
 - Add a 'popular articles' block at the end of posts (How to decide which posts?)
 - Adding comments flow: https://css-tricks.com/jamstack-comments/
 - Add search capability

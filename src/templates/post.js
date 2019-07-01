@@ -35,7 +35,7 @@ export default ({ data }) => {
    }
 
    return (
-      <Layout title={props.title} postUrl={props.postUrl}>
+      <Layout title={props.title} postUrl={props.postUrl} className="post">
          <ShareComponent {...props} />
          <h2>{decodeHTML(data.wordpressPost.title)}</h2>
          <div dangerouslySetInnerHTML={{ __html: data.wordpressPost.content}} />
