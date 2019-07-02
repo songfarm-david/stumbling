@@ -2,8 +2,21 @@
 
 :root {
 	--body-font: 'Anton', sans-serif;
+	--text-base-size: 17px;
+}
+
+:root {
+	/* mod scale 1 */
+	--mod-scale-1: 1.618;
+	--scale-xs: calc(1em / var(--mod-scale-1) / var(--mod-scale-1));
+	--scale-sm: calc(1em / var(--mod-scale-1));
+	--scale-md: calc(1em * var(--mod-scale-1));
+   --scale-lg: calc(1em * var(--mod-scale-1) * var(--mod-scale-1));
+   --scale-xl: calc(1em * var(--mod-scale-1) * var(--mod-scale-1) * var(--mod-scale-1));
 }
 
 html {
 	font-family: var(--body-font);
+	font-size: var(--text-base-size);
+	line-height: 1.618;
 }

@@ -1,7 +1,24 @@
 @import './breakpoints';
 
+body {
+	padding: 0;
+	margin: 0;
+	// main * + * {
+	// 	margin-top: var(--scale-md);
+	// }
+}
+
+main {
+	border: 1px solid green;
+	@media (min-width: $tablet-breakpoint) {
+		width: 600px;
+		margin: 0 auto;
+		border: 2px solid red;
+	}
+}
+
 .page, .post {
-	padding: 2em 1em;
+	padding: var(--scale-lg) var(--scale-md);
 }
 
 

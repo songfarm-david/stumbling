@@ -1,4 +1,4 @@
-# TODO: Stumbling Towards Enlightment
+# TODO: Stumbling Towards Enlightenment
 
 ##Styles
 - define site breakpoints

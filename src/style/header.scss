@@ -1,0 +1,15 @@
+header {
+	text-align: center;
+	.nav-section {
+		text-align: center;
+		&#topbar {
+			text-align: right;
+			a {
+				padding: 0 var(--scale-sm);
+			}
+		}
+		a.nav-link {
+			padding: 0 var(--scale-sm);
+		}
+	}
+}
