@@ -9,7 +9,7 @@ const Header = ({ siteTitle }) => (
   <header>
     <div className="header-inner">
       <Nav />
-      <h1><Link to="/">STE</Link></h1>
+      <h1 id="siteTitle" className="header"><Link to="/">Stumbling Towards Enlightenment</Link></h1>
     </div>
   </header>
 )

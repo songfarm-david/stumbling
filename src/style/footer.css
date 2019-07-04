@@ -1,8 +1,6 @@
 footer {
+	--light-color: #ccc;
 	text-align: center;
-	/* height: 15vh;
-	display: flex;
-	justify-content: center;
-	align-items: center; */
-	border-top: 1px solid blue;
+	background-color: var(--light-color);
+	border-top: 1px solid #ccc; /* note this prevents collapsing margin */
 }

@@ -36,13 +36,20 @@ export default ({ data }) => {
 
    return (
       <Layout title={props.title} postUrl={props.postUrl} className="post">
-         <ShareComponent {...props} />
-         <h2>{decodeHTML(data.wordpressPost.title)}</h2>
-         <div dangerouslySetInnerHTML={{ __html: data.wordpressPost.content}} />
-         <ShareComponent {...props} />
+         {/*<ShareComponent {...props} />*/}
+         <div className="post-content">
+            <h2>{decodeHTML(data.wordpressPost.title)}</h2>
+            <div dangerouslySetInnerHTML={{ __html: data.wordpressPost.content}} />
+            <ShareComponent {...props} />
+         </div>
          <h3>Comments:</h3>
-         {Comment(data.allWordpressWpComments.edges, data.wordpressPost.wordpress_id)}
-         <CommentForm title={data.wordpressPost.title} postId={data.wordpressPost.wordpress_id} />
+         {Comment(
+            data.allWordpressWpComments.edges,
+            data.wordpressPost.wordpress_id
+         )}
+         <CommentForm
+            title={data.wordpressPost.title}
+            postId={data.wordpressPost.wordpress_id} />
       </Layout>
    )
 }

@@ -1,22 +1,83 @@
 @import './breakpoints';
 
 :root {
-	--body-font: 'Anton', sans-serif;
+	--header-font: 'Anton', sans-serif;
+	--body-font: 'Open Sans', sans-serif;
+	--decorative-font: 'Just Another Hand', 'cursive';
+	// --header-font: var(--decorative-font);
 	--text-base-size: 17px;
+	@media (min-width: 1200px) {
+		--text-base-size: 20px;
+	}
 }
 
 :root {
 	/* mod scale 1 */
-	--mod-scale-1: 1.618;
+	--mod-scale-1: 1.4;
 	--scale-xs: calc(1em / var(--mod-scale-1) / var(--mod-scale-1));
 	--scale-sm: calc(1em / var(--mod-scale-1));
+	--scale-reg: 1em;
 	--scale-md: calc(1em * var(--mod-scale-1));
    --scale-lg: calc(1em * var(--mod-scale-1) * var(--mod-scale-1));
    --scale-xl: calc(1em * var(--mod-scale-1) * var(--mod-scale-1) * var(--mod-scale-1));
 }
 
 html {
-	font-family: var(--body-font);
 	font-size: var(--text-base-size);
-	line-height: 1.618;
+}
+
+body {
+	font-family: var(--body-font);
+	line-height: var(--mod-scale-1);
+}
+
+p {
+	font-size: var(--scale-reg);
+}
+
+h1, h2, h3,
+.h1, .h2, .h3 {
+	font-weight: 700;
+	color: #ccc;
+	font-family: var(--body-font);
+}
+
+h4, h5, h6,
+.h4, .h5, .h6 {
+	text-transform: uppercase;
+	font-family: var(--body-font);
+	font-weight: lighter;
+}
+
+h1,
+.h1 {
+	font-size: var(--scale-xl);
+}
+
+h2,
+.h2 {
+	font-size: var(--scale-lg);
+}
+
+h3,
+.h3 {
+	font-size: var(--scale-md);
+}
+
+h4,
+.h4 {
+	font-size: var(--scale-reg);
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+h5, h6,
+.h5, .h6 {
+	font-size: var(--scale-sm);
+	font-weight: bold;
+}
+
+h6,
+.h6 {
+	font-weight: lighter;
 }

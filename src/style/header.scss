@@ -1,9 +1,11 @@
 header {
 	text-align: center;
+	border-bottom: 1px solid #ccc; /* NOTE: this should use a var */
 	.nav-section {
 		text-align: center;
 		&#topbar {
 			text-align: right;
+			padding: var(--scale-xs) 0;
 			a {
 				padding: 0 var(--scale-sm);
 			}

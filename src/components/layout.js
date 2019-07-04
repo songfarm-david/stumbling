@@ -14,11 +14,9 @@ export default props => {
    return (
       <>
          <Header />
-         <div>
-            <main className={props.className}>
-               {props.children}
-            </main>
-         </div>
+         <main className={props.className}>
+            {props.children}
+         </main>
          <Footer />
       </>
    )

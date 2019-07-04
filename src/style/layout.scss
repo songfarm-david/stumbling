@@ -1,35 +1,53 @@
 @import './breakpoints';
 
+:root {
+	--lg-mobile-width: 29em;
+	--tablet-width: 34em;
+	--desktop-width: 42em;
+	--dark-color: #666;
+	--post-border: 1px solid var(--dark-color);
+}
+
+* { box-sizing: border-box; }
+
 body {
 	padding: 0;
 	margin: 0;
-	// main * + * {
-	// 	margin-top: var(--scale-md);
-	// }
-}
-
-main {
-	border: 1px solid green;
-	@media (min-width: $tablet-breakpoint) {
-		width: 600px;
-		margin: 0 auto;
-		border: 2px solid red;
+	a {
+		color: inherit;
+		transition: color 0.25s ease-out;
+		&:hover {
+			color: green;
+			transition: color 0.25s ease-out;
+		}
 	}
+
+	header,
+	footer {
+		background-color: #444;
+		.header {
+			font-family: var(--decorative-font);
+			color: #ccc;
+			a { color: inherit; }
+		}
+	}
+
+	main {
+
+		padding: var(--scale-md) var(--scale-md) var(--scale-lg);
+		@media (min-width: $lg-mobile-breakpoint) {
+			margin: 0 auto;
+			width: var(--lg-mobile-width);
+		}
+		@media (min-width: $tablet-breakpoint) {
+			margin: 0 auto;
+			width: var(--tablet-width);
+		}
+		@media (min-width: $desktop-breakpoint) {
+			margin: 0 auto;
+			width: var(--desktop-width)
+		}
+
+	}
+
 }
-
-.page, .post {
-	padding: var(--scale-lg) var(--scale-md);
-}
-
-
-// .content-width {
-// 	width: 60vw;
-// 	margin-left: auto;
-// 	margin-right: auto;
-// }
-
-// @media (max-width: 660px) {
-// 	.content-width {
-// 		width: 100vw;
-// 	}
-// }

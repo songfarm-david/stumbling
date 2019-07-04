@@ -2,7 +2,7 @@ import React from "react"
 
 const SubscribeForm = (props) => (
 	<>
-		<h3>Join the mailing list to get notified of new posts.</h3>
+		<h3 class="header h1">Join the mailing list to get notified of new posts.</h3>
 
 			<form name="subscription-form" action="/" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
 

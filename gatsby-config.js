@@ -109,9 +109,12 @@ module.exports = {
                },
                {
                   family: 'Open Sans',
-                  variations: [
-                     '300','300i','400','400i','700','700i'
+                  variants: [
+                     '300','300i','400','400i','700','700i','900'
                   ]
+               },
+               {
+                  family: 'Just Another Hand'
                }
             ],
          },
