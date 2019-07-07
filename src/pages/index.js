@@ -13,11 +13,12 @@ export default ({ data }) => {
    return (
       <Layout className="page">
         <SEO
-         title="Home"
-         description="how are you?"
-         keywords={[`gatsby`, `application`, `react`]}
+         title="Stumbling Towards Enlightenment - Home"
+         description=""
+         keywords={[``, ``, ``]}
         />
-        <ShareComponent title={data.site.siteMetadata.title} postUrl={data.site.siteMetadata.siteUrl} />
+        {/*<ShareComponent title={data.site.siteMetadata.title} postUrl={data.site.siteMetadata.siteUrl} />*/}
+        <hr />
         <h4 className="small-bold-header">All Posts</h4>
         {data.allWordpressPost.edges.map(({ node }, index) => (
            <div key={index}>
@@ -30,6 +31,8 @@ export default ({ data }) => {
                <Link to={node.slug} state={{ post: node }}>Read more</Link>
            </div>
         ))}
+        <br />
+        <hr />
       </Layout>
    )
 

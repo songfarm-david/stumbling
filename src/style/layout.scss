@@ -35,6 +35,7 @@ body {
 	main {
 
 		padding: var(--scale-md) var(--scale-md) var(--scale-lg);
+
 		@media (min-width: $lg-mobile-breakpoint) {
 			margin: 0 auto;
 			width: var(--lg-mobile-width);
@@ -52,6 +53,13 @@ body {
 			.post-content > h2 {
 				font-weight: 700;
 			}
+		}
+
+		&.page > hr.extended {
+			width: 130%;
+			display: block;
+			text-align: center;
+			margin-left: -15%;
 		}
 
 	}
