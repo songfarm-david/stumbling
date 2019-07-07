@@ -1,7 +1,7 @@
 import React from "react"
 import SubscribeForm from "./subscribe-form.js"
 
-import "../style/footer.css"
+import '../style/footer.scss'
 
 export default () => (
 	<footer>

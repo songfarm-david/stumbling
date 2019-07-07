@@ -17,17 +17,17 @@ body {
 		color: inherit;
 		transition: color 0.25s ease-out;
 		&:hover {
-			color: green;
+			// color: green;
 			transition: color 0.25s ease-out;
 		}
 	}
 
 	header,
 	footer {
-		background-color: #444;
+		// background-color: #444;
 		.header {
 			font-family: var(--decorative-font);
-			color: #ccc;
+			font-weight: lighter;
 			a { color: inherit; }
 		}
 	}
@@ -46,6 +46,12 @@ body {
 		@media (min-width: $desktop-breakpoint) {
 			margin: 0 auto;
 			width: var(--desktop-width)
+		}
+
+		&.post {
+			.post-content > h2 {
+				font-weight: 700;
+			}
 		}
 
 	}

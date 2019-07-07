@@ -1,6 +1,0 @@
-footer {
-	--light-color: #ccc;
-	text-align: center;
-	background-color: var(--light-color);
-	border-top: 1px solid #ccc; /* note this prevents collapsing margin */
-}
