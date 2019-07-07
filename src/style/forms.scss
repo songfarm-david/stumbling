@@ -15,6 +15,13 @@ form {
 		width: var(--desktop-width)
 	}
 
+	input {
+		border: 1px solid var(--silver);
+		border-radius: 1px;
+		padding: var(--scale-xs);
+		font-size: inherit;
+	}
+
 	input[type="submit"] {
 		padding: 1em;
 	}
@@ -26,16 +33,21 @@ form {
 		justify-content: center;
 
 		.flex-field {
+
 			flex: 0 0 100%;
 			display: flex;
 			justify-content: space-between;
-			margin-bottom: var(--scale-reg);
+			align-items: center;
+			margin-bottom: var(--scale-xs);
+
 			> * {
 				flex: 1 1 0px;
 			}
+
 			> label {
 				flex: 0 1 25%;
 			}
+
 		}
 	}
 }
