@@ -1,0 +1,27 @@
+
+/**
+ * Modular Scale
+ */
+:root {
+	/* mod scale 1 */
+	--mod-scale-1: 1.4;
+	
+	--scale-xs: calc(1em / var(--mod-scale-1) / var(--mod-scale-1));
+	--scale-sm: calc(1em / var(--mod-scale-1));
+	--scale-reg: 1em;
+	--scale-md: calc(1em * var(--mod-scale-1));
+   --scale-lg: calc(1em * var(--mod-scale-1) * var(--mod-scale-1));
+   --scale-xl: calc(1em * var(--mod-scale-1) * var(--mod-scale-1) * var(--mod-scale-1));
+}
+
+/**
+ * Colors
+ */
+:root {
+	--white: #fff;
+	--isabelline: #EDEDED;
+	--pale-silver: #C4C1BA;
+	--silver: #C0C0C0;
+	--roman-silver: #838996;
+	--pastel-gray: #C6CFC8;
+}

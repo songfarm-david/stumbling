@@ -6,6 +6,6 @@ import '../style/footer.scss'
 export default () => (
 	<footer>
 		<SubscribeForm />
- 	  © {new Date().getFullYear()}
+ 	  	<p class="small-text">© {new Date().getFullYear()}</p>
    </footer>
 )

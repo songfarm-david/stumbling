@@ -1,38 +1,21 @@
-@import './breakpoints';
-
 :root {
-	--header-font: 'Anton', sans-serif;
+	// --header-font: 'Anton', sans-serif;
 	--body-font: 'Open Sans', sans-serif;
 	--decorative-font: 'Just Another Hand', 'cursive';
 	// --header-font: var(--decorative-font);
 	--text-base-size: 17px;
-	@media (min-width: 1200px) {
-		--text-base-size: 20px;
+	@media (min-width: $desktop-breakpoint) {
+		--text-base-size: 21px;
 	}
-}
-
-:root {
-	/* mod scale 1 */
-	--mod-scale-1: 1.4;
-	--scale-xs: calc(1em / var(--mod-scale-1) / var(--mod-scale-1));
-	--scale-sm: calc(1em / var(--mod-scale-1));
-	--scale-reg: 1em;
-	--scale-md: calc(1em * var(--mod-scale-1));
-   --scale-lg: calc(1em * var(--mod-scale-1) * var(--mod-scale-1));
-   --scale-xl: calc(1em * var(--mod-scale-1) * var(--mod-scale-1) * var(--mod-scale-1));
 }
 
 html {
 	font-size: var(--text-base-size);
-}
-
-body {
-	font-family: var(--body-font);
-	line-height: var(--mod-scale-1);
-}
-
-p {
-	font-size: var(--scale-reg);
+	body {
+		font-family: var(--body-font);
+		line-height: var(--mod-scale-1);
+		font-size: var(--scale-reg);
+	}
 }
 
 h1, h2, h3,
@@ -80,4 +63,8 @@ h5, h6,
 h6,
 .h6 {
 	font-weight: lighter;
+}
+
+.small-text {
+	font-size: var(--scale-sm);
 }

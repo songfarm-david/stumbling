@@ -1,0 +1,41 @@
+form {
+
+	margin-bottom: 1em;
+
+	@media (min-width: $lg-mobile-breakpoint) {
+		margin: 0 auto;
+		width: var(--lg-mobile-width);
+	}
+	@media (min-width: $tablet-breakpoint) {
+		margin: 0 auto;
+		width: var(--tablet-width);
+	}
+	@media (min-width: $desktop-breakpoint) {
+		margin: 0 auto;
+		width: var(--desktop-width)
+	}
+
+	input[type="submit"] {
+		padding: 1em;
+	}
+
+	&.flex-form {
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		.flex-field {
+			flex: 0 0 100%;
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: var(--scale-reg);
+			> * {
+				flex: 1 1 0px;
+			}
+			> label {
+				flex: 0 1 25%;
+			}
+		}
+	}
+}

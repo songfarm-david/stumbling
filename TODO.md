@@ -1,9 +1,7 @@
 # TODO: Stumbling Towards Enlightenment
 
-##Styles
-- define site breakpoints
-
 ##Todo Items
+* fix link underline with technique for :after underline
 - Add a 'popular articles' block at the end of posts (How to decide which posts?)
 - Adding comments flow: https://css-tricks.com/jamstack-comments/
 - Add search capability
