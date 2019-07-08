@@ -5,10 +5,9 @@
   "version": "0.1.0",
   "author": "Dave G <david@peakwebsites.ca>",
   "dependencies": {
-    
     "axios": "^0.19.0",
     "emotion": "^10.0.14",
-    "gatsby": "^2.13.6",
+    "gatsby": "^2.13.9",
     "gatsby-cli": "^2.7.8",
     "gatsby-image": "^2.2.4",
     "gatsby-plugin-catch-links": "^2.1.0",
@@ -41,7 +40,7 @@
   ],
   "license": "MIT",
   "scripts": {
-     "build": "gatsby build",
+    "build": "gatsby build",
     "build funcs": "netlify-lambda build src/lambda",
     "serve funcs": "netlify-lambda serve src/lambda",
     "run funcs": "netlify-lambda build src/lambda && netlify-lambda serve src/lambda",
