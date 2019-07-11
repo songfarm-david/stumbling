@@ -1,10 +1,10 @@
 {
-  "name": "stumblingtowardsenlightenment",
   "private": true,
-  "description": "",
-  "version": "0.1.0",
-  "author": "Dave G <david@peakwebsites.ca>",
+  "author": "Dave Gaskin <david@peakwebsites.ca>",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.19.0",
     "emotion": "^10.0.14",
     "gatsby": "^2.13.9",
@@ -35,23 +35,12 @@
     "urlencode": "^1.1.0",
     "wpapi": "^1.2.1"
   },
-  "keywords": [
-    ""
-  ],
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "build funcs": "netlify-lambda build src/lambda",
     "serve funcs": "netlify-lambda serve src/lambda",
     "run funcs": "netlify-lambda build src/lambda && netlify-lambda serve src/lambda",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "devDependencies": {
     "dotenv": "^8.0.0",
