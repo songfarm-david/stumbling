@@ -72,20 +72,9 @@ module.exports = {
         },
       },
       {
-         resolve: `gatsby-plugin-manifest`,
-         options: {
-            name: `Stumbling Towards Enlightenment`,
-            short_name: `Stumbling Towards Enlightenment`,
-            start_url: `/`,
-            background_color: `#663399`,
-            theme_color: `#663399`,
-            display: `minimal-ui`,
-         },
-      },
-      {
          resolve: `gatsby-source-wordpress`,
          options: {
-            baseUrl: `wp.stumblingtowardsenlightenment.com`,
+            baseUrl: `stumblingtowardsenlightenment.com`,
             protocol: `https`,
             hostingWPCOM: false,
             verboseOutput: true,
