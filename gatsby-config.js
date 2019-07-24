@@ -74,7 +74,7 @@ module.exports = {
       {
          resolve: `gatsby-source-wordpress`,
          options: {
-            baseUrl: `www.stumblingtowardsenlightenment.com`,
+            baseUrl: `stumblingtowardenlightenment.com`,
             protocol: `https`,
             hostingWPCOM: false,
             verboseOutput: true,
