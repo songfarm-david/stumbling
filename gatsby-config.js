@@ -71,16 +71,16 @@ module.exports = {
             ],
         },
       },
-      {
-         resolve: `gatsby-source-wordpress`,
-         options: {
-            baseUrl: `stumblingtowardsenlightenment.com`,
-            protocol: `https`,
-            hostingWPCOM: false,
-            verboseOutput: true,
-            useACF: false
-         }
-      },
+      // {
+      //    resolve: `gatsby-source-wordpress`,
+      //    options: {
+      //       baseUrl: `stumblingtowardsenlightenment.com`,
+      //       protocol: `https`,
+      //       hostingWPCOM: false,
+      //       verboseOutput: true,
+      //       useACF: false
+      //    }
+      // },
       {
          resolve: `gatsby-plugin-google-analytics`,
          options: {
