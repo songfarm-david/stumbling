@@ -11,66 +11,66 @@ module.exports = {
    },
    plugins: [
       'gatsby-plugin-sass',
-      {
-         resolve: `gatsby-plugin-feed`,
-         options: {
-            query: `
-               {
-                  site {
-                     siteMetadata {
-                        title
-                        siteUrl
-                        site_url: siteUrl
-                     }
-                  }
-               }
-            `,
-            feeds: [
-               {
-                  serialize: ({ query: { site, allWordpressPost } }) => {
-                     return allWordpressPost.edges.map(edge => {
-                        let decodeHtmlEntity = function(str) {
-                           return str.replace(/&#(\d+);/g, function(match, dec) {
-                              return String.fromCharCode(dec);
-                           });
-                        };
-                        return Object.assign({}, {
-                           title: decodeHtmlEntity(edge.node.title),
-                           description: decodeHtmlEntity(edge.node.excerpt),
-                           url: edge.node.link,
-                           guid: edge.node.id,
-                           date: edge.node.date,
-                        })
-                     })
-                  },
-                  query: `
-                     {
-                        allWordpressPost(
-                           limit: 100,
-                           sort: { fields: [date], order: DESC }
-                        ) {
-                           edges {
-                              node {
-                                 title
-                                 date(formatString: "MMMM DD, YYYY")
-                                 modified(formatString: "MMMM DD, YYYY")
-                                 slug
-                                 link
-                                 excerpt
-                                 wordpress_id
-                                 content
-                                 id
-                              }
-                           }
-                        }
-                     }
-                  `,
-                  output: "/rss.xml",
-                  title: "Stumbling Towards Enlightenment Feed"
-               },
-            ],
-        },
-      },
+      // {
+      //    resolve: `gatsby-plugin-feed`,
+      //    options: {
+      //       query: `
+      //          {
+      //             site {
+      //                siteMetadata {
+      //                   title
+      //                   siteUrl
+      //                   site_url: siteUrl
+      //                }
+      //             }
+      //          }
+      //       `,
+      //       feeds: [
+      //          {
+      //             serialize: ({ query: { site, allWordpressPost } }) => {
+      //                return allWordpressPost.edges.map(edge => {
+      //                   let decodeHtmlEntity = function(str) {
+      //                      return str.replace(/&#(\d+);/g, function(match, dec) {
+      //                         return String.fromCharCode(dec);
+      //                      });
+      //                   };
+      //                   return Object.assign({}, {
+      //                      title: decodeHtmlEntity(edge.node.title),
+      //                      description: decodeHtmlEntity(edge.node.excerpt),
+      //                      url: edge.node.link,
+      //                      guid: edge.node.id,
+      //                      date: edge.node.date,
+      //                   })
+      //                })
+      //             },
+      //             query: `
+      //                {
+      //                   allWordpressPost(
+      //                      limit: 100,
+      //                      sort: { fields: [date], order: DESC }
+      //                   ) {
+      //                      edges {
+      //                         node {
+      //                            title
+      //                            date(formatString: "MMMM DD, YYYY")
+      //                            modified(formatString: "MMMM DD, YYYY")
+      //                            slug
+      //                            link
+      //                            excerpt
+      //                            wordpress_id
+      //                            content
+      //                            id
+      //                         }
+      //                      }
+      //                   }
+      //                }
+      //             `,
+      //             output: "/rss.xml",
+      //             title: "Stumbling Towards Enlightenment Feed"
+      //          },
+      //       ],
+      //   },
+      // },
       // {
       //    resolve: `gatsby-source-wordpress`,
       //    options: {
