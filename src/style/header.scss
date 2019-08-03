@@ -3,11 +3,18 @@ header {
 	// border-bottom: 1px solid #fff; /* NOTE: this should use a var */
 	.nav-section {
 		text-align: center;
+
+
+
 		&#topbar {
 			text-align: right;
 			padding: var(--scale-xs) 0;
 			a {
 				padding: 0 var(--scale-sm);
+				&.rss-icon { // target the FontAwesomeIcon
+					max-height: 1em;
+					height: 1em;
+				}
 			}
 		}
 		a.nav-link {
