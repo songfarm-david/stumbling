@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRss } from '@fortawesome/free-solid-svg-icons'
 
 // see: https://github.com/FortAwesome/react-fontawesome/issues/134
-// config.autoAddCss = false
+config.autoAddCss = false
 
 const Nav = () => (
 	<>
