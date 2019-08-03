@@ -1,6 +1,8 @@
 # TODO: Stumbling Towards Enlightenment
 
 ##Todo Items
+- Ensure build hook works when new posts are published
+- test newsletter and comments on live site
 - Get RSS working correctly
 - Configure gatsby-source-wordpress to negate certain URLs
 * fix link underline with technique for :after underline

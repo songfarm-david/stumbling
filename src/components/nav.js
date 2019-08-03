@@ -2,11 +2,11 @@ import React from "react"
 import { Link } from "gatsby"
 import Helmet from "react-helmet"
 
-import { config } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRss } from '@fortawesome/free-solid-svg-icons'
 
 // see: https://github.com/FortAwesome/react-fontawesome/issues/134
+import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false
 
 const Nav = () => (
