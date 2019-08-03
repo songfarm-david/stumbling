@@ -19,8 +19,6 @@ const Nav = () => (
 		<div className="nav-section" id="links">
 			<Link to="/" className="nav-link">Home</Link>
 			<Link to="/about" className="nav-link">About</Link>
-			{/*<Link to="/testText" className="nav-link">Test Text</Link>*/}
-
 		</div>
 	</nav>
 	</>
