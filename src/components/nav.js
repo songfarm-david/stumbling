@@ -5,6 +5,8 @@ import Helmet from "react-helmet"
 import { dom, config } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRss } from '@fortawesome/free-solid-svg-icons'
+import { dom, config } from '@fortawesome/fontawesome-svg-core'
+config.autoAddCss = false
 
 // see: https://github.com/FortAwesome/react-fontawesome/issues/134
 config.autoAddCss = false
