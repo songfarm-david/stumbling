@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Helmet from "react-helmet"
 
-import { dom, config } from '@fortawesome/fontawesome-svg-core'
+import { config } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRss } from '@fortawesome/free-solid-svg-icons'
 
@@ -11,7 +11,7 @@ config.autoAddCss = false
 
 const Nav = () => (
 	<>
-	<Helmet><style>{dom.css()}</style></Helmet>
+	{/*}<Helmet><style>{dom.css()}</style></Helmet>*/}
 	<nav>
 		<div className="nav-section" id="topbar">
 			<Link to="/rss.xml"><FontAwesomeIcon fixedWidth size="1x" icon={faRss} /></Link>

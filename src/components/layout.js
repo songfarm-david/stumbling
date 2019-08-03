@@ -3,6 +3,8 @@ import React from "react"
 // import "./default-reset.css"
 // import "../style/layout.css"
 
+import { dom } from '@fortawesome/fontawesome-svg-core'
+dom.css()
 import '../style/styles.scss'
 
 import Header from "./header"
