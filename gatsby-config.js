@@ -14,7 +14,7 @@ module.exports = {
       {
          resolve: `gatsby-source-wordpress`,
          options: {
-            baseUrl: `wp.stumblingtowardsenlightenment.com`,
+            baseUrl: `wp.stumblingtowardsenlightenment.com`, // NOTE: subdomain must be used here
             protocol: `https`,
             hostingWPCOM: false,
             verboseOutput: true,
