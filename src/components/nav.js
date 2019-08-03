@@ -7,7 +7,7 @@ import { faRss } from '@fortawesome/free-solid-svg-icons'
 const Nav = () => (
 	<nav>
 		<div className="nav-section" id="topbar">
-			<Link to="/rss.xml" className="rss-icon"><FontAwesomeIcon icon={faRss} /></Link>
+			<Link to="/rss.xml" className="fa-icon rss-icon"><FontAwesomeIcon icon={faRss} /></Link>
 		</div>
 		<div className="nav-section" id="links">
 			<Link to="/" className="nav-link">Home</Link>

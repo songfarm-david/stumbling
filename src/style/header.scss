@@ -11,10 +11,11 @@ header {
 			padding: var(--scale-xs) 0;
 			a {
 				padding: 0 var(--scale-sm);
-				&.rss-icon { // target the FontAwesomeIcon
-					max-height: 1em;
-					height: 1em;
-				}
+				// &.rss-icon { // target the FontAwesomeIcon
+				// 	max-height: 1em;
+				// 	height: 1em;
+				// }
+				// NOTE: moved to layout.scss
 			}
 		}
 		a.nav-link {
