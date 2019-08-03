@@ -1,3 +1,4 @@
 # redirects below paths to subdomain on server hosting wordpress
+
 /wp-admin https://wp.stumblingtowardsenlightenment.com/wp-admin 200
 /wp-json  https://wp.stumblingtowardsenlightenment.com/wp-json  200
