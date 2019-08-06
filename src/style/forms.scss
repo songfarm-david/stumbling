@@ -1,21 +1,27 @@
 form {
 
-	margin-bottom: 1em;
+	margin-bottom: var(--scale-md);
+	width: 100%;
 
-	@media (min-width: $lg-mobile-breakpoint) {
-		margin: 0 auto;
-		width: var(--lg-mobile-width);
-	}
-	@media (min-width: $tablet-breakpoint) {
-		margin: 0 auto;
-		width: var(--tablet-width);
-	}
-	@media (min-width: $desktop-breakpoint) {
-		margin: 0 auto;
-		width: var(--desktop-width)
+	// @media (min-width: $lg-mobile-breakpoint) {
+	// 	margin: 0 auto;
+	// 	width: var(--lg-mobile-width);
+	// }
+	// @media (min-width: $tablet-breakpoint) {
+	// 	margin: 0 auto;
+	// 	width: var(--tablet-width);
+	// }
+	// @media (min-width: $desktop-breakpoint) {
+	// 	margin: 0 auto;
+	// 	width: var(--desktop-width)
+	// }
+
+	label {
+		margin-right: var(--scale-xs);
 	}
 
-	input {
+	input,
+	textarea {
 		border: 1px solid var(--silver);
 		border-radius: 1px;
 		padding: var(--scale-xs);
@@ -23,7 +29,8 @@ form {
 	}
 
 	input[type="submit"] {
-		padding: 1em;
+		padding: var(--scale-sm);
+		margin: var(--scale-reg) 0;
 	}
 
 	&.flex-form {
@@ -41,13 +48,21 @@ form {
 			margin-bottom: var(--scale-xs);
 
 			> * {
-				flex: 1 1 0px;
+				flex: 1 1 100%;
+				width: 100%;
 			}
 
 			> label {
 				flex: 0 1 25%;
+				min-width: 85px;
 			}
 
 		}
 	}
+
+	&#subscribeForm {
+		max-width: 20em;
+		margin: 0 auto;
+	}
+
 }

@@ -1,17 +1,18 @@
 # TODO: Stumbling Towards Enlightenment
 
 ##Todo Items
-- Ensure build hook works when new posts are published
-- test newsletter and comments on live site
+- style forms
+- style comments
+- set up comment flows and subscription flows (modals)
 - Get RSS working correctly
 - Configure gatsby-source-wordpress to negate certain URLs
-* fix link underline with technique for :after underline
+- Set up a Spam bot using Netlify
+- fix link underline with technique for :after underline
 - Add a 'popular articles' block at the end of posts (How to decide which posts?) Google Analytics?
 - Adding comments flow: https://css-tricks.com/jamstack-comments/
 - Add search capability
 	* plugin: https://github.com/angeloashmore/gatsby-plugin-local-search
-- Create new build when new comment
-- Set up a Spam bot using Netlify
+
 - Push Notifications on Netlify?
 
 ## Website Notable Highlights
@@ -36,8 +37,7 @@
 
 ## Site design
 - https://mariohernandez.io/blog/adding-social-share-links-to-gatsby/
-### button styles: https://css-tricks.com/forms-auth-and-serverless-functions-on-gatsby-and-netlify/
-* a really great approach for a landing page: https://rachelandrew.co.uk/archives/2017/07/04/is-it-really-safe-to-start-using-css-grid-layout/
+- a really great approach for a landing page: https://rachelandrew.co.uk/archives/2017/07/04/is-it-really-safe-to-start-using-css-grid-layout/
 
 ## Lambda Functions
 bottom of this section: https://css-tricks.com/forms-auth-and-serverless-functions-on-gatsby-and-netlify/#article-header-id-8

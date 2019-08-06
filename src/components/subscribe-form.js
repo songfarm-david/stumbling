@@ -3,7 +3,7 @@ import React from "react"
 const SubscribeForm = (props) => (
 	<>
 		<h3 class="header h1">Join the mailing list to get notified of new posts.</h3>
-			<form class="flex-form" name="subscription-form" action="/" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+			<form id="subscribeForm" class="flex-form" name="subscription-form" action="/" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
 				<input type="hidden" name="bot-field" />
 				<input type="hidden" name="form-name" value="subscription-form" />
 

@@ -22,20 +22,15 @@ body {
 		}
 	}
 
-	header,
-	footer {
-		// background-color: #444;
 		.header {
 			font-family: var(--decorative-font);
 			font-weight: lighter;
 			a { color: inherit; }
 		}
-	}
 
-	main {
-
-		padding: var(--scale-md) var(--scale-md) var(--scale-lg);
-
+	header,
+	main,
+	footer {
 		@media (min-width: $lg-mobile-breakpoint) {
 			margin: 0 auto;
 			width: var(--lg-mobile-width);
@@ -48,6 +43,11 @@ body {
 			margin: 0 auto;
 			width: var(--desktop-width)
 		}
+	}
+
+	main {
+
+		padding: var(--scale-md) var(--scale-md) var(--scale-lg);
 
 		&.post {
 			.post-content > h2 {
@@ -62,6 +62,10 @@ body {
 			margin-left: -15%;
 		}
 
+	}
+
+	footer {
+		padding: 0 var(--scale-md);
 	}
 
 	.fa-icon {

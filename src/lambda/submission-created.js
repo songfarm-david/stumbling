@@ -70,7 +70,6 @@ exports.handler = (event, context, callback) => {
    	})
    	.then(res => {
    		let token = res.data.token
-
    		axios.post(WP_COMMENTS_ENDPOINT, requestPayload, {
    			headers: {
                'Authorization': 'Bearer ' + token
