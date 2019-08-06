@@ -1,0 +1,16 @@
+/* styles for comment sections of post templates */
+
+.comments-section {
+	.comment {
+		margin: 0 0 var(--scale-md) var(--scale-md);
+		.author {
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		.comment-body > p {
+			/* remove margin and set line height to match rest of paragraphs */
+			margin: 0;
+			line-height: var(--mod-scale-1);
+		}
+	}
+}

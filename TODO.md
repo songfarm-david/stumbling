@@ -1,8 +1,6 @@
 # TODO: Stumbling Towards Enlightenment
 
 ##Todo Items
-- style forms
-- style comments
 - set up comment flows and subscription flows (modals)
 - Get RSS working correctly
 - Configure gatsby-source-wordpress to negate certain URLs

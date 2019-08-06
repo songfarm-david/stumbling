@@ -8,26 +8,32 @@ import CommentForm from "../components/comment-form"
 import decodeHTML from "../functions/decode-html.js"
 
 export default ({ data }) => {
-   // console.log('Data!', data);
+   console.log('Data!', data);
    const props = {
       title: decodeHTML(data.wordpressPost.title),
       content: data.wordpressPost.content,
       postUrl: data.wordpressPost.link
    }
 
-   // print all query data
-   // console.log(data);
-
    const Comment = (comments, id) => {
-      // console.log(comments);
+      // for more info on formatting: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString#Examples
+      let options = {
+         weekday: 'short',
+         year: 'numeric',
+         month: 'long',
+         day: 'numeric',
+         hour: 'numeric',
+         minute: 'numeric'
+      }
       return comments.map((comment, i) => {
-         // console.log(comment.node);
+         console.log(comment.node.date);
+
          if (comment.node.post === id) {
             return (
-               <div key={i}>
-                  <p>{comment.node.author_name}</p>
-                  <p>{comment.node.date}</p>
-                  <p dangerouslySetInnerHTML={{ __html: comment.node.content}} />
+               <div className="comment" key={i}>
+                  <span className="author">{comment.node.author_name}</span>&nbsp;&mdash;&nbsp;
+                  <span className="date">{new Date(comment.node.date).toLocaleDateString(undefined, options)}</span>
+                  <p className="comment-body" dangerouslySetInnerHTML={{ __html: comment.node.content}} />
                </div>
             )
          }
@@ -42,11 +48,13 @@ export default ({ data }) => {
             <div dangerouslySetInnerHTML={{ __html: data.wordpressPost.content}} />
             <ShareComponent {...props} />
          </div>
-         <h3>Comments:</h3>
-         {Comment(
-            data.allWordpressWpComments.edges,
-            data.wordpressPost.wordpress_id
-         )}
+         <div className="comments-section">
+            <h3>Comments:</h3>
+            {Comment(
+               data.allWordpressWpComments.edges,
+               data.wordpressPost.wordpress_id
+            )}
+         </div>
          <CommentForm
             title={data.wordpressPost.title}
             postId={data.wordpressPost.wordpress_id} />

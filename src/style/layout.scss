@@ -22,13 +22,12 @@ body {
 		}
 	}
 
-		.header {
-			font-family: var(--decorative-font);
-			font-weight: lighter;
-			a { color: inherit; }
-		}
+	.header {
+		font-family: var(--decorative-font);
+		font-weight: lighter;
+		a { color: inherit; }
+	}
 
-	header,
 	main,
 	footer {
 		@media (min-width: $lg-mobile-breakpoint) {

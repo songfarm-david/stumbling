@@ -1,6 +1,7 @@
 @import './breakpoints';
 @import './vars';
 @import './typography';
+@import '../../node_modules/@fortawesome/fontawesome-svg-core/styles';
 @import './layout';
 @import './forms';
-@import '../../node_modules/@fortawesome/fontawesome-svg-core/styles'
+@import './comments';
