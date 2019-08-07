@@ -12,7 +12,8 @@ export default ({ data }) => {
    const props = {
       title: decodeHTML(data.wordpressPost.title),
       content: data.wordpressPost.content,
-      postUrl: data.wordpressPost.link
+      postUrl: data.wordpressPost.link,
+      slug: data.wordpressPost.slug
    }
 
    const Comment = (comments, id) => {
@@ -27,7 +28,6 @@ export default ({ data }) => {
       }
       return comments.map((comment, i) => {
          console.log(comment.node.date);
-
          if (comment.node.post === id) {
             return (
                <div className="comment" key={i}>
@@ -41,7 +41,12 @@ export default ({ data }) => {
    }
 
    return (
-      <Layout title={props.title} postUrl={props.postUrl} className="post">
+      <Layout
+         title={props.title}
+         slug={props.slug}
+         postUrl={props.postUrl}
+         className="post"
+         >
          {/*<ShareComponent {...props} />*/}
          <div className="post-content">
             <h2>{decodeHTML(data.wordpressPost.title)}</h2>
@@ -56,8 +61,9 @@ export default ({ data }) => {
             )}
          </div>
          <CommentForm
-            title={data.wordpressPost.title}
-            postId={data.wordpressPost.wordpress_id} />
+            slug={data.wordpressPost.slug}
+            postId={data.wordpressPost.wordpress_id}
+            />
       </Layout>
    )
 }

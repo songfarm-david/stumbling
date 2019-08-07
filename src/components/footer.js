@@ -3,9 +3,9 @@ import SubscribeForm from "./subscribe-form.js"
 
 import '../style/footer.scss'
 
-export default () => (
+export default props => (
 	<footer>
-		<SubscribeForm />
- 	  	<p class="small-text">© {new Date().getFullYear()}</p>
+		<SubscribeForm slug={props.slug}/>
+ 	  	<p className="small-text">© {new Date().getFullYear()}</p>
    </footer>
 )

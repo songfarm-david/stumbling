@@ -14,7 +14,7 @@ export default props => {
          <main className={props.className}>
             {props.children}
          </main>
-         <Footer />
+         <Footer slug={props.slug} />
       </>
    )
 }

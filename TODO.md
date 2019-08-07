@@ -3,6 +3,7 @@
 ##Todo Items
 - set up comment flows and subscription flows (modals)
 - Get RSS working correctly
+- Test google analytics
 - Configure gatsby-source-wordpress to negate certain URLs
 - Set up a Spam bot using Netlify
 - fix link underline with technique for :after underline
