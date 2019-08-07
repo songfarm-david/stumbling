@@ -4,6 +4,7 @@ import '../style/styles.scss'
 
 import Header from "./header"
 import Footer from "./footer"
+import Modal from './modal'
 
 // NOTE: uses a StaticQuery because components cannot query graphql normally: https://www.gatsbyjs.org/tutorial/part-four/#use-a-staticquery
 
@@ -15,6 +16,7 @@ export default props => {
             {props.children}
          </main>
          <Footer slug={props.slug} />
+         <Modal />
       </>
    )
 }

@@ -9,8 +9,8 @@ const SubscribeForm = (props) => (
 				action={`/${props.slug}/?subscription_confirmed`}
 				method="post" data-netlify="true" data-netlify-honeypot="bot-field">
 				<input type="hidden" name="bot-field" />
-				<input type="hidden" name="form-name" value="subscription-form" />
-				{console.log('props from subscribe', props)}
+				<input type="hidden" name="form-name" value="subscription-form"
+				/>
 				<div className="flex-field">
 					<label htmlFor="name">Name</label>
 					<input type="text" name="name" id="name" required />

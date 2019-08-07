@@ -8,7 +8,7 @@ import CommentForm from "../components/comment-form"
 import decodeHTML from "../functions/decode-html.js"
 
 export default ({ data }) => {
-   console.log('Data!', data);
+   // console.log('Data!', data);
    const props = {
       title: decodeHTML(data.wordpressPost.title),
       content: data.wordpressPost.content,
@@ -27,7 +27,7 @@ export default ({ data }) => {
          minute: 'numeric'
       }
       return comments.map((comment, i) => {
-         console.log(comment.node.date);
+         // console.log(comment.node.date);
          if (comment.node.post === id) {
             return (
                <div className="comment" key={i}>
