@@ -12,7 +12,7 @@ const Nav = () => (
 	<>
 		<nav>
 			<div className="nav-section" id="topbar">
-				<a href="/rss.xml"><FontAwesomeIcon fixedWidth size="1x" icon={faRss} /></a>
+				<a href="/rss.xml" title="RSS Feed"><FontAwesomeIcon fixedWidth size="1x" icon={faRss} /></a>
 			</div>
 			<div className="nav-section" id="links">
 				<Link to="/" className="nav-link">Home</Link>

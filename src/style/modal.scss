@@ -17,6 +17,21 @@
    }
 }
 
+.modal-appear {
+   transform: translateY(-300%);
+}
+.modal-appear.modal-appear-active {
+   transition: transform 500ms ease;
+   transform: translateY(0);
+}
+.modal-exit {
+   transform: translateY(0);
+}
+.modal-exit.modal-exit-active {
+   transform: translateY(-300%);
+   transition: transform 500ms ease;
+}
+
 .modal-content {
 	background-color: #fefefe;
 	margin: 15% auto; /* 15% from the top and centered */
@@ -24,12 +39,12 @@
 	border: 1px solid #888;
 	width: 85%; /* Could be more or less, depending on screen size */
 	max-width: 20em;
-   transition: transform .5s ease;
-   transform: translateY(-300%);
-   &.animate {
-      transition: transform .5s ease;
-      transform: translateY(0);
-   }
+   // transform: translateY(-300%);
+   // transition: transform .5s ease;
+   // &-animate {
+   //    // transition: transform .5s ease;
+   //    // transform: translateY(0);
+   // }
    #modalHeader {
       margin-top: 0;
    }

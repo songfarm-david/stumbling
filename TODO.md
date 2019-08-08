@@ -1,17 +1,14 @@
 # TODO: Stumbling Towards Enlightenment
 
 ##Todo Items
-- Get RSS working correctly
 - Test google analytics
-- Get PWA working
 - Configure gatsby-source-wordpress to negate certain URLs
 - Set up a Spam bot using Netlify
 - fix link underline with technique for :after underline
+- Get PWA working
 - Add a 'popular articles' block at the end of posts (How to decide which posts?) Google Analytics?
-- Adding comments flow: https://css-tricks.com/jamstack-comments/
 - Add search capability
 	* plugin: https://github.com/angeloashmore/gatsby-plugin-local-search
-
 - Push Notifications on Netlify?
 
 ## Website Notable Highlights
@@ -42,3 +39,6 @@
 bottom of this section: https://css-tricks.com/forms-auth-and-serverless-functions-on-gatsby-and-netlify/#article-header-id-8
 More on lamdba functions:https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-handler.html#nodejs-prog-model-handler-callback
 Learning about testing lambda functions and Identity: https://www.gatsbyjs.org/blog/2018-12-17-turning-the-static-dynamic/
+
+## Resources
+- Adding comments flow: https://css-tricks.com/jamstack-comments/
