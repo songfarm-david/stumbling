@@ -1,7 +1,7 @@
 // this (optional) plugin enables Progressive Web App + Offline functionality
 // To learn more, visit: https://gatsby.app/offline
 // 'gatsby-plugin-offline',
-
+// require('dotenv').config();
 module.exports = {
    siteMetadata: {
       title: `Stumbling Towards Enlightenment`,
@@ -84,7 +84,7 @@ module.exports = {
       {
          resolve: `gatsby-plugin-google-analytics`,
          options: {
-            trackingId: process.env.GA_TRACKING_CODE,
+            trackingId: process.env.GATSBY_GA_TRACKING_CODE,
             head: false,
             respectDNT: true,
          },
