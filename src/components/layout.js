@@ -7,10 +7,11 @@ import Footer from "./footer"
 import Modal from './modal'
 
 // NOTE: uses a StaticQuery because components cannot query graphql normally: https://www.gatsbyjs.org/tutorial/part-four/#use-a-staticquery
+let path = (typeof window !== 'undefined') ? window.location.search : ''
 
 export default props => {
    console.log('loggin props', props);
-   // let path = (window !== undefined) ? window.location.search : ''
+
    return (
       <>
          <Header />
@@ -18,7 +19,7 @@ export default props => {
             {props.children}
          </main>
          <Footer slug={props.slug} />
-         <Modal path={props.path}/>
+         <Modal path={path}/>
       </>
    )
 }
