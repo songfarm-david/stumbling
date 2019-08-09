@@ -1,7 +1,6 @@
 # TODO: Stumbling Towards Enlightenment
 
 ##Todo Items
-- Test google analytics
 - Configure gatsby-source-wordpress to negate certain URLs
 - Set up a Spam bot using Netlify
 - fix link underline with technique for :after underline
@@ -10,6 +9,7 @@
 - Add search capability
 	* plugin: https://github.com/angeloashmore/gatsby-plugin-local-search
 - Push Notifications on Netlify?
+- update GA tracking code to use Netlify Env Var
 
 ## Website Notable Highlights
 - Website done with Gatsby, content hosted on WordPress
