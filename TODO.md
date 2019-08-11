@@ -1,7 +1,11 @@
 # TODO: Stumbling Towards Enlightenment
 
+## Project Notes
+This is a [Gatsby site](https://www.gatsbyjs.org/).  To run a gatsby site, run `gatsby-develop` in the command line for local development at [localhost:8000](http://localhost:8000/).
+Committing and pushing changes to Github will start a fresh build at [www.stumblingtowardsenlightenment.com](www.stumblingtowardsenlightenment.com)
+
 ##Todo Items
-- Configure gatsby-source-wordpress to negate certain URLs
+- Configure [gatsby-source-wordpress](https://www.gatsbyjs.org/packages/gatsby-source-wordpress/) to negate certain URLs
 - Set up a Spam bot using Netlify
 - fix link underline with technique for :after underline
 - Get PWA working
@@ -10,6 +14,8 @@
 	* plugin: https://github.com/angeloashmore/gatsby-plugin-local-search
 - Push Notifications on Netlify?
 - update GA tracking code to use Netlify Env Var
+- clean up package.json file
+- clean up files
 
 ## Website Notable Highlights
 - Website done with Gatsby, content hosted on WordPress

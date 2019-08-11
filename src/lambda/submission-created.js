@@ -89,7 +89,4 @@ exports.handler = (event, context, callback) => {
 
    }
 
-   // TODO: Program the submission creation to tell commenters that their comment is pending approval.
-   // TODO: Set up a Spam bot using Netlify
-
 }
