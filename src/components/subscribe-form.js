@@ -2,7 +2,7 @@ import React from "react"
 
 const SubscribeForm = (props) => (
 	<>
-		<h3 className="header h1">Join the mailing list to get notified of new posts.</h3>
+		<h3 id="mailing-list" className="header h1">Join the mailing list to get notified of new posts.</h3>
 			<form id="subscribeForm"
 				className="flex-form"
 				name="subscription-form"
