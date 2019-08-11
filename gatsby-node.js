@@ -40,7 +40,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
 			}
 		`).then(result => {
-         console.log('logging result: ', result);
+         // console.log('logging result: ', result);
 			result.data.allWordpressPost.edges.forEach(({ node }) => {
 				createPage({
 					path: node.slug,
