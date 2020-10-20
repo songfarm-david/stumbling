@@ -31,7 +31,7 @@ exports.handler = (event, context, callback) => {
 
       requestPayload = {
          'email_address': payload.email,
-         'status': 'subscribed',
+         'status': 'pending',
          'merge_fields': {
             'FNAME': payload.name
          }
