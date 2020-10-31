@@ -50,19 +50,19 @@ exports.handler = (event, context, callback) => {
 
    } else if (payload.form_name == 'comment-form') {
 
-      const {
-         WP_AUTH_ENDPOINT,
-         WP_COMMENTS_ENDPOINT,
-         WP_USER,
-         WP_PASS
-      } = process.env
+        const {
+            WP_AUTH_ENDPOINT,
+            WP_COMMENTS_ENDPOINT,
+            WP_USER,
+            WP_PASS
+        } = process.env
 
-      requestPayload = {
-         'post': payload.data.postId,
-         'author_name': payload.name,
-         'author_email': (payload.email ? payload.email : 'fakeemail@email.com'),
-         'content': payload.body
-      }
+        requestPayload = {
+            'post': payload.data.postId,
+            'author_name': payload.name,
+            'author_email': (payload.email ? payload.email : 'fakeemail@email.com'),
+            'content': payload.body
+        }
 
       axios.post(WP_AUTH_ENDPOINT, {
    		username: WP_USER,
