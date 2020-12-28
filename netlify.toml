@@ -1,4 +1,4 @@
 [build]
-   functions = "functions/"
+#    functions = "src/lambda/"
    publish = "public/"
    # command = "npm run 'build funcs' && gatsby build"

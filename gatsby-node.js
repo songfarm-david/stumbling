@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 const path = require('path')
-const { createFilePath } = require(`gatsby-source-filesystem`)
+// const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
 	const { createPage } = actions
@@ -49,7 +49,7 @@ exports.createPages = ({ graphql, actions }) => {
 						id: node.id,
 						title: node.slug,
 						content: node.content,
-                  comments: result.data.allWordpressWpComments
+                        comments: result.data.allWordpressWpComments
 					}
 				})
 			})
