@@ -49,6 +49,6 @@
     "netlify-lambda": "^1.6.3"
   },
   "engines": {
-    "node": "^12.16.2"
+    "node": ">=10.0.0"
   }
 }
