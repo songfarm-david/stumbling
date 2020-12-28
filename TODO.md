@@ -4,6 +4,7 @@
 - Add Title and Meta description to homepage! SEO component!
 - Test mailing list sign-up works and flow is good (see/test submission-created.js)
 - Add comments flow for blog posts, add email field (see submission-created.js), make sure confirmation page link is correct, better style comments blocks (indenting)
+    - plugin for this?
 - add a site widget "see something wrong? Let us know!" which sends an email to me
 - Make sure spam commments are slighted
 - Add a 'popular articles' block at the end of posts (How to decide which posts?) Google Analytics?
