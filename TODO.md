@@ -1,6 +1,7 @@
 # TODO: Stumbling Towards Enlightenment
 
 ## Todo Items
+- Add Title and Meta description to homepage! SEO component!
 - Test mailing list sign-up works and flow is good (see/test submission-created.js)
 - Add comments flow for blog posts, add email field (see submission-created.js), make sure confirmation page link is correct, better style comments blocks (indenting)
 - add a site widget "see something wrong? Let us know!" which sends an email to me
