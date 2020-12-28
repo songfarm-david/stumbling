@@ -3,7 +3,11 @@
 ## Todo Items
 - Add Title and Meta description to homepage! SEO component!
 - Test mailing list sign-up works and flow is good (see/test submission-created.js)
-- Add comments flow for blog posts, add email field (see submission-created.js), make sure confirmation page link is correct, better style comments blocks (indenting)
+    - https://stumblingtowardsenlightenment.us20.list-manage.com/subscribe/post?u=2130179d182db81466ecfb162&amp;id=684872185b
+- Comments
+    - Add email field
+    - Fix confirmation page error (return page should go to home/ or same post)
+    - Better styles for indents
     - plugin for this?
 - add a site widget "see something wrong? Let us know!" which sends an email to me
 - Make sure spam commments are slighted
