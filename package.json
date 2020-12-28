@@ -38,8 +38,8 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "build funcs": "netlify-lambda build src/lambda",
-    "serve funcs": "netlify-lambda serve src/lambda",
+    "build funcs": "netlify-lambda build src/functions",
+    "serve funcs": "netlify-lambda serve src/functions",
     "run funcs": "netlify-lambda build src/lambda && netlify-lambda serve src/lambda",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
