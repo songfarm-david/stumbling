@@ -9,7 +9,8 @@ const SubscribeForm = (props) => (
 				action={`/${props.slug}/?subscription_confirmed`}
 				method="post" 
                 data-netlify="true" 
-                data-netlify-honeypot="bot-field">
+                data-netlify-honeypot="bot-field"
+                data-netlify-recaptcha="true">
 				<input type="hidden" name="bot-field" />
 				<input type="hidden" name="form-name" value="subscription-form"
 				/>
@@ -21,7 +22,7 @@ const SubscribeForm = (props) => (
 					<label htmlFor="email">Email</label>
 					<input type="text" name="email" id="email" required />
 				</div>
-                {/* <div data-netlify-recaptcha="true"></div> */}
+                <div data-netlify-recaptcha="true"></div>
 				<input type="submit" value="Subscribe" />
 			</form>
 	 </>

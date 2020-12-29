@@ -3,6 +3,7 @@
  * Date: June 30, 2019
  */
 const axios = require('axios')
+const mailchimp = require("@mailchimp/mailchimp_marketing");
 
 exports.handler = (event, context, callback) => {
     console.log('submission-created invoked!');
@@ -10,13 +11,12 @@ exports.handler = (event, context, callback) => {
     let payload = JSON.parse(event.body).payload
 
     if (!payload) {
-        console.log('no payload')
         return callback('No payload!')
     }
 
     // parse form and build data
     if (payload.form_name === 'subscription-form') {
-        console.log('form name is correct')
+
         const {
             MAILCHIMP_DATA_NO,
             MAILCHIMP_LIST_ID,
@@ -24,10 +24,18 @@ exports.handler = (event, context, callback) => {
             MAILCHIMP_API_KEY
         } = process.env
 
-        const
-            API_Endpoint = 'https://' + MAILCHIMP_DATA_NO +
-            '.api.mailchimp.com/3.0/lists/' + MAILCHIMP_LIST_ID + '/members/',
-            Credentials = MAILCHIMP_USERNAME + ':' + MAILCHIMP_API_KEY
+        mailchimp.setConfig({
+            apiKey: MAILCHIMP_API_KEY,
+            server: 'https://' + MAILCHIMP_DATA_NO +
+            '.api.mailchimp.com'
+        });
+
+        listId = MAILCHIMP_LIST_ID
+
+        // const
+        //  API_Endpoint = 'https://' + MAILCHIMP_DATA_NO +
+        //  '.api.mailchimp.com/3.0/lists/' + MAILCHIMP_LIST_ID + '/members/',
+        //  Credentials = MAILCHIMP_USERNAME + ':' + MAILCHIMP_API_KEY
 
         requestPayload = {
             'email_address': payload.email,
@@ -37,17 +45,28 @@ exports.handler = (event, context, callback) => {
             }
         }
 
-        axios.post(API_Endpoint, requestPayload, {
-                headers: {
-                'Authorization': 'Basic ' + Buffer.from(Credentials).toString('base64')
-                }
+        // axios.post(API_Endpoint, requestPayload, {
+        //         headers: {
+        //             'Authorization': 'Basic ' + Buffer.from(Credentials).toString('base64')
+        //         }
+        //     }
+        // )
+        // .then(res => {
+        //     return
+        // })
+        // .catch(err => callback(err))
+
+        async function run() {
+            try {
+                const response = await mailchimp.lists.addListMember(listId, requestPayload);
+
+                console.log(`Successfully added contact as an audience member. The contact's id is ${response.id}.`);
+            } catch (e) {
+                console.log(e)
             }
-        )
-        .then(res => {
-            console.log('res is', res)
-            return
-        })
-        .catch(err => callback(err))
+        }
+        
+        run();
 
    } else if (payload.form_name == 'comment-form') {
 
