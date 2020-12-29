@@ -2,6 +2,9 @@
 // To learn more, visit: https://gatsby.app/offline
 // 'gatsby-plugin-offline',
 // require('dotenv').config();
+require("dotenv").config({
+    path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
     siteMetadata: {
         title: `Stumbling Towards Enlightenment`,
@@ -97,6 +100,12 @@ module.exports = {
                     `Open Sans:300,300i,400,400i,700,700i,900` // you can also specify font weights and styles
                 ],
                 display: 'swap'
+            }
+        },
+        {
+            resolve: 'gatsby-plugin-mailchimp',
+            options: {
+                endpoint: process.env.MAILCHIMP_ENDPOINT, 
             }
         }
     ]

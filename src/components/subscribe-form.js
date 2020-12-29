@@ -1,5 +1,8 @@
 import React from "react"
 
+// this is the old subscribe-form that used submission-created
+// it's since been replaced by 'mailchimp-form' and 'gatsby-plugin-mailchimp'
+
 const SubscribeForm = (props) => (
 	<>
 		<h3 id="mailing-list" className="header h1">Join the mailing list to get notified of new posts.</h3>

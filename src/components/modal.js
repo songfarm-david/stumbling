@@ -64,7 +64,7 @@ export default class Modal extends React.Component {
 	}
 
 	closeModal() {
-		console.log('closing modal. States?', this.state);
+		// console.log('closing modal. States?', this.state);
 		this.setState({active: false})
 	}
 
