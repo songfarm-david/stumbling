@@ -2,14 +2,13 @@
 
 ## Todo Items
 - Add Title and Meta description to homepage! SEO component!
-- Test mailing list sign-up works and flow is good (see/test submission-created.js)
-    - https://stumblingtowardsenlightenment.us20.list-manage.com/subscribe/post?u=2130179d182db81466ecfb162&amp;id=684872185b
+- add a site widget "see something wrong? Let us know!" which sends an email to me
+# Test mailing list sign-up works and flow is good (see/test submission-created.js)
 - Comments
     - Add email field
     - Fix confirmation page error (return page should go to home/ or same post)
     - Better styles for indents
     - plugin for this?
-- add a site widget "see something wrong? Let us know!" which sends an email to me
 - Make sure spam commments are slighted
 - Add a 'popular articles' block at the end of posts (How to decide which posts?) Google Analytics?
 - Add search capability
