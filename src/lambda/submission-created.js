@@ -15,7 +15,7 @@ exports.handler = (event, context, callback) => {
     }
 
     // parse form and build data
-    if (payload.form_name === 'subscription-form') {
+    if (payload.form_name == 'subscription-form') {
         console.log('form name correct')
         const {
             MAILCHIMP_DATA_NO,
