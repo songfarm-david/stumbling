@@ -16,7 +16,7 @@ exports.handler = (event, context, callback) => {
 
     // parse form and build data
     if (payload.form_name === 'subscription-form') {
-
+        console.log('form name correct')
         const {
             MAILCHIMP_DATA_NO,
             MAILCHIMP_LIST_ID,
@@ -29,7 +29,7 @@ exports.handler = (event, context, callback) => {
             server: 'https://' + MAILCHIMP_DATA_NO +
             '.api.mailchimp.com'
         });
-
+        console.log('mailchimp config clear')
         listId = MAILCHIMP_LIST_ID
 
         // const
@@ -44,7 +44,7 @@ exports.handler = (event, context, callback) => {
                 'FNAME': payload.name
             }
         }
-
+        console.log('request payload', requestPayload);
         // axios.post(API_Endpoint, requestPayload, {
         //         headers: {
         //             'Authorization': 'Basic ' + Buffer.from(Credentials).toString('base64')
@@ -59,7 +59,6 @@ exports.handler = (event, context, callback) => {
         async function run() {
             try {
                 const response = await mailchimp.lists.addListMember(listId, requestPayload);
-
                 console.log(`Successfully added contact as an audience member. The contact's id is ${response.id}.`);
             } catch (e) {
                 console.log(e)
